@@ -18,7 +18,7 @@ import jsPDF from 'jspdf';
 export default function KnowledgePool() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [previewDocument, setPreviewDocument] = useState(null);
+  const [previewDocument, setPreviewDocument] = useState<any>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   
   // PDF generation function
@@ -2023,6 +2023,65 @@ Compliance Obligations:
           </div>
         </div>
       </div>
+
+      {/* Preview Modal */}
+      <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
+        <DialogContent className="max-w-4xl max-h-[80vh]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center justify-between">
+              <span>{previewDocument?.title}</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsPreviewOpen(false)}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </DialogTitle>
+          </DialogHeader>
+          <ScrollArea className="max-h-[60vh] pr-4">
+            {previewDocument && (
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 pb-4 border-b">
+                  <Badge variant="secondary">{previewDocument.category}</Badge>
+                  <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <Clock className="h-4 w-4" />
+                    {previewDocument.readTime}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <Calendar className="h-4 w-4" />
+                    {previewDocument.lastUpdated}
+                  </div>
+                </div>
+                
+                <div className="prose prose-gray max-w-none">
+                  <p className="text-gray-600 text-lg mb-6">{previewDocument.description}</p>
+                  <div className="whitespace-pre-wrap leading-relaxed">
+                    {previewDocument.content}
+                  </div>
+                </div>
+                
+                <div className="flex gap-2 pt-4 border-t">
+                  <Button 
+                    onClick={() => generatePDF(previewDocument)}
+                    className="flex-1"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download PDF
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    onClick={() => setIsPreviewOpen(false)}
+                    className="flex-1"
+                  >
+                    Close Preview
+                  </Button>
+                </div>
+              </div>
+            )}
+          </ScrollArea>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
