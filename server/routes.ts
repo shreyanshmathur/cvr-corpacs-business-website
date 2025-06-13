@@ -2,7 +2,14 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import nodemailer from "nodemailer";
 import { storage } from "./storage";
-import { insertContactMessageSchema } from "@shared/schema";
+import { 
+  insertContactMessageSchema,
+  insertUserPreferencesSchema,
+  insertServiceInteractionSchema,
+  insertRecommendationSchema,
+  type UserPreferences,
+  type Recommendation 
+} from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Email transporter configuration
