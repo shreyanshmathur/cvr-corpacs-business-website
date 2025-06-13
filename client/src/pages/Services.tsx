@@ -8,11 +8,12 @@ export default function Services() {
       title: "Direct Tax",
       color: "red",
       features: [
-        "Professional tax advisory and strategic tax planning services",
-        "Preparation and filing of Corporate tax returns for Companies, Partnership firms and Individuals",
-        "Tracking on notices served and support in drafting comprehensive responses",
-        "Tax optimization strategies and compliance management",
-        "Appeal filing and representation before tax authorities"
+        "Professional tax advisory and strategic tax planning",
+        "Preparation and filing of Corporate tax returns for Companies, Partnership firm and Individual",
+        "Tracking on notices served and support in drafting response",
+        "Assistance in assessment proceedings and representation before tax authorities",
+        "Litigation support to address complex tax challenges",
+        "End-to-end compliance services: Withholding Tax (TDS) returns, Advance tax computation, WHT (TDS) reconciliation"
       ]
     },
     {
@@ -20,11 +21,13 @@ export default function Services() {
       title: "Indirect Tax",
       color: "blue",
       features: [
-        "Advisory services for GST, VAT, and related regulatory compliances",
-        "Timely filing and management of periodic tax compliance requirements",
-        "Expert support during tax assessments and audit proceedings",
-        "Input tax credit optimization and reconciliation",
-        "GST registration and compliance setup for new businesses"
+        "Advisory services for GST, VAT, and related regulations",
+        "Timely filing and management of periodic tax compliances",
+        "Tracking on notices served and support in drafting response",
+        "Support during tax assessments and audits",
+        "Litigation assistance to protect business interests",
+        "Collection, verification of Input Tax Credit (ITC) declarations from vendors",
+        "Customs related work"
       ]
     },
     {
@@ -32,11 +35,12 @@ export default function Services() {
       title: "Accounting & MIS",
       color: "green",
       features: [
-        "Efficient account maintenance and financial reconciliation services",
-        "Detailed review of debtors and creditors with comprehensive ageing analysis",
-        "Expert support for all types of financial and statutory audits",
-        "Monthly financial reporting and management information systems",
-        "Computerized accounting system implementation and training"
+        "Efficient account maintenance and reconciliation",
+        "Business performance analysis – Actual vs targeted business results",
+        "Detailed review of debtors and creditors with ageing analysis",
+        "Maintenance and management of Fixed Assets Register",
+        "Streamlined inventory management processes",
+        "Expert support for all types of audits, ensuring compliance and accuracy"
       ]
     },
     {

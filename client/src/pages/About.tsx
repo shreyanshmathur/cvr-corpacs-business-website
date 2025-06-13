@@ -32,11 +32,11 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
-              About CVR Corpacs
+              About CVR Corpacs LLP
             </h1>
             <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              A leading consulting firm dedicated to providing expert business solutions across India with a commitment to excellence and client success.
+              Your Trusted Business Partner Since 2004. A leading consulting firm dedicated to providing expert business solutions across India with unwavering commitment to excellence and client success.
             </p>
           </div>
         </div>
@@ -53,25 +53,25 @@ export default function About() {
               <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mb-8"></div>
               
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                CVR Corpacs was founded with a vision to bridge the gap between complex regulatory requirements and business success. With our headquarters strategically located in Mumbai, we have expanded our presence across six major Indian cities to serve businesses of all sizes.
+                Since our inception in 2004, CVR Corpacs LLP has been a steadfast pillar of support for businesses across India. Over the past two decades, we have cultivated strong, enduring relationships with both multinational corporations (MNCs) and Indian corporations (INCs) by delivering innovative, tailor-made solutions that address the unique challenges of modern business.
               </p>
               
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Our team of experienced professionals brings together decades of combined expertise in taxation, accounting, and business consulting. We pride ourselves on staying ahead of regulatory changes and industry trends to provide our clients with the most current and effective solutions.
+                Our expertise encompasses a comprehensive range of services designed to empower our clients at every level. We ensure timely statutory compliance, maintaining a proactive approach to regulatory requirements that safeguards your operations. Additionally, our commitment to precision in books maintenance guarantees accuracy and transparency in your financial records.
               </p>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-red-600 mr-3" />
-                  <span className="text-gray-700 font-medium">10+ Years Experience</span>
+                  <span className="text-gray-700 font-medium">20+ Years Experience</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-red-600 mr-3" />
-                  <span className="text-gray-700 font-medium">500+ Satisfied Clients</span>
+                  <span className="text-gray-700 font-medium">MNC & INC Clients</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-red-600 mr-3" />
-                  <span className="text-gray-700 font-medium">6 Strategic Locations</span>
+                  <span className="text-gray-700 font-medium">Tier 1 & 2 Cities</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-red-600 mr-3" />
@@ -98,7 +98,7 @@ export default function About() {
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Our Mission</h3>
               <p className="text-gray-600 leading-relaxed">
-                To empower businesses across India by providing expert consulting services that ensure regulatory compliance, optimize operations, and drive sustainable growth. We are committed to being the trusted partner that businesses rely on for navigating complex challenges and achieving their goals.
+                At CVR Corpacs LLP, we are dedicated to being the cornerstone of trust and growth for businesses across industries. Our mission is to empower organizations to reach new heights by delivering exceptional solutions and services that align with their unique needs. As a partner of choice, we pride ourselves on fostering long-term relationships built on a foundation of reliability, excellence, and integrity.
               </p>
             </div>
             

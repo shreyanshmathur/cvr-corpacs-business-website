@@ -5,8 +5,8 @@ export default function Home() {
   const stats = [
     { value: "6+", label: "Branches" },
     { value: "500+", label: "Clients Served" },
-    { value: "10+", label: "Years Experience" },
-    { value: "4", label: "Core Services" },
+    { value: "20+", label: "Years Experience" },
+    { value: "2004", label: "Established" },
   ];
 
   return (
@@ -24,10 +24,10 @@ export default function Home() {
           <div className="relative z-10 flex items-center justify-center h-full">
             <div className="text-center text-white px-4 max-w-4xl">
               <h1 className="text-4xl md:text-6xl font-bold font-heading mb-6 leading-tight">
-                Expert Consulting Solutions
+                CVR Corpacs LLP
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
-                Your trusted partner in business growth across India. Specializing in taxation, accounting, and comprehensive business support services.
+                Your Trusted Business Partner Since 2004. Delivering innovative, tailor-made solutions for MNCs and Indian corporations across India.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
@@ -68,12 +68,12 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-6">
-                About CVR Corpacs
+                About CVR Corpacs LLP
               </h2>
               <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mb-8"></div>
               
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                CVR Corpacs is a leading consulting firm specializing in comprehensive business solutions across India. With our headquarters in Mumbai and strategic presence in major cities, we provide expert guidance in taxation, accounting, and business support services.
+                Since our inception in 2004, CVR Corpacs LLP has been a steadfast pillar of support for businesses across India. Over the past two decades, we have cultivated strong, enduring relationships with both multinational corporations (MNCs) and Indian corporations (INCs) by delivering innovative, tailor-made solutions that address the unique challenges of modern business.
               </p>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
