@@ -158,16 +158,7 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="text-center mt-12">
-            <Link 
-              href="/dashboard" 
-              className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg"
-            >
-              <Shield className="h-5 w-5 mr-2" />
-              View Full Dashboard
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
+
         </div>
       </section>
 
