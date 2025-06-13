@@ -49,11 +49,11 @@ export default function Recommendations() {
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              Smart Service Recommendations
+              DeepSeek AI Recommendations
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              Get personalized consulting service recommendations powered by AI, 
-              tailored specifically for your business needs and industry requirements.
+              Get intelligent consulting service recommendations powered by DeepSeek R1, 
+              analyzing your business profile with advanced reasoning capabilities.
             </p>
           </div>
         </div>

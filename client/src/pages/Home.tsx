@@ -276,7 +276,7 @@ export default function Home() {
               className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 font-bold text-lg inline-flex items-center transform hover:scale-105"
             >
               <Brain className="mr-3 h-6 w-6" />
-              Try Smart Recommendations
+              Try AI Recommendations
               <ArrowRight className="ml-3 h-6 w-6" />
             </Link>
           </div>
