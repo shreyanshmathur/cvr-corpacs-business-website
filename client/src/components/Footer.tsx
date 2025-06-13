@@ -10,8 +10,8 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <img src={logoImage} alt="CVR Corpacs Logo" className="h-8 w-8" />
-              <span className="ml-2 text-xl font-bold font-heading">CVR Corpacs</span>
+              <img src={logoImage} alt="CVR Corpacs Logo" className="h-10 w-10" />
+              <span className="ml-3 text-xl font-bold font-heading">CVR Corpacs</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">
               Since our inception in 2004, CVR Corpacs has been a steadfast pillar of support for businesses across India. We specialize in Finance, Taxation, and Commercial Activities with a commitment to excellence.
