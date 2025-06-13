@@ -9,6 +9,7 @@ import About from "@/pages/About";
 import Services from "@/pages/Services";
 import Team from "@/pages/Team";
 import Contact from "@/pages/Contact";
+import KnowledgePool from "@/pages/KnowledgePool";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/services" component={Services} />
         <Route path="/team" component={Team} />
         <Route path="/contact" component={Contact} />
+        <Route path="/knowledge-pool" component={KnowledgePool} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

@@ -1,49 +1,35 @@
 import { Link } from "wouter";
-import { ArrowRight, Linkedin, Mail, Phone } from "lucide-react";
+import { ArrowRight, Calculator, Scale, TrendingUp, BookOpen, Users, Award, Mail } from "lucide-react";
 
 export default function Team() {
-  const teamMembers = [
+  const expertiseAreas = [
     {
-      name: "Rajesh Kumar",
-      position: "Senior Tax Consultant",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-      description: "Specializes in corporate taxation and regulatory compliance with over 12 years of experience in the field. Expert in direct tax planning and assessment proceedings.",
-      specializations: ["Corporate Tax", "Tax Planning", "Regulatory Compliance", "Assessment Proceedings"]
+      icon: Calculator,
+      title: "Chartered Accountants",
+      description: "Our team of experienced CAs provides comprehensive financial expertise, ensuring accuracy in all accounting and taxation matters.",
+      skills: ["Financial Reporting", "Tax Planning", "Audit & Assurance", "Corporate Finance"],
+      count: "8+ Professionals"
     },
     {
-      name: "Priya Sharma",
-      position: "Accounting Manager",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b2ad4de8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-      description: "Expert in financial reporting and MIS with comprehensive knowledge of accounting standards and practices. Leads our accounting and audit services division.",
-      specializations: ["Financial Reporting", "MIS", "Audit Services", "Accounting Standards"]
+      icon: Scale,
+      title: "Legal Advocates",
+      description: "Qualified advocates specializing in corporate law, taxation disputes, and regulatory compliance matters.",
+      skills: ["Tax Litigation", "Corporate Law", "Regulatory Compliance", "Legal Advisory"],
+      count: "4+ Professionals"
     },
     {
-      name: "Amit Patel",
-      position: "Business Advisor",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-      description: "Focuses on business development and strategic planning with extensive experience in startup ecosystems and business formation processes.",
-      specializations: ["Business Development", "Strategic Planning", "Startup Consulting", "Business Formation"]
+      icon: TrendingUp,
+      title: "Business Analysts (MBAs)",
+      description: "Strategic business minds focused on growth optimization, market analysis, and operational excellence.",
+      skills: ["Business Strategy", "Market Analysis", "Process Optimization", "Financial Modeling"],
+      count: "5+ Professionals"
     },
     {
-      name: "Meera Reddy",
-      position: "GST Specialist",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-      description: "Dedicated GST expert with deep knowledge of indirect tax regulations and compliance requirements. Handles complex GST advisory services.",
-      specializations: ["GST Compliance", "Indirect Tax", "VAT Advisory", "Tax Reconciliation"]
-    },
-    {
-      name: "Vikram Singh",
-      position: "Operations Director",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-      description: "Oversees operational excellence across all branches and ensures quality service delivery. Expert in process optimization and team management.",
-      specializations: ["Operations Management", "Process Optimization", "Quality Assurance", "Team Leadership"]
-    },
-    {
-      name: "Neha Gupta",
-      position: "Legal Advisor",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-      description: "Provides legal advisory services and ensures regulatory compliance across all business operations. Specializes in corporate law and compliance.",
-      specializations: ["Corporate Law", "Legal Compliance", "Contract Review", "Regulatory Advisory"]
+      icon: BookOpen,
+      title: "Specialized Graduates",
+      description: "Domain experts with specialized knowledge in various fields contributing to comprehensive business solutions.",
+      skills: ["Research & Analysis", "Compliance Management", "Documentation", "Client Relations"],
+      count: "6+ Professionals"
     }
   ];
 
@@ -87,137 +73,143 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Team Grid */}
+      {/* Expertise Areas */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-1">
-                <img 
-                  src={member.image}
-                  alt={`Professional headshot of ${member.name}`}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-md"
-                />
-                <h3 className="text-xl font-bold font-heading text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-red-600 font-medium mb-4">{member.position}</p>
-                <p className="text-gray-600 leading-relaxed mb-6 text-sm">{member.description}</p>
-                
-                <div className="border-t border-gray-200 pt-4">
-                  <h4 className="text-sm font-semibold text-gray-900 mb-2">Specializations:</h4>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {member.specializations.map((spec, specIndex) => (
-                      <span key={specIndex} className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-medium">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="flex justify-center space-x-4 mt-6">
-                  <button className="text-gray-400 hover:text-red-600 transition-colors">
-                    <Mail className="h-5 w-5" />
-                  </button>
-                  <button className="text-gray-400 hover:text-red-600 transition-colors">
-                    <Phone className="h-5 w-5" />
-                  </button>
-                  <button className="text-gray-400 hover:text-red-600 transition-colors">
-                    <Linkedin className="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Departments Overview */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">
-              Our Departments
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Specialized teams working together to provide comprehensive business solutions.
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">Our Professional Expertise</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              A diverse team of qualified professionals working together to deliver exceptional results
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {departments.map((dept, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-                <div className="bg-red-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  {dept.memberCount}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {expertiseAreas.map((area, index) => {
+              const IconComponent = area.icon;
+              return (
+                <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
+                        <IconComponent className="h-8 w-8 text-red-600" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-xl font-bold font-heading text-gray-900">{area.title}</h3>
+                        <span className="text-sm font-medium text-red-600 bg-red-50 px-3 py-1 rounded-full">
+                          {area.count}
+                        </span>
+                      </div>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{area.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {area.skills.map((skill, skillIndex) => (
+                          <span key={skillIndex} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">{dept.name}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{dept.description}</p>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Department Stats */}
+          <div className="bg-gray-50 rounded-xl p-8">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold font-heading text-gray-900 mb-4">Our Departments</h3>
+              <p className="text-gray-600">Organized teams working across specialized domains</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {departments.map((dept, index) => (
+                <div key={index} className="text-center">
+                  <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="text-3xl font-bold text-red-600 mb-2">{dept.memberCount}</div>
+                    <h4 className="font-semibold text-gray-900 mb-2">{dept.name}</h4>
+                    <p className="text-sm text-gray-600">{dept.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Work With Us */}
-      <section className="py-20 bg-white">
+      {/* Values Section */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">
-              Why Choose Our Team
-            </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-6"></div>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">Our Core Values</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The principles that guide our team and shape our approach to client service
+            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-red-100 p-4 rounded-full w-fit mx-auto mb-4">
-                <div className="text-2xl font-bold text-red-600">10+</div>
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Award className="h-8 w-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">Years of Experience</h3>
-              <p className="text-gray-600">Our team brings over a decade of combined expertise across various domains.</p>
+              <h3 className="text-xl font-bold font-heading text-gray-900 mb-4">Excellence</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We strive for excellence in every engagement, delivering solutions that exceed expectations and drive measurable results.
+              </p>
             </div>
             
             <div className="text-center">
-              <div className="bg-red-100 p-4 rounded-full w-fit mx-auto mb-4">
-                <div className="text-2xl font-bold text-red-600">23+</div>
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="h-8 w-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">Expert Professionals</h3>
-              <p className="text-gray-600">Certified professionals across tax, accounting, legal, and business domains.</p>
+              <h3 className="text-xl font-bold font-heading text-gray-900 mb-4">Collaboration</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our multidisciplinary approach brings together diverse expertise to provide comprehensive solutions for complex business challenges.
+              </p>
             </div>
             
             <div className="text-center">
-              <div className="bg-red-100 p-4 rounded-full w-fit mx-auto mb-4">
-                <div className="text-2xl font-bold text-red-600">6</div>
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <TrendingUp className="h-8 w-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">City Presence</h3>
-              <p className="text-gray-600">Local expertise with teams across major Indian business centers.</p>
+              <h3 className="text-xl font-bold font-heading text-gray-900 mb-4">Growth</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We are committed to continuous learning and professional development, staying ahead of industry trends and regulations.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Career CTA */}
-      <section className="py-20 bg-red-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6">
-            Join Our Growing Team
-          </h2>
-          <p className="text-xl text-red-100 mb-8 max-w-3xl mx-auto">
-            Are you a passionate professional looking to make a difference? We're always looking for talented individuals to join our team of experts.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact" 
-              className="bg-white text-red-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center"
-            >
-              Send Your Resume
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <a 
-              href="mailto:careers@cvrcorpac.com" 
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-red-600 transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center"
-            >
-              careers@cvrcorpac.com
-            </a>
+      {/* Career Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">Join Our Team</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              We're always looking for talented professionals who share our commitment to excellence and client success.
+            </p>
+            
+            <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 text-white text-center">
+              <h3 className="text-2xl font-bold mb-4">Ready to Make an Impact?</h3>
+              <p className="text-red-100 mb-6 max-w-2xl mx-auto">
+                If you're passionate about finance, taxation, and business consulting, we'd love to hear from you. Send your resume and let's explore how you can contribute to our growing team.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a 
+                  href="mailto:info@cvrcorpacs.com" 
+                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Mail className="h-5 w-5 mr-2" />
+                  Send Resume to info@cvrcorpacs.com
+                </a>
+                <Link href="/contact" className="inline-flex items-center text-red-100 hover:text-white transition-colors">
+                  Learn More About Us
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
