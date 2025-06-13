@@ -1,28 +1,123 @@
 import { Link } from "wouter";
-import { BookOpen, Download, FileText, Clock, ArrowRight, Search } from "lucide-react";
+import { BookOpen, Download, FileText, Clock, ArrowRight, Search, Filter, Calendar, Tag } from "lucide-react";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import jsPDF from 'jspdf';
 
 export default function KnowledgePool() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  
+  // PDF generation function
+  const generatePDF = (doc: any) => {
+    const pdf = new jsPDF();
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const margin = 20;
+    const lineHeight = 7;
+    let yPosition = margin;
+
+    // Add title
+    pdf.setFontSize(18);
+    pdf.setFont("helvetica", "bold");
+    const titleLines = pdf.splitTextToSize(doc.title, pageWidth - 2 * margin);
+    pdf.text(titleLines, margin, yPosition);
+    yPosition += titleLines.length * lineHeight + 10;
+
+    // Add metadata
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "normal");
+    pdf.text(`Category: ${doc.category}`, margin, yPosition);
+    yPosition += lineHeight;
+    pdf.text(`Reading Time: ${doc.readTime}`, margin, yPosition);
+    yPosition += lineHeight;
+    pdf.text(`Last Updated: ${doc.lastUpdated}`, margin, yPosition);
+    yPosition += lineHeight;
+    pdf.text(`Tags: ${doc.tags.join(', ')}`, margin, yPosition);
+    yPosition += lineHeight + 10;
+
+    // Add description
+    pdf.setFontSize(12);
+    pdf.setFont("helvetica", "italic");
+    const descLines = pdf.splitTextToSize(doc.description, pageWidth - 2 * margin);
+    pdf.text(descLines, margin, yPosition);
+    yPosition += descLines.length * lineHeight + 10;
+
+    // Add content
+    pdf.setFontSize(11);
+    pdf.setFont("helvetica", "normal");
+    const contentLines = pdf.splitTextToSize(doc.content, pageWidth - 2 * margin);
+    
+    contentLines.forEach((line: string) => {
+      if (yPosition > pdf.internal.pageSize.getHeight() - margin) {
+        pdf.addPage();
+        yPosition = margin;
+      }
+      pdf.text(line, margin, yPosition);
+      yPosition += lineHeight;
+    });
+
+    // Add footer
+    pdf.addPage();
+    yPosition = margin;
+    pdf.setFontSize(10);
+    pdf.setFont("helvetica", "italic");
+    pdf.text("Downloaded from CVR Corpacs LLP Knowledge Pool", margin, yPosition);
+    yPosition += lineHeight;
+    pdf.text("Website: https://cvrcorpacs.com", margin, yPosition);
+    yPosition += lineHeight;
+    pdf.text("Contact: info@cvrcorpacs.com", margin, yPosition);
+
+    // Save the PDF
+    pdf.save(`${doc.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`);
+  };
 
   const documents = [
     {
       id: 1,
       title: "Accounts and Records in GST",
-      description: "Comprehensive guide on maintaining accounts and records under GST law, including mandatory documentation, retention periods, and compliance requirements.",
+      description: "Comprehensive guide on maintaining proper books of accounts, record-keeping requirements, and documentation under GST law.",
       category: "Compliance",
       readTime: "15 min read",
       lastUpdated: "2024-01-15",
-      tags: ["GST", "Record Keeping", "Compliance", "Documentation"],
-      content: `Assessment in GST is mainly focused on self-assessment by the taxpayers themselves. Every taxpayer is required to self assess the taxes payable and furnish a return for specified tax periods. Section 35 of the CGST Act, 2017 provides that every registered person shall keep and maintain, at his principal place of business, a true and correct account of production or manufacture of goods, inward and outward supply of goods or services, stock of goods, input tax credit availed, output tax payable and paid, and such other particulars as may be prescribed.
+      tags: ["Accounts", "Records", "Documentation", "Compliance"],
+      content: `Under GST, every registered person must maintain proper books of accounts and records. This includes detailed records of all business transactions, tax computations, and supporting documents.
 
 Key Requirements:
 • Records must be maintained at the principal place of business
-• All accounts must be kept for 72 months from the due date of furnishing annual return
-• Electronic records are permitted and must be authenticated
-• Separate accounts required for advances, tax details, and supplier information
+• Electronic records permitted with proper authentication
+• Retention period: 72 months from due date of annual return
+• Availability for verification by tax authorities
 
-The law empowers the Commissioner to specify additional accounts or documents for specific purposes and mandates audit by chartered accountant or cost accountant for taxpayers whose turnover exceeds prescribed limits.`
+Essential Documents:
+• Production or manufacture records
+• Inward and outward supply registers
+• Stock records and inventory management
+• Input tax credit records
+• Output tax payable and paid records
+• Banking records and payment documents
+
+Electronic Record Keeping:
+• Digital format acceptable with authentication
+• Backup and security requirements
+• Audit trail maintenance
+• Data integrity and accessibility
+
+Consequences of Non-Compliance:
+• Penalty provisions under Section 122
+• Assessment procedures if records inadequate
+• Disallowance of input tax credit claims
+• Potential criminal prosecution for willful default
+
+The maintenance of proper accounts and records forms the foundation of GST compliance and helps in smooth business operations while ensuring transparency with tax authorities.`
     },
     {
       id: 2,
@@ -78,225 +173,340 @@ The Tribunal has two tiers: National/Regional Benches for place of supply issues
       category: "Fundamentals",
       readTime: "10 min read",
       lastUpdated: "2024-01-12",
-      tags: ["GST Basics", "Input Tax", "Output Tax", "Value Added Tax"],
-      content: `GST stands for Goods and Services Tax, introduced in India on 1st July 2017. It is based on the value-added tax concept, where suppliers pay tax only on the value addition between input and output.
+      tags: ["GST Basics", "Value Added Tax", "Input Tax", "Output Tax"],
+      content: `GST is a comprehensive value-added tax system that replaced multiple indirect taxes in India. It operates on the principle of 'One Nation, One Tax, One Market' to create a unified national market.
 
-Core Formula: Tax Payable = Output Tax - Input Tax
+Core Concepts:
+• Input Tax: Tax paid on purchases/inputs
+• Output Tax: Tax collected on sales/supplies
+• Input Tax Credit: Set-off of input tax against output tax
+• Place of Supply: Determines applicable tax (CGST+SGST or IGST)
 
 Legal Framework:
-• Central Goods and Services Tax (CGST) Act
-• State Goods and Services Tax (SGST) Acts
-• Integrated Goods and Services Tax (IGST) Act
-• Union Territory Goods and Services Tax (UTGST) Act
+• Constitutional Amendment (101st) enabling GST
+• Four Acts: CGST, SGST, UTGST, and IGST
+• Rules and notifications for implementation
+• GST Council for policy decisions
 
-Key Features:
-• Destination-based tax collected at consumption point
-• Unified system replacing multiple indirect taxes
-• Charged at each stage with input tax credit
+Value-Added Taxation:
+• Tax levied at each stage of supply chain
+• Credit of taxes paid at previous stages
 • Eliminates cascading effect of taxes
+• Final consumer bears the tax burden
 
-The system is technology-driven with online processes for registration, returns, payments, and refunds through the GST portal.`
+The GST system ensures transparency, reduces compliance burden, and promotes economic growth through simplified tax structure and seamless credit flow.`
     },
     {
       id: 5,
       title: "Benefits of Goods and Services Tax (GST)",
-      description: "Comprehensive analysis of GST benefits for industry, government, and citizens, including economic advantages and operational improvements.",
+      description: "Comprehensive analysis of advantages GST brings to businesses, consumers, and the economy through unified taxation and simplified compliance.",
       category: "Overview",
-      readTime: "14 min read",
+      readTime: "8 min read",
       lastUpdated: "2024-01-05",
-      tags: ["GST Benefits", "Economic Impact", "Industry Growth", "Compliance"],
-      content: `GST brings significant benefits to all stakeholders - industry, government, and citizens. It is expected to lower costs, boost economy, and make Indian products globally competitive.
+      tags: ["Benefits", "Economic Growth", "Compliance", "Unified Tax"],
+      content: `GST implementation has revolutionized India's indirect tax system, bringing numerous advantages to all stakeholders in the economy.
 
-Key Benefits:
-• Creates common national market with uniform tax rates
-• Eliminates cascading effect through comprehensive input tax credit
-• Supports 'Make in India' initiative
-• Zero-rated exports unlike previous fragmented system
-• Technology-driven with simplified procedures
+Benefits for Businesses:
+• Simplified tax structure with unified compliance
+• Seamless input tax credit across the country
+• Reduced logistics costs due to elimination of checkposts
+• Online processes reducing human interface
+• Improved ease of doing business
 
-Economic Impact:
-• Expected to increase GDP by 1.5% to 2%
-• Improves India's Ease of Doing Business ranking
-• Widens tax base and improves compliance
-• Reduces compliance costs and administrative burden
+Benefits for Consumers:
+• Reduction in overall tax burden on goods
+• Transparency in taxation with clear breakup
+• Simplified supply chain reducing costs
+• Better quality goods due to formal economy growth
 
-For businesses, GST provides seamless input tax credit, uniform procedures, and transparent tax structure. For consumers, it reduces tax burden and increases transparency in taxation.`
+Economic Benefits:
+• Increased tax base and revenue collection
+• GDP growth through reduced compliance costs
+• Formalization of economy
+• Improved competitiveness of Indian goods
+
+Administrative Benefits:
+• Technology-driven tax administration
+• Reduced tax evasion through data analytics
+• Better coordination between Centre and States
+• Simplified return filing and assessment procedures
+
+The GST system has created a more efficient, transparent, and growth-oriented tax environment that benefits the entire Indian economy.`
     },
     {
       id: 6,
       title: "Cancellation of Registration in GST",
-      description: "Detailed procedures for GST registration cancellation, reasons for cancellation, final return requirements, and legal implications.",
-      category: "Compliance",
-      readTime: "16 min read",
+      description: "Detailed procedures for voluntary and involuntary cancellation of GST registration, including timelines and compliance requirements.",
+      category: "Registration",
+      readTime: "11 min read",
       lastUpdated: "2024-01-03",
-      tags: ["Registration", "Cancellation", "Compliance", "Final Returns"],
-      content: `GST registration can be cancelled for specified reasons, either by department initiative or taxpayer application. The process involves specific procedures and compliance requirements.
+      tags: ["Registration", "Cancellation", "Compliance", "Procedures"],
+      content: `Cancellation of GST registration may be voluntary (by taxpayer) or involuntary (by tax authorities) under specific circumstances defined in the GST law.
 
-Reasons for Cancellation:
-• Business discontinuation, transfer, or disposal
-• Change in business constitution
-• No longer liable for registration
-• Contravention of GST provisions
-• Non-filing of returns for specified periods
-• Registration obtained through fraud
+Voluntary Cancellation:
+• Business discontinuation or closure
+• Turnover falls below threshold limit
+• Transfer of business as going concern
+• Application required within 30 days
 
-Cancellation Process:
-• Show cause notice in Form GST REG-17
-• Reply within 7 working days in Form GST REG-18
-• Final order in Form GST REG-19 or GST REG-20
-• Payment of arrears and input tax credit reversal
+Involuntary Cancellation:
+• Non-filing of returns for continuous 6 months
+• Non-commencement of business within 6 months
+• Non-payment of tax exceeding Rs. 10,000 for 6 months
+• Fake or fraudulent registration
 
-Important: Cancelled persons must file final returns within 3 months and pay amounts equivalent to input tax credit on stocks held. Cancellation doesn't affect liability for previous periods.`
+Procedure:
+• Online application on GST portal
+• Declaration of stock on hand
+• Payment of outstanding dues
+• Final return submission
+
+Consequences:
+• Loss of input tax credit on stock
+• Liability to pay tax on stock transfer
+• Reversal of credit taken on assets
+• Compliance with post-cancellation obligations
+
+Timeline:
+• Application processing within 30 days
+• Show cause notice if deficiencies found
+• Order passed within specified time limit
+• Appeal rights available against orders`
     },
     {
       id: 7,
       title: "Casual Taxable Person in GST",
-      description: "Complete guide for casual taxable persons including registration requirements, advance deposit, return filing, and refund procedures.",
+      description: "Understanding the concept of casual taxable persons, registration requirements, and compliance obligations for temporary business activities.",
       category: "Registration",
-      readTime: "13 min read",
+      readTime: "9 min read",
       lastUpdated: "2024-01-01",
-      tags: ["Casual Taxable Person", "Registration", "Advance Deposit", "Returns"],
-      content: `A casual taxable person occasionally undertakes transactions involving supply of goods or services in a State/UT where they have no fixed place of business.
+      tags: ["Casual Taxable Person", "Temporary Business", "Registration", "Compliance"],
+      content: `A casual taxable person is someone who occasionally undertakes transactions involving supply of goods or services in a state where they don't have a fixed place of business.
 
-Key Requirements:
-• Compulsory registration (except specified handicraft goods)
-• No threshold limit for registration
-• Cannot opt for composition scheme
-• Must apply 5 days before business commencement
-• Advance deposit equivalent to estimated tax liability
+Key Characteristics:
+• Temporary business activities
+• No fixed place of business in the state
+• Occasional transactions only
+• Limited period operations
 
-Registration Process:
-• Validate PAN, mobile number, and email in Part A of Form GST REG-01
-• Submit application in Part B with required documents
-• Make advance deposit for estimated tax liability
-• Receive registration certificate valid for specified period or 90 days
+Registration Requirements:
+• Mandatory registration regardless of turnover
+• Application at least 5 days before business commencement
+• Advance deposit of estimated tax liability
+• Registration valid for specified period (max 90 days)
 
-Return Filing:
-• Form GSTR-1: Details of outward supplies (by 10th)
-• Form GSTR-3B: Summary return (by 20th)
-• Currently, only GSTR-1 and GSTR-3B required
+Compliance Obligations:
+• Regular return filing
+• Tax payment from advance deposit
+• Proper invoice issuance
+• Maintenance of prescribed records
 
-Refund of balance advance deposit available after filing all returns for the registration period.`
+Advance Deposit:
+• Estimated tax liability for the period
+• Bank guarantee as alternative
+• Adjustment against actual tax liability
+• Refund of unused amount after cancellation
+
+Common Examples:
+• Exhibition participants
+• Seasonal businesses
+• Event organizers
+• Contractors for specific projects
+
+Extension and Cancellation:
+• Extension possible for additional periods
+• Application before expiry of current validity
+• Automatic cancellation on validity expiry
+• Final return submission mandatory`
     },
     {
       id: 8,
       title: "Compensation Cess in GST",
-      description: "Understanding compensation cess levy, exemptions, input tax credit utilization, and state revenue compensation mechanism.",
+      description: "Understanding the GST compensation cess mechanism, its purpose, calculation methods, and impact on specific goods and services.",
       category: "Taxation",
-      readTime: "11 min read",
+      readTime: "13 min read",
       lastUpdated: "2023-12-28",
-      tags: ["Compensation Cess", "State Revenue", "Input Tax Credit", "Exports"],
-      content: `The Goods and Services Tax (Compensation to States) Act, 2017 levies compensation cess to compensate States for revenue loss due to GST implementation for five years from July 1, 2017.
+      tags: ["Compensation Cess", "Luxury Goods", "Sin Goods", "State Compensation"],
+      content: `Compensation cess is an additional levy imposed on specific goods and services to compensate states for revenue loss due to GST implementation during the transition period.
 
-Key Features:
-• Levied on select notified goods and services
-• Additional to CGST/SGST/IGST
-• Collected at customs for imported goods
-• Not levied on composition scheme suppliers
+Purpose:
+• Compensate states for revenue shortfall
+• Ensure states maintain pre-GST revenue levels
+• Provide cushion during GST transition period
+• Enable smooth GST implementation
 
-Input Tax Credit:
-• ITC of compensation cess can only be used for compensation cess payment
-• Cannot be used for CGST, SGST, or IGST payment
-• Cross-utilization not permitted
+Applicable Goods:
+• Luxury goods (cars above specified value)
+• Sin goods (tobacco, cigarettes, gutka)
+• Aerated drinks and carbonated beverages
+• Coal and lignite
 
-Export Benefits:
-• Zero-rated for exports under bond/LUT
-• Refund available for cess paid on exports
-• ITC refund available for cess on export-related inputs
+Calculation:
+• Ad valorem rate (percentage of value)
+• Specific rate (fixed amount per unit)
+• Mixed rate (combination of both)
+• Additional to GST rates
 
-Valuation: Where cess is levied on value basis, valuation follows Section 15 of CGST Act, 2017. For imported goods, valuation follows Customs Tariff Act, 1975.`
+Collection and Utilization:
+• Collected by Central Government
+• Credited to Compensation Cess Fund
+• Distributed to states based on formula
+• Used exclusively for state compensation
+
+Rate Structure:
+• Varies by commodity
+• Higher rates for luxury and sin goods
+• Regular review by GST Council
+• Sunset clause after transition period
+
+Impact on Business:
+• Additional cost component
+• Separate showing in invoices
+• Input credit not available
+• Compliance requirements similar to GST`
     },
     {
       id: 9,
       title: "Composite Supply and Mixed Supply",
-      description: "Detailed explanation of composite and mixed supplies, classification principles, taxation rules, and practical examples.",
+      description: "Distinguishing between composite and mixed supplies, their tax treatment, and practical implications for business transactions.",
       category: "Classification",
-      readTime: "17 min read",
+      readTime: "16 min read",
       lastUpdated: "2023-12-25",
-      tags: ["Composite Supply", "Mixed Supply", "Classification", "Principal Supply"],
-      content: `GST law identifies composite and mixed supplies to address taxation of bundled goods and services with different tax rates.
+      tags: ["Composite Supply", "Mixed Supply", "Classification", "Tax Rate"],
+      content: `GST law provides specific definitions and tax treatment for composite and mixed supplies to ensure proper classification and tax application.
 
-Composite Supply Definition:
-Supply of two or more taxable supplies naturally bundled and supplied together in ordinary course of business, with one principal supply.
+Composite Supply:
+• Two or more taxable supplies made together
+• Naturally bundled in ordinary course of business
+• One supply is principal supply
+• Taxed at rate of principal supply
+
+Mixed Supply:
+• Two or more individual supplies
+• Not naturally bundled
+• Made together for single consideration
+• Taxed at highest rate among supplies
+
+Identification Criteria:
+• Business practice analysis
+• Customer requirement assessment
+• Natural bundling evaluation
+• Principal supply determination
 
 Examples:
-• Hotel accommodation with breakfast (principal: accommodation)
-• Conference package with multiple facilities (principal: conference service)
-• Goods with packing, transport, and insurance (principal: goods)
+Composite Supply:
+• Hotel accommodation with food
+• Mobile phone with charger
+• Car with insurance and accessories
 
-Mixed Supply Definition:
-Supply of two or more individual supplies that would normally be supplied separately, combined for convenience.
+Mixed Supply:
+• Gift hamper with various items
+• Package deal with unrelated services
+• Bundle of different products
 
-Classification Rules:
-• Composite Supply: Taxed at rate of principal supply
-• Mixed Supply: Taxed at highest rate among component supplies
-• Natural bundling test: Regular business practice
-• Principal supply: Gives essential character to bundle
+Tax Implications:
+• Correct classification affects tax rate
+• Input credit eligibility considerations
+• Compliance and documentation requirements
+• Place of supply determination
 
-Determination factors include consumer perception, industry practice, and whether services are typically provided together or separately.`
+Business Impact:
+• Pricing strategy implications
+• Contract structuring considerations
+• Invoice and accounting treatment
+• Customer communication requirements`
     },
     {
       id: 10,
       title: "Composition Levy Scheme under GST",
-      description: "Comprehensive guide to composition scheme benefits, eligibility criteria, compliance requirements, and tax calculation methods.",
-      category: "Compliance",
-      readTime: "19 min read",
+      description: "Complete guide to the composition scheme, eligibility criteria, tax rates, compliance requirements, and withdrawal provisions.",
+      category: "Taxation",
+      readTime: "14 min read",
       lastUpdated: "2023-12-22",
-      tags: ["Composition Scheme", "Small Taxpayers", "Quarterly Returns", "Turnover"],
-      content: `Composition levy scheme is a simplified compliance scheme for small taxpayers with easy procedures and reduced compliance burden.
+      tags: ["Composition Scheme", "Small Taxpayers", "Simplified Compliance", "Tax Rates"],
+      content: `The composition levy scheme is a simplified tax regime for small taxpayers to reduce compliance burden while maintaining tax collection.
+
+Eligibility Criteria:
+• Annual turnover up to Rs. 1.5 crore
+• Not engaged in inter-state supplies
+• Not engaged in specified activities (manufacturing ice cream, pan masala)
+• Not an e-commerce operator
 
 Benefits:
-• Fixed percentage of turnover as tax
-• Quarterly tax payment and returns
-• No elaborate record maintenance
-• Simple quarterly return (GSTR-4)
+• Lower tax rates
+• Simplified return filing (quarterly)
+• Reduced compliance burden
+• No requirement to maintain detailed records
 
-Eligibility:
-• Aggregate turnover up to Rs. 1 crore (Rs. 75 lakh for special category states)
-• Cannot issue taxable invoices
-• Cannot collect GST from customers
-• Cannot claim input tax credit
+Tax Rates:
+• Manufacturers: 1% for goods, 6% for restaurants
+• Traders: 0.5% for goods
+• Service providers: 6% of turnover
+• Mixed suppliers: applicable rates on respective turnover
 
-Turnover Calculation:
-• All India basis for same PAN
-• Includes taxable, exempt, export, and inter-state supplies
-• Excludes inward supplies under reverse charge
-• Excludes taxes and cess
+Restrictions:
+• Cannot collect tax from customers
+• No input tax credit available
+• Cannot issue tax invoices
+• Limited to intra-state supplies only
 
-Registration Process:
-• File intimation in Form GST CMP-01 or GST CMP-02
-• Furnish stock details in Form GST ITC-03
-• All registrations under same PAN must opt together
-• Effective from beginning of financial year`
+Compliance:
+• Quarterly return filing (GSTR-4)
+• Annual return mandatory
+• Payment of tax by 18th of succeeding month
+• Intimation for any changes in business
+
+Withdrawal:
+• Voluntary withdrawal allowed
+• Automatic withdrawal if conditions violated
+• Effect from beginning of financial year
+• Input credit not available on stock`
     },
     {
       id: 11,
       title: "Concept of Aggregate Turnover",
-      description: "Understanding aggregate turnover calculation, inclusions, exclusions, and its role in registration thresholds and scheme eligibility.",
+      description: "Understanding aggregate turnover calculation, inclusions and exclusions, and its significance in GST registration and compliance.",
       category: "Fundamentals",
-      readTime: "8 min read",
+      readTime: "10 min read",
       lastUpdated: "2023-12-20",
-      tags: ["Aggregate Turnover", "Registration Threshold", "Turnover Calculation"],
-      content: `Aggregate turnover is crucial for determining GST registration eligibility and composition scheme qualification.
+      tags: ["Aggregate Turnover", "Registration Threshold", "Calculation", "Compliance"],
+      content: `Aggregate turnover is the total value of taxable and exempt supplies made by a person having the same PAN, crucial for determining registration requirements and scheme eligibility.
 
 Definition:
-Aggregate value of all taxable supplies (excluding reverse charge), exempt supplies, exports, and inter-state supplies of persons with same PAN, computed all-India basis, excluding taxes and cess.
+• All India turnover of taxable supplies
+• Exempt supplies included
+• Inward supplies on reverse charge basis
+• Value of supplies on which tax is paid
 
 Inclusions:
-• Taxable supplies (intra-state and inter-state)
-• Exempt supplies (nil-rated and non-taxable)
-• Exports of goods or services
-• Inter-state supplies between distinct persons with same PAN
+• Taxable supplies (goods and services)
+• Exempt supplies
+• Exports and zero-rated supplies
+• Reverse charge supplies received
 
 Exclusions:
-• Inward supplies under reverse charge mechanism
-• CGST, SGST, UTGST, IGST, and compensation cess
-• Value of supplies received for which recipient pays tax
+• Central tax, State tax, Union territory tax, integrated tax
+• Compensation cess
+• Value of inward supplies on which tax is paid on reverse charge basis by recipient
+• Import of services
 
-Importance:
-• Registration threshold: Rs. 20 lakhs (Rs. 10 lakhs for special category states)
+Calculation Method:
+• Financial year basis for threshold determination
+• All supplies across India to be aggregated
+• Multiple registrations with same PAN clubbed together
+• Previous year turnover for current year decisions
+
+Significance:
+• Registration threshold determination
 • Composition scheme eligibility
-• Various exemption and scheme thresholds
+• Return filing frequency
+• Audit requirements
+
+Common Mistakes:
+• Excluding exempt supplies
+• Not aggregating across states
+• Confusion between taxable and aggregate turnover
+• Incorrect treatment of reverse charge
 
 Note: Aggregate turnover differs from state-wise turnover used for composition scheme tax calculation.`
     },
@@ -349,8 +559,8 @@ Matching Process:
 When to Issue:
 • Taxable value less than actual value
 • Tax rate lower than applicable
-• Quantity received more than invoiced
-• Any other reason requiring upward revision
+• Additional supplies made
+• Errors in original invoice requiring upward revision
 
 Format Requirements:
 • Supplier's name, address, and GSTIN
@@ -1616,7 +1826,6 @@ Compliance Obligations:
   ];
 
   const categories = ["All", "Fundamentals", "Compliance", "Legal", "Registration", "Taxation", "Classification", "Documentation", "Overview", "Export", "Import", "Credit", "Services", "Manufacturing", "Valuation", "Assessment"];
-  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredDocuments = documents.filter(doc => {
     const matchesSearch = doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -1626,196 +1835,169 @@ Compliance Obligations:
     return matchesSearch && matchesCategory;
   });
 
-  const downloadPDF = (doc: any) => {
-    // Create a simple PDF-like content structure
-    const pdfContent = `
-${doc.title}
-
-Category: ${doc.category}
-Last Updated: ${doc.lastUpdated}
-Reading Time: ${doc.readTime}
-
-Description:
-${doc.description}
-
-Content:
-${doc.content}
-
-Tags: ${doc.tags.join(', ')}
-
----
-This document is provided by CVR Corpacs LLP
-For more information, visit our website or contact us at info@cvrcorpacs.com
-    `.trim();
-
-    // Create and download the file
-    const blob = new Blob([pdfContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${doc.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
-  };
-
   return (
-    <>
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-red-50 to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
-              Knowledge Pool
-            </h1>
-            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive GST documentation and guides to help you navigate complex taxation requirements. 
-              All documents are professionally curated and available for download.
-            </p>
+    <div className="min-h-screen bg-gray-50 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-6">
+            <BookOpen className="h-8 w-8 text-red-600" />
           </div>
+          <h1 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
+            GST Knowledge Pool
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive collection of GST documents, guides, and resources to help you navigate the complexities of Goods and Services Tax with confidence.
+          </p>
+        </div>
 
-          {/* Search and Filter */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-              <div className="relative mb-6">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <input
-                  type="text"
-                  placeholder="Search documents, topics, or tags..."
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                      selectedCategory === category
-                        ? "bg-red-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
+        {/* Search and Filter Controls */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Input
+                type="text"
+                placeholder="Search documents, topics, or tags..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 py-3"
+              />
+            </div>
+            <div className="md:w-64">
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger className="py-3">
+                  <Filter className="h-4 w-4 mr-2" />
+                  <SelectValue placeholder="Filter by category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories.map((category) => (
+                    <SelectItem key={category} value={category}>
+                      {category}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          
+          <div className="mt-4 text-sm text-gray-600">
+            Showing {filteredDocuments.length} of {documents.length} documents
+          </div>
+        </div>
+
+        {/* Document Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredDocuments.map((doc) => (
+            <div
+              key={doc.id}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100"
+            >
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <Badge 
+                    variant="secondary" 
+                    className="bg-red-50 text-red-700 border-red-200"
                   >
-                    {category}
-                  </button>
-                ))}
+                    {doc.category}
+                  </Badge>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => generatePDF(doc)}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <Download className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                <h3 className="text-xl font-bold font-heading text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                  {doc.title}
+                </h3>
+
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {doc.description}
+                </p>
+
+                <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                  <div className="flex items-center gap-1">
+                    <Clock className="h-3 w-3" />
+                    {doc.readTime}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {doc.lastUpdated}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {doc.tags.slice(0, 3).map((tag, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs"
+                    >
+                      <Tag className="h-3 w-3" />
+                      {tag}
+                    </span>
+                  ))}
+                  {doc.tags.length > 3 && (
+                    <span className="text-xs text-gray-500">+{doc.tags.length - 3} more</span>
+                  )}
+                </div>
+
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => generatePDF(doc)}
+                    className="flex-1"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                  >
+                    <FileText className="h-4 w-4 mr-2" />
+                    Preview
+                  </Button>
+                </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {filteredDocuments.length === 0 && (
+          <div className="text-center py-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-6">
+              <Search className="h-8 w-8 text-gray-400" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No documents found</h3>
+            <p className="text-gray-600">Try adjusting your search terms or filter criteria.</p>
           </div>
-        </div>
-      </section>
+        )}
 
-      {/* Documents Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredDocuments.length === 0 ? (
-            <div className="text-center py-12">
-              <BookOpen className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No documents found</h3>
-              <p className="text-gray-600">Try adjusting your search terms or category filters.</p>
-            </div>
-          ) : (
-            <div className="grid lg:grid-cols-2 gap-8">
-              {filteredDocuments.map((doc) => (
-                <article key={doc.id} className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            doc.category === "Fundamentals" ? "bg-blue-100 text-blue-700" :
-                            doc.category === "Compliance" ? "bg-green-100 text-green-700" :
-                            doc.category === "Legal" ? "bg-purple-100 text-purple-700" :
-                            doc.category === "Registration" ? "bg-orange-100 text-orange-700" :
-                            doc.category === "Taxation" ? "bg-red-100 text-red-700" :
-                            doc.category === "Classification" ? "bg-yellow-100 text-yellow-700" :
-                            doc.category === "Documentation" ? "bg-indigo-100 text-indigo-700" :
-                            "bg-gray-100 text-gray-700"
-                          }`}>
-                            {doc.category}
-                          </span>
-                          <div className="flex items-center text-sm text-gray-500">
-                            <Clock className="h-4 w-4 mr-1" />
-                            {doc.readTime}
-                          </div>
-                        </div>
-                        <h2 className="text-xl font-bold font-heading text-gray-900 mb-3">
-                          {doc.title}
-                        </h2>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                          {doc.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <div className="flex flex-wrap gap-1">
-                        {doc.tags.slice(0, 4).map((tag, index) => (
-                          <span key={index} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                            {tag}
-                          </span>
-                        ))}
-                        {doc.tags.length > 4 && (
-                          <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                            +{doc.tags.length - 4} more
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <div className="text-sm text-gray-500">
-                        Updated: {new Date(doc.lastUpdated).toLocaleDateString()}
-                      </div>
-                      <button
-                        onClick={() => downloadPDF(doc)}
-                        className="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors"
-                      >
-                        <Download className="h-4 w-4 mr-2" />
-                        Download
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 text-white text-center">
-            <h2 className="text-3xl font-bold mb-4">Need Personalized Guidance?</h2>
-            <p className="text-red-100 mb-6 max-w-2xl mx-auto">
-              While our knowledge pool provides comprehensive information, our experts can provide personalized 
-              guidance tailored to your specific business needs and circumstances.
+        {/* Call to Action */}
+        <div className="mt-16 text-center">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 text-white">
+            <h2 className="text-3xl font-bold font-heading mb-4">
+              Need Expert GST Consultation?
+            </h2>
+            <p className="text-red-100 mb-6 text-lg">
+              Our team of experienced professionals is ready to help you with personalized GST guidance and compliance solutions.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center px-6 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                <FileText className="h-5 w-5 mr-2" />
-                Consult Our Experts
-              </Link>
-              <Link 
-                href="/services" 
-                className="inline-flex items-center text-red-100 hover:text-white transition-colors"
-              >
-                View Our Services
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </Link>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center bg-white text-red-600 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
+            >
+              Get Professional Help
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
