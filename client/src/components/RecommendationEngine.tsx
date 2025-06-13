@@ -52,24 +52,19 @@ export default function RecommendationEngine() {
   // Check for existing preferences
   const { data: existingPreferences } = useQuery({
     queryKey: ['/api/preferences', sessionId],
-    queryFn: () => apiRequest(`/api/preferences/${sessionId}`),
   });
 
   // Get recommendations
   const { data: recommendations, refetch: refetchRecommendations } = useQuery({
     queryKey: ['/api/recommendations', sessionId],
-    queryFn: () => apiRequest(`/api/recommendations/${sessionId}`),
     enabled: showRecommendations,
   });
 
   // Save preferences mutation
   const savePreferencesMutation = useMutation({
     mutationFn: async (data: PreferencesForm) => {
-      return await apiRequest('/api/preferences', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await apiRequest('POST', '/api/preferences', data);
+      return await response.json();
     },
     onSuccess: () => {
       setShowRecommendations(true);
@@ -80,46 +75,42 @@ export default function RecommendationEngine() {
   // Track interaction mutation
   const trackInteractionMutation = useMutation({
     mutationFn: async (data: { serviceType: string; interactionType: string; metadata?: any }) => {
-      return await apiRequest('/api/interactions', {
-        method: 'POST',
-        body: JSON.stringify({
-          sessionId,
-          ...data,
-        }),
-        headers: { 'Content-Type': 'application/json' },
+      const response = await apiRequest('POST', '/api/interactions', {
+        sessionId,
+        ...data,
       });
+      return await response.json();
     },
   });
 
   // Mark recommendation viewed
   const markViewedMutation = useMutation({
     mutationFn: async (id: number) => {
-      return await apiRequest(`/api/recommendations/${id}/viewed`, {
-        method: 'POST',
-      });
+      const response = await apiRequest('POST', `/api/recommendations/${id}/viewed`);
+      return await response.json();
     },
   });
 
   // Mark recommendation clicked
   const markClickedMutation = useMutation({
     mutationFn: async (id: number) => {
-      return await apiRequest(`/api/recommendations/${id}/clicked`, {
-        method: 'POST',
-      });
+      const response = await apiRequest('POST', `/api/recommendations/${id}/clicked`);
+      return await response.json();
     },
   });
 
   useEffect(() => {
-    if (existingPreferences) {
+    if (existingPreferences && typeof existingPreferences === 'object') {
+      const prefs = existingPreferences as any;
       form.reset({
         sessionId,
-        businessType: existingPreferences.businessType || undefined,
-        industry: existingPreferences.industry || undefined,
-        companySize: existingPreferences.companySize || undefined,
-        primaryConcerns: existingPreferences.primaryConcerns || [],
-        budget: existingPreferences.budget || undefined,
-        urgency: existingPreferences.urgency || undefined,
-        location: existingPreferences.location || undefined,
+        businessType: prefs.businessType || undefined,
+        industry: prefs.industry || undefined,
+        companySize: prefs.companySize || undefined,
+        primaryConcerns: prefs.primaryConcerns || [],
+        budget: prefs.budget || undefined,
+        urgency: prefs.urgency || undefined,
+        location: prefs.location || undefined,
       });
       setShowRecommendations(true);
     }

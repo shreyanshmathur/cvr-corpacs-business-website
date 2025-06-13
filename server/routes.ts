@@ -130,8 +130,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Save recommendations
       for (const rec of recommendations) {
         await storage.saveRecommendation({
-          ...rec,
           sessionId: preferences.sessionId,
+          serviceType: rec.serviceType,
+          confidence: rec.confidence,
+          reasons: rec.reasons,
+          priority: rec.priority,
+          metadata: rec.metadata,
+          isViewed: rec.isViewed,
+          isClicked: rec.isClicked,
         });
       }
       
@@ -333,12 +339,12 @@ Rules:
       serviceType: rec.serviceType,
       confidence: Math.max(60, Math.min(100, rec.confidence)),
       priority: Math.max(1, Math.min(5, rec.priority)),
-      reasons: rec.reasons || [],
-      metadata: {
+      reasons: JSON.stringify(rec.reasons || []),
+      metadata: JSON.stringify({
         aiGenerated: true,
         model: 'deepseek-reasoner',
         userProfile: userContext
-      },
+      }),
       isViewed: false,
       isClicked: false,
     }));
@@ -405,12 +411,12 @@ function generateFallbackRecommendations(
     recommendations.push({
       serviceType,
       confidence: Math.min(score, 95),
-      reasons,
+      reasons: JSON.stringify(reasons),
       priority: profile.priority,
-      metadata: {
+      metadata: JSON.stringify({
         fallbackMode: true,
         businessTypeMatch: preferences.businessType && profile.businessTypes.includes(preferences.businessType)
-      },
+      }),
       isViewed: false,
       isClicked: false,
     });
