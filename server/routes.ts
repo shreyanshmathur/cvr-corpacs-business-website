@@ -221,37 +221,163 @@ export async function registerRoutes(app: Express): Promise<Server> {
   return httpServer;
 }
 
-// Recommendation Algorithm
+// DeepSeek AI-powered Recommendation Algorithm
 async function generateRecommendations(
   preferences: UserPreferences, 
   interactions: any[] = []
 ): Promise<Omit<Recommendation, 'id' | 'sessionId' | 'createdAt'>[]> {
+  try {
+    // Prepare context for DeepSeek AI
+    const userContext = {
+      businessType: preferences.businessType,
+      industry: preferences.industry,
+      companySize: preferences.companySize,
+      primaryConcerns: preferences.primaryConcerns,
+      urgency: preferences.urgency,
+      location: preferences.location,
+      recentInteractions: interactions.map(i => ({ serviceType: i.serviceType, type: i.interactionType }))
+    };
+
+    const serviceOptions = [
+      {
+        id: 'direct-tax',
+        name: 'Direct Tax Services',
+        description: 'Professional tax advisory, corporate tax returns, TDS compliance, assessment support, and litigation assistance'
+      },
+      {
+        id: 'indirect-tax', 
+        name: 'Indirect Tax Services',
+        description: 'GST advisory, VAT compliance, customs work, input tax credit management, and indirect tax assessments'
+      },
+      {
+        id: 'accounting-mis',
+        name: 'Accounting & MIS',
+        description: 'Account maintenance, financial reporting, business analysis, fixed assets management, and audit support'
+      },
+      {
+        id: 'business-support-services',
+        name: 'Business Support Services',
+        description: 'Business formation, talent acquisition, manpower supply, operations management, and debt recovery'
+      }
+    ];
+
+    const prompt = `You are an expert business consultant AI. Analyze the following user profile and recommend the most suitable consulting services.
+
+User Profile:
+- Business Type: ${userContext.businessType || 'Not specified'}
+- Industry: ${userContext.industry || 'Not specified'}
+- Company Size: ${userContext.companySize || 'Not specified'}
+- Primary Concerns: ${Array.isArray(userContext.primaryConcerns) ? userContext.primaryConcerns.join(', ') : 'Not specified'}
+- Urgency: ${userContext.urgency || 'Not specified'}
+- Location: ${userContext.location || 'Not specified'}
+- Recent Interactions: ${userContext.recentInteractions.length > 0 ? JSON.stringify(userContext.recentInteractions) : 'None'}
+
+Available Services:
+${serviceOptions.map(s => `${s.id}: ${s.name} - ${s.description}`).join('\n')}
+
+Please provide recommendations in the following JSON format:
+{
+  "recommendations": [
+    {
+      "serviceType": "service-id",
+      "confidence": 85,
+      "priority": 1,
+      "reasons": ["Reason 1", "Reason 2", "Reason 3"]
+    }
+  ]
+}
+
+Rules:
+1. Recommend 1-3 most relevant services only
+2. Confidence score should be 0-100 based on how well the service matches the user profile
+3. Priority should be 1-5 (1 = highest priority)
+4. Provide 2-4 specific reasons for each recommendation
+5. Consider business type, industry, concerns, and urgency in your analysis
+6. Only recommend services with confidence >= 60`;
+
+    const response = await fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'deepseek-reasoner',
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        max_tokens: 2000,
+        temperature: 0.3,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`DeepSeek API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices[0].message.content;
+    
+    // Parse AI response
+    const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error('Failed to parse AI response');
+    }
+
+    const aiRecommendations = JSON.parse(jsonMatch[0]);
+    
+    return aiRecommendations.recommendations.map((rec: any) => ({
+      serviceType: rec.serviceType,
+      confidence: Math.max(60, Math.min(100, rec.confidence)),
+      priority: Math.max(1, Math.min(5, rec.priority)),
+      reasons: rec.reasons || [],
+      metadata: {
+        aiGenerated: true,
+        model: 'deepseek-reasoner',
+        userProfile: userContext
+      },
+      isViewed: false,
+      isClicked: false,
+    }));
+
+  } catch (error) {
+    console.error('DeepSeek AI recommendation error:', error);
+    
+    // Fallback to rule-based recommendations
+    return generateFallbackRecommendations(preferences, interactions);
+  }
+}
+
+// Fallback recommendation system
+function generateFallbackRecommendations(
+  preferences: UserPreferences, 
+  interactions: any[] = []
+): Omit<Recommendation, 'id' | 'sessionId' | 'createdAt'>[] {
   const recommendations: Omit<Recommendation, 'id' | 'sessionId' | 'createdAt'>[] = [];
   
   const serviceProfiles = {
     'direct-tax': {
-      keywords: ['tax', 'income', 'corporate', 'assessment', 'filing', 'tds', 'advance'],
       businessTypes: ['MNC', 'SME', 'Individual'],
       concerns: ['tax-compliance', 'tax-planning', 'assessments', 'litigation'],
       industries: ['all'],
       priority: 1
     },
     'indirect-tax': {
-      keywords: ['gst', 'vat', 'customs', 'excise', 'indirect', 'input-credit'],
       businessTypes: ['MNC', 'SME', 'Trading'],
       concerns: ['gst-compliance', 'customs-issues', 'input-tax-credit'],
       industries: ['manufacturing', 'trading', 'import-export'],
       priority: 2
     },
     'accounting-mis': {
-      keywords: ['accounting', 'books', 'financial', 'statements', 'audit', 'reconciliation'],
       businessTypes: ['SME', 'Startup', 'MNC'],
       concerns: ['accounting-compliance', 'financial-reporting', 'audit-support'],
       industries: ['all'],
       priority: 3
     },
     'business-support-services': {
-      keywords: ['manpower', 'hiring', 'operations', 'registration', 'formation'],
       businessTypes: ['Startup', 'SME'],
       concerns: ['business-formation', 'operational-support', 'manpower-needs'],
       industries: ['all'],
@@ -259,81 +385,36 @@ async function generateRecommendations(
     }
   };
 
-  // Score each service based on user preferences
   for (const [serviceType, profile] of Object.entries(serviceProfiles)) {
-    let score = 0;
-    const reasons: string[] = [];
+    let score = 60; // Base score
+    const reasons: string[] = ['Based on general business needs'];
 
-    // Business type matching
     if (preferences.businessType && profile.businessTypes.includes(preferences.businessType)) {
-      score += 25;
-      reasons.push(`Ideal for ${preferences.businessType} businesses`);
-    }
-
-    // Industry matching
-    if (preferences.industry && (profile.industries.includes('all') || profile.industries.includes(preferences.industry.toLowerCase()))) {
       score += 20;
-      reasons.push(`Specialized for ${preferences.industry} industry`);
+      reasons.push(`Suitable for ${preferences.businessType} businesses`);
     }
 
-    // Primary concerns matching
-    if (preferences.primaryConcerns) {
-      const concerns = Array.isArray(preferences.primaryConcerns) ? preferences.primaryConcerns : [];
-      const matchingConcerns = concerns.filter(concern => profile.concerns.includes(concern));
+    if (preferences.primaryConcerns && Array.isArray(preferences.primaryConcerns)) {
+      const matchingConcerns = preferences.primaryConcerns.filter(concern => profile.concerns.includes(concern));
       if (matchingConcerns.length > 0) {
-        score += matchingConcerns.length * 15;
+        score += matchingConcerns.length * 10;
         reasons.push(`Addresses your ${matchingConcerns.join(', ')} concerns`);
       }
     }
 
-    // Urgency weighting
-    if (preferences.urgency === 'High') {
-      score += 10;
-      reasons.push('Quick turnaround available');
-    }
-
-    // Company size considerations
-    if (preferences.companySize) {
-      if (serviceType === 'business-support-services' && ['Small', 'Medium'].includes(preferences.companySize)) {
-        score += 15;
-        reasons.push('Perfect for growing businesses');
-      }
-      if (serviceType === 'direct-tax' && preferences.companySize === 'Large') {
-        score += 15;
-        reasons.push('Comprehensive tax solutions for large enterprises');
-      }
-    }
-
-    // Interaction-based scoring
-    const serviceInteractions = interactions.filter(i => i.serviceType === serviceType);
-    if (serviceInteractions.length > 0) {
-      score += serviceInteractions.length * 5;
-      reasons.push('Based on your recent interest');
-    }
-
-    // Only recommend services with meaningful scores
-    if (score >= 20) {
-      recommendations.push({
-        serviceType,
-        confidence: Math.min(score, 100),
-        reasons,
-        priority: profile.priority,
-        metadata: {
-          businessTypeMatch: preferences.businessType && profile.businessTypes.includes(preferences.businessType),
-          industryMatch: preferences.industry && profile.industries.includes(preferences.industry.toLowerCase()),
-          concernsMatch: preferences.primaryConcerns ? 
-            (Array.isArray(preferences.primaryConcerns) ? preferences.primaryConcerns : [])
-              .filter(concern => profile.concerns.includes(concern)).length : 0
-        },
-        isViewed: false,
-        isClicked: false,
-      });
-    }
+    recommendations.push({
+      serviceType,
+      confidence: Math.min(score, 95),
+      reasons,
+      priority: profile.priority,
+      metadata: {
+        fallbackMode: true,
+        businessTypeMatch: preferences.businessType && profile.businessTypes.includes(preferences.businessType)
+      },
+      isViewed: false,
+      isClicked: false,
+    });
   }
 
-  // Sort by priority and confidence
-  return recommendations.sort((a, b) => {
-    if (a.priority !== b.priority) return a.priority - b.priority;
-    return b.confidence - a.confidence;
-  }).slice(0, 3); // Return top 3 recommendations
+  return recommendations.sort((a, b) => b.confidence - a.confidence).slice(0, 3);
 }

@@ -231,10 +231,10 @@ export default function Home() {
               </div>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              Introducing Smart Service Recommendations
+              DeepSeek AI-Powered Recommendations
             </h2>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              Get personalized consulting service recommendations powered by AI, tailored specifically for your business needs.
+              Get intelligent consulting service recommendations powered by DeepSeek R1, analyzing your business profile for precise matches.
             </p>
           </div>
 
