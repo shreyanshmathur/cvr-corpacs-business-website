@@ -1888,10 +1888,14 @@ Compliance Obligations:
 
         {/* Document Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredDocuments.map((doc) => (
+          {filteredDocuments.map((doc, index) => (
             <div
               key={doc.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100"
+              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100 transform hover:-translate-y-2 hover:scale-105"
+              style={{ 
+                animationDelay: `${index * 50}ms`,
+                animation: 'fadeInUp 0.6s ease-out forwards'
+              }}
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">

@@ -1,13 +1,21 @@
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle, Calculator, BookOpen, Building2, Users, Award } from "lucide-react";
+import { ArrowRight, CheckCircle, Calculator, BookOpen, Building2, Users, Award, TrendingUp, Shield, Target } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+
   const stats = [
-    { value: "6+", label: "Branches" },
-    { value: "500+", label: "Clients Served" },
-    { value: "20+", label: "Years Experience" },
-    { value: "2004", label: "Established" },
+    { value: "6+", label: "Branches", icon: Building2 },
+    { value: "20+", label: "Years Experience", icon: Award },
+    { value: "2004", label: "Established", icon: TrendingUp },
+    { value: "100%", label: "Client Satisfaction", icon: Target },
   ];
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -48,15 +56,30 @@ export default function Home() {
         </div>
         
         {/* Stats Section */}
-        <div className="bg-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white py-16 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-blue-50 opacity-50"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {stats.map((stat, index) => (
-                <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                  <div className="text-3xl font-bold font-heading text-red-600 mb-2">{stat.value}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
-                </div>
-              ))}
+              {stats.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <div 
+                    key={index} 
+                    className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-t-4 border-red-600 ${
+                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
+                    style={{ transitionDelay: `${index * 100}ms` }}
+                  >
+                    <div className="bg-red-100 p-3 rounded-full w-fit mx-auto mb-4">
+                      <IconComponent className="h-6 w-6 text-red-600" />
+                    </div>
+                    <div className="text-4xl font-bold font-heading text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                      {stat.value}
+                    </div>
+                    <div className="text-gray-600 font-medium">{stat.label}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
