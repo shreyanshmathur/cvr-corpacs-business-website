@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { CheckCircle, Calculator, BookOpen, Building2, Users, ArrowRight, FileText, TrendingUp, Shield, Briefcase } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
@@ -170,7 +171,7 @@ export default function Services() {
                     </div>
                     <h3 className="text-2xl font-bold font-heading text-gray-900">{service.title}</h3>
                   </div>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-red-600 mt-1 mr-3 flex-shrink-0" />
@@ -178,6 +179,16 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    href={`/services/${service.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')}`}
+                  >
+                    <Button
+                      className="w-full bg-red-600 hover:bg-red-700 text-white transform hover:scale-105 transition-all duration-300"
+                    >
+                      <ArrowRight className="h-4 w-4 mr-2" />
+                      Learn More
+                    </Button>
+                  </Link>
                 </div>
               );
             })}

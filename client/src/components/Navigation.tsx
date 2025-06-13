@@ -26,13 +26,13 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-50 transition-all duration-300">
+    <nav className="bg-white shadow-lg fixed w-full z-50 transition-all duration-300 animate-slideInDown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Building2 className="h-8 w-8 text-red-600" />
-            <span className="ml-2 text-xl font-bold font-heading text-gray-900">CVR Corpacs LLP</span>
+          <Link href="/" className="flex items-center tilt-effect">
+            <Building2 className="h-8 w-8 text-red-600 animate-pulse-gentle" />
+            <span className="ml-2 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpacs LLP</span>
           </Link>
           
           {/* Desktop Navigation */}
