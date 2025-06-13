@@ -1,12 +1,12 @@
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle, Calculator, BookOpen, Building2, Users, Award, TrendingUp, Shield, Target, Brain, Zap, Star } from "lucide-react";
+import { ArrowRight, CheckCircle, Calculator, BookOpen, MapPin, Users, Award, TrendingUp, Shield, Target, Brain, Zap, Star, FileText } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
   const stats = [
-    { value: "6+", label: "Branches", icon: Building2 },
+    { value: "6+", label: "Branches", icon: MapPin },
     { value: "20+", label: "Years Experience", icon: Award },
     { value: "2004", label: "Established", icon: TrendingUp },
     { value: "100%", label: "Client Satisfaction", icon: Target },
@@ -183,7 +183,7 @@ export default function Home() {
             {/* Accounting & MIS */}
             <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-red-600 transform hover:-translate-y-1">
               <div className="bg-green-100 p-3 rounded-lg w-fit mb-4">
-                <Building2 className="h-8 w-8 text-green-600" />
+                <FileText className="h-8 w-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">Accounting & MIS</h3>
               <p className="text-gray-600 text-sm">Comprehensive accounting services and management information systems.</p>

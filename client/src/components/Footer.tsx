@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { Building2, Phone, Mail, Globe } from "lucide-react";
+import { Phone, Mail, Globe } from "lucide-react";
+import logoImage from "@assets/Screenshot_2025-06-13_185428__1_-removebg-preview_1749821319783.png";
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <Building2 className="h-8 w-8 text-red-600" />
+              <img src={logoImage} alt="CVR Corpacs Logo" className="h-8 w-8" />
               <span className="ml-2 text-xl font-bold font-heading">CVR Corpacs</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Building2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { scrollToTop } from "@/hooks/useScrollToTop";
+import logoImage from "@assets/Screenshot_2025-06-13_185428__1_-removebg-preview_1749821319783.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center tilt-effect" onClick={scrollToTop}>
-            <Building2 className="h-8 w-8 text-red-600 animate-pulse-gentle" />
+            <img src={logoImage} alt="CVR Corpacs Logo" className="h-8 w-8 animate-pulse-gentle" />
             <span className="ml-2 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpacs</span>
           </Link>
           
