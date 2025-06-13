@@ -1,41 +1,7 @@
-import { useState, useEffect } from "react";
-import RecommendationEngine from "@/components/RecommendationEngine";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import SimpleRecommendationEngine from "@/components/SimpleRecommendationEngine";
 import { Brain, Zap, Users, Target } from "lucide-react";
 
 export default function Recommendations() {
-  const [sessionId] = useState(() => {
-    let id = localStorage.getItem('recommendation_session_id');
-    if (!id) {
-      id = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem('recommendation_session_id', id);
-    }
-    return id;
-  });
-
-  // Track page visit
-  const trackInteractionMutation = useMutation({
-    mutationFn: async (data: { serviceType: string; interactionType: string; metadata?: any }) => {
-      return await apiRequest('/api/interactions', {
-        method: 'POST',
-        body: JSON.stringify({
-          sessionId,
-          ...data,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-    },
-  });
-
-  useEffect(() => {
-    // Track page visit
-    trackInteractionMutation.mutate({
-      serviceType: 'recommendation-engine',
-      interactionType: 'view',
-      metadata: { page: 'recommendations' },
-    });
-  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -108,7 +74,7 @@ export default function Recommendations() {
       {/* Recommendation Engine */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RecommendationEngine />
+          <SimpleRecommendationEngine />
         </div>
       </section>
 

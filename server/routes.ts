@@ -174,8 +174,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Save new recommendations
         for (const rec of updatedRecommendations) {
           await storage.saveRecommendation({
-            ...rec,
             sessionId: validatedData.sessionId,
+            serviceType: rec.serviceType,
+            confidence: rec.confidence,
+            reasons: rec.reasons,
+            priority: rec.priority,
+            metadata: rec.metadata,
+            isViewed: rec.isViewed,
+            isClicked: rec.isClicked,
           });
         }
       }
