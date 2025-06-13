@@ -44,17 +44,17 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold font-heading mb-4">Our Services</h4>
             <ul className="space-y-2">
-              <li><span className="text-gray-300">Direct Tax</span></li>
-              <li><span className="text-gray-300">Indirect Tax</span></li>
-              <li><span className="text-gray-300">Accounting & MIS</span></li>
-              <li><span className="text-gray-300">Business Support</span></li>
+              <li><Link href="/services#direct-tax" className="text-gray-300 hover:text-red-400 transition-colors">Direct Tax Services</Link></li>
+              <li><Link href="/services#indirect-tax" className="text-gray-300 hover:text-red-400 transition-colors">Indirect Tax Services</Link></li>
+              <li><Link href="/services#accounting-mis" className="text-gray-300 hover:text-red-400 transition-colors">Accounting & MIS</Link></li>
+              <li><Link href="/services/business-support-services" className="text-gray-300 hover:text-red-400 transition-colors">Business Support Services</Link></li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 CVR Corpacs LLP. All rights reserved.
+            © 2024 CVR Corpacs. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm">
             Designed with excellence for professional consulting services.
