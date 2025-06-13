@@ -10,6 +10,10 @@ import Services from "@/pages/Services";
 import Team from "@/pages/Team";
 import Contact from "@/pages/Contact";
 import KnowledgePool from "@/pages/KnowledgePool";
+import DirectTax from "@/pages/services/DirectTax";
+import IndirectTax from "@/pages/services/IndirectTax";
+import AccountingMIS from "@/pages/services/AccountingMIS";
+import BusinessConsulting from "@/pages/services/BusinessConsulting";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -19,6 +23,10 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
+        <Route path="/services/direct-tax" component={DirectTax} />
+        <Route path="/services/indirect-tax" component={IndirectTax} />
+        <Route path="/services/accounting-mis" component={AccountingMIS} />
+        <Route path="/services/business-consulting" component={BusinessConsulting} />
         <Route path="/team" component={Team} />
         <Route path="/contact" component={Contact} />
         <Route path="/knowledge-pool" component={KnowledgePool} />
