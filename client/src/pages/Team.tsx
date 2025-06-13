@@ -81,7 +81,7 @@ export default function Team() {
             </h1>
             <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Our dedicated professionals bring years of expertise and commitment to excellence in every client engagement, ensuring the highest quality of service delivery.
+              At CVR Corpacs LLP, we take immense pride in our team of dedicated professionals, which includes Chartered Accountants, Advocates, MBAs, and graduates. With a diverse blend of expertise and experience, our team is united by a shared passion for delivering excellence.
             </p>
           </div>
         </div>

@@ -10,10 +10,10 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <Building2 className="h-8 w-8 text-red-600" />
-              <span className="ml-2 text-xl font-bold font-heading">CVR Corpacs</span>
+              <span className="ml-2 text-xl font-bold font-heading">CVR Corpacs LLP</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Expert consulting solutions for businesses across India. We specialize in taxation, accounting, and comprehensive business support services to help your organization thrive.
+              Since our inception in 2004, CVR Corpacs LLP has been a steadfast pillar of support for businesses across India. We specialize in Finance, Taxation, and Commercial Activities with a commitment to excellence.
             </p>
             <div className="flex items-center space-x-4">
               <a href="tel:+919326357129" className="text-gray-300 hover:text-red-400 transition-colors">
@@ -54,7 +54,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 CVR Corpacs. All rights reserved.
+            © 2024 CVR Corpacs LLP. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm">
             Designed with excellence for professional consulting services.

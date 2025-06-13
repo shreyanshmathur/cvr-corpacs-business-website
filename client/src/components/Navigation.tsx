@@ -31,7 +31,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Building2 className="h-8 w-8 text-red-600" />
-            <span className="ml-2 text-xl font-bold font-heading text-gray-900">CVR Corpacs</span>
+            <span className="ml-2 text-xl font-bold font-heading text-gray-900">CVR Corpacs LLP</span>
           </Link>
           
           {/* Desktop Navigation */}

@@ -48,11 +48,12 @@ export default function Services() {
       title: "Business Support Services",
       color: "purple",
       features: [
-        "Comprehensive guidance in business formation and regulatory registration",
-        "Strategic talent acquisition and professional hiring support services",
-        "Efficient management and optimization of commercial business operations",
-        "Legal compliance and regulatory filing assistance",
-        "Business process optimization and operational efficiency consulting"
+        "Guidance and assistance in business formation and registration",
+        "Talent acquisition and support in hiring skilled professionals",
+        "Manpower supply tailored to your business needs",
+        "Efficient management of commercial operations – AR, AP, inventory management",
+        "Assistance in recovering outstanding dues to improve cash flow",
+        "Collection of statutory documents – Endorsed SEZ invoices, GST payment declaration from Vendors etc."
       ]
     }
   ];
