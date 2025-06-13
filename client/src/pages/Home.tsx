@@ -88,6 +88,89 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Quick Actions Dashboard Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">
+              Get Started Today
+            </h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Access our comprehensive business solutions with intelligent recommendations powered by AI
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "AI Recommendations",
+                description: "Get personalized service suggestions",
+                icon: Brain,
+                href: "/recommendations",
+                color: "bg-blue-500",
+                hoverColor: "hover:bg-blue-600"
+              },
+              {
+                title: "Tax Services",
+                description: "Direct & indirect tax solutions",
+                icon: Calculator,
+                href: "/services#direct-tax",
+                color: "bg-green-500",
+                hoverColor: "hover:bg-green-600"
+              },
+              {
+                title: "Knowledge Hub",
+                description: "Access GST documents & resources",
+                icon: BookOpen,
+                href: "/knowledge-pool",
+                color: "bg-purple-500",
+                hoverColor: "hover:bg-purple-600"
+              },
+              {
+                title: "Expert Consultation",
+                description: "Schedule professional guidance",
+                icon: Users,
+                href: "/contact",
+                color: "bg-red-500",
+                hoverColor: "hover:bg-red-600"
+              }
+            ].map((action, index) => (
+              <Link key={action.title} href={action.href}>
+                <div 
+                  className={`group cursor-pointer bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 transform ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
+                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                >
+                  <div className={`w-12 h-12 ${action.color} ${action.hoverColor} rounded-lg flex items-center justify-center transition-colors duration-300 mb-4 group-hover:scale-110 transform`}>
+                    <action.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    {action.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    {action.description}
+                  </p>
+                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
+                </div>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link 
+              href="/dashboard" 
+              className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-semibold text-lg transform hover:scale-105 shadow-lg"
+            >
+              <Shield className="h-5 w-5 mr-2" />
+              View Full Dashboard
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* About Preview Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
