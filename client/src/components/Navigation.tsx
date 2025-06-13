@@ -50,12 +50,12 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="tel:+919326357129"
+            <Link
+              href="/contact"
               className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
             >
-              +91 9326357129
-            </a>
+              Get Expert Consultation
+            </Link>
           </div>
           
           {/* Mobile Menu Button */}
@@ -85,12 +85,13 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
-              <a
-                href="tel:+919326357129"
+              <Link
+                href="/contact"
                 className="block mx-3 mt-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-center font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Call Us
-              </a>
+                Get Consultation
+              </Link>
             </div>
           </div>
         )}

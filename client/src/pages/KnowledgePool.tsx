@@ -378,10 +378,1244 @@ Benefits:
 • Maintains proper audit trail
 
 The debit note provides convenient mechanism for suppliers to correct undercharged values or taxes without complex procedural requirements.`
+    },
+    {
+      id: 14,
+      title: "Deemed Exports in GST",
+      description: "Understanding deemed export provisions, eligibility criteria, procedure for claiming refunds, and compliance requirements.",
+      category: "Export",
+      readTime: "16 min read",
+      lastUpdated: "2024-01-20",
+      tags: ["Deemed Export", "Refund", "Zero Rating", "EOU"],
+      content: `"Deemed Exports" refers to supplies of goods manufactured in India which are notified as deemed exports under Section 147 of the CGST/SGST Act, 2017. The supplies do not leave India but payment is received either in Indian rupees or in convertible foreign exchange.
+
+Categories of Deemed Exports:
+• Supply of goods against Advance Authorisation
+• Supply of capital goods against Export Promotion Capital Goods Authorisation  
+• Supply of goods to Export Oriented Unit
+• Supply of gold by banks/PSUs against Advance Authorisation
+
+Key Features:
+• Not zero rated supplies by default
+• Subject to levy of taxes initially
+• Tax refund admissible to supplier or recipient
+• Application for refund by supplier or recipient
+
+Procedure for EOU Supplies:
+• Prior intimation by recipient EOU in Form-A
+• Details of goods and supplier information
+• Intimation to supplier and GST officers
+• Supply under tax invoice to EOU unit
+
+Refund Process:
+• Either recipient or supplier can claim refund
+• Specific documentation requirements
+• Rule 89 of CGST Rules, 2017 governs procedure
+• Separate notifications specify evidence requirements`
+    },
+    {
+      id: 15,
+      title: "Electronic Cash/Credit Ledgers and Liability Register",
+      description: "Comprehensive overview of electronic registers, ledger maintenance, liability tracking, and credit utilization in GST portal.",
+      category: "Compliance",
+      readTime: "18 min read",
+      lastUpdated: "2024-01-18",
+      tags: ["Electronic Ledger", "Liability Register", "Credit Ledger", "GST Portal"],
+      content: `Each registered taxpayer has one electronic liability register and two electronic ledgers: Electronic Cash Ledger and Electronic Credit Ledger on the common portal.
+
+Electronic Liability Register (Form GST PMT-01):
+Part I - Return Related Liabilities:
+• All liabilities from returns and payments
+• Composition scheme liabilities
+• Registration cancellation liabilities
+
+Part II - Other Liabilities:
+• Appeal/revision related adjustments
+• Pre-deposit refunds
+• Voluntary payments against show cause notices
+• Penalty reductions based on payments
+
+Electronic Cash Ledger:
+• Maintains cash deposits for tax payments
+• Credited by: Cash deposits, bank transfers, input service distributor credits
+• Debited by: Tax payments, interest, penalty payments
+
+Electronic Credit Ledger:
+• Input tax credit balance maintenance
+• Auto-populated from returns
+• Set-off sequence: CGST→CGST→IGST, SGST→SGST→IGST, IGST→IGST→CGST/SGST
+• Cannot transfer credit between taxpayers
+
+Liability Register Features:
+• Real-time liability tracking
+• Automatic reduction based on appellate reliefs
+• Integration with penalty and interest calculations
+• Historical transaction maintenance`
+    },
+    {
+      id: 16,
+      title: "Electronic Way Bill in GST",
+      description: "Complete guide to e-way bill generation, compliance requirements, validity periods, and penalty provisions for goods movement.",
+      category: "Compliance",
+      readTime: "20 min read",
+      lastUpdated: "2024-01-16",
+      tags: ["E-way Bill", "Goods Movement", "Transportation", "Compliance"],
+      content: `Electronic Way Bill (E-Way Bill) is a digital document required for movement of goods worth more than Rs. 50,000. It ensures proper documentation and tracking of goods in transit.
+
+Components:
+Part A - Invoice Details:
+• GSTIN of recipient and delivery location
+• Invoice/challan number and date
+• Goods value and HSN code
+• Transport document number
+• Reason for transportation
+
+Part B - Transporter Details:
+• Vehicle number
+• Transporter information
+
+Who Generates E-way Bill:
+• Consignor/Consignee for own/hired conveyance
+• Transporter for road transportation
+• Mandatory for handicraft goods inter-state movement by unregistered persons
+
+Generation Process:
+• Online generation on GST portal
+• Unique E-way Bill Number (EBN) generated
+• Details shared with supplier, recipient, and transporter
+• Recipient acceptance/rejection within 72 hours
+
+Validity Periods:
+• Less than 100 km: 1 day
+• 100-300 km: 3 days  
+• 300-500 km: 5 days
+• 500-1000 km: 10 days
+• More than 1000 km: 15 days
+
+Penalties:
+• Rs. 10,000 or tax amount (whichever is higher)
+• Detention and release procedures
+• Vehicle seizure provisions`
+    },
+    {
+      id: 17,
+      title: "Goods Transport Agency in GST",
+      description: "Understanding GTA services, tax rates, reverse charge mechanism, and compliance requirements for transportation services.",
+      category: "Services",
+      readTime: "15 min read",
+      lastUpdated: "2024-01-14",
+      tags: ["GTA", "Transportation", "Reverse Charge", "Consignment Note"],
+      content: `Goods Transport Agency (GTA) means any person who provides service in relation to transport of goods by road and issues consignment note, by whatever name called.
+
+Key Requirements:
+• Issuance of consignment note is mandatory
+• Without consignment note, not considered GTA
+• Services exempt if consignment note not issued
+
+Consignment Note Contents:
+• Serially numbered document
+• Consignor and consignee names
+• Goods description and quantity
+• Transportation charges
+• Route and destination details
+
+GST Rates on GTA Services:
+• 5% (2.5% CGST + 2.5% SGST) for individual recipients
+• 12% (6% CGST + 6% SGST) for business recipients
+• Subject to reverse charge mechanism
+
+Reverse Charge Mechanism:
+• Tax liability on recipient for specified services
+• Registered recipients pay GST on RCM basis
+• Small transport operators (≤Rs. 75 lakh turnover) exempted from RCM
+• Individual and HUF consignments exempted
+
+Exemptions:
+• Services by individuals/HUF having annual turnover ≤Rs. 20 lakh
+• Transportation by railways, air, vessel
+• Courier services (separate category)
+
+Compliance:
+• Consignment note mandatory
+• Proper service classification
+• RCM payment by recipients
+• Input credit availability as per rules`
+    },
+    {
+      id: 18,
+      title: "GST on Advances Received for Future Supplies",
+      description: "Time of supply provisions, advance payment taxation, compliance requirements, and rate change implications for advance receipts.",
+      category: "Compliance",
+      readTime: "14 min read",
+      lastUpdated: "2024-01-12",
+      tags: ["Advance Payment", "Time of Supply", "Rate Changes", "Receipt Voucher"],
+      content: `Time of supply determines when taxpayer must discharge tax on particular supply. For advances, time of supply is generally when payment is received.
+
+Time of Supply Rules:
+• Earliest of invoice issuance or payment receipt
+• Supply deemed made to extent covered by invoice/payment
+• Advance creates immediate tax liability
+• Balance supply taxed when actually made
+
+Rate Change Scenarios:
+• Advance received at higher rate, supply at lower rate
+• Excess tax adjustment available
+• Rate reduction notifications apply retrospectively
+• Refund mechanism for excess tax paid
+
+Exemption for Small Suppliers:
+• Suppliers with turnover ≤Rs. 1.5 crore exempted
+• Only goods suppliers eligible (not opted for composition)
+• Services always subject to advance tax
+
+Compliance Requirements:
+Receipt Voucher Contents (Rule 50):
+• Supplier name, address, GSTIN
+• Consecutive serial number (≤16 characters)
+• Issue date
+• Recipient details and GSTIN/UIN
+• Goods/services description
+• Advance amount taken
+• Tax rate and amount
+• Place of supply with state code
+• Reverse charge indication
+• Authorized signature
+
+Documentation:
+• Receipt voucher mandatory for advances
+• Proper record maintenance
+• Return filing requirements
+• Credit note for supply cancellation`
+    },
+    {
+      id: 19,
+      title: "Imports in GST Regime",
+      description: "Import procedures, IGST levy, valuation methods, Special Economic Zone provisions, and customs integration under GST.",
+      category: "Import",
+      readTime: "17 min read",
+      lastUpdated: "2024-01-10",
+      tags: ["Import", "IGST", "Customs", "SEZ", "Valuation"],
+      content: `Under GST regime, import of goods/services is treated as deemed inter-State supply subject to Integrated Tax (IGST) in addition to customs duties.
+
+Constitutional Framework:
+• Article 269A mandates IGST on imports
+• Import treated as inter-State supply
+• IGST on import of services under IGST Act
+• IGST on import of goods under Customs Tariff Act
+
+Import Export Code (IEC):
+• PAN used as IEC (DGFT Trade Notice 09/2017)
+• Simplified procedure for IEC authorization
+• GSTIN declaration where GST registered
+
+Import of Goods:
+• IGST levied in addition to customs duties
+• Value: Assessable value + Basic Customs Duty + other duties
+• Compensation cess on assessable value + duties
+• Anti-dumping/safeguard duties included in value
+
+Import as Baggage:
+• Passenger baggage exempted from IGST and cess
+• Basic customs duty at 35% + education cess
+• Applicable on value exceeding duty-free allowances
+
+Warehouse Provisions:
+• Goods can be warehoused without IGST payment
+• IGST payable on clearance from warehouse
+• Sale from warehouse treated as supply from place of business
+• Separate invoicing requirements
+
+SEZ Supplies:
+• Supplies to SEZ developer/unit treated as inter-State
+• Subject to IGST levy
+• Zero-rated supply treatment
+• Input credit and refund provisions available
+
+Import of Services:
+• IGST under reverse charge for unregistered recipients
+• Place of supply rules determine taxability
+• Input credit available for business recipients`
+    },
+    {
+      id: 20,
+      title: "Input Service Distributor",
+      description: "ISD mechanism, credit distribution procedures, invoice requirements, and proportionate allocation of common input services.",
+      category: "Credit",
+      readTime: "12 min read",
+      lastUpdated: "2024-01-08",
+      tags: ["ISD", "Credit Distribution", "Input Services", "Common Expenses"],
+      content: `Input Service Distributor (ISD) means an office that receives tax invoices for input services and distributes credit to supplier units having same PAN.
+
+Purpose and Scope:
+• Distribution of credit on common input services only
+• Not applicable for goods (inputs/capital goods)
+• Head office receiving bills for common services
+• Multiple units with separate registrations
+
+Registration Requirements:
+• Compulsory separate registration as ISD
+• Application in Form GST REG-1
+• No threshold limit for ISD registration
+• Same PAN requirement for all units
+
+Credit Distribution Process:
+• ISD invoice issuance (Rule 54)
+• Clear indication of credit distribution purpose
+• Monthly distribution of available credit
+• Separate distribution of eligible/ineligible credit
+
+Distribution Formula:
+• Pro-rata basis generally
+• Based on turnover or other reasonable basis
+• Equal distribution between CGST and SGST
+• IGST credit distributed as IGST
+
+Example Calculation:
+• Corporate office at Bangalore
+• Units at Chennai, Mumbai, Kolkata
+• Software license invoice with CGST+SGST
+• Distribution based on unit-wise turnover ratio
+
+Compliance Requirements:
+• Form GSTR-6 return filing
+• ISD invoice in prescribed format
+• Proper records maintenance
+• Recipient acknowledgment of credit
+
+Limitations:
+• Only input services covered
+• Same PAN units only
+• Monthly distribution mandatory
+• No cross-utilization between different tax heads`
+    },
+    {
+      id: 21,
+      title: "Input Tax Credit Mechanism in GST",
+      description: "Comprehensive guide to ITC eligibility, documentation requirements, utilization hierarchy, and restrictions under GST law.",
+      category: "Credit",
+      readTime: "22 min read",
+      lastUpdated: "2024-01-22",
+      tags: ["Input Tax Credit", "ITC Rules", "Credit Utilization", "Documentation"],
+      content: `Input Tax Credit (ITC) is the backbone of GST system, ensuring seamless credit chain and avoiding cascading effect of taxes.
+
+Cascading Problem Solution:
+• Tax on tax elimination
+• Credit of Central taxes for Central taxes
+• Credit of State taxes for State taxes
+• IGST credit usable for all tax types
+
+GST Structure:
+• CGST (Central Goods and Services Tax)
+• SGST (State Goods and Services Tax)  
+• UTGST (Union Territory GST)
+• IGST (Integrated GST for inter-state supplies)
+
+Credit Utilization Hierarchy:
+CGST Credit: CGST → IGST
+SGST Credit: SGST → IGST  
+IGST Credit: IGST → CGST, SGST, UTGST
+
+Prerequisites for ITC:
+• Possession of tax invoice/specified documents
+• Actual receipt of goods/services
+• Tax payment by supplier
+• Return filing by recipient
+• Payment to supplier within 180 days
+
+Eligible Documents:
+• Tax invoice from supplier
+• Invoice with proof of tax payment
+• Debit note from supplier
+• Bill of Entry (imports)
+• Revised invoice
+• ISD document
+
+Restrictions on ITC:
+• Motor vehicles (except specified purposes)
+• Food and beverages (except input/resale)
+• Outdoor catering services
+• Beauty treatment and health services
+• Membership of clubs/fitness centers
+• Travel benefits to employees
+• Works contract services for immovable property
+• Goods/services for personal consumption
+
+Reversal Requirements:
+• Goods used for exempted supplies
+• Capital goods if business discontinued
+• Non-payment to supplier beyond 180 days
+• Proportionate reversal for common usage
+
+Time Limit:
+• September following financial year
+• Date of filing annual return
+• Whichever is earlier
+
+Input Service Credit:
+• Credit available in month of invoice
+• No physical receipt requirement
+• Relevant for service providers
+• Subject to same documentation rules`
+    },
+    {
+      id: 22,
+      title: "Inspection, Search, Seizure and Arrest",
+      description: "Powers of GST officers, procedures for inspection and search, seizure provisions, arrest conditions, and taxpayer rights.",
+      category: "Legal",
+      readTime: "15 min read",
+      lastUpdated: "2024-01-06",
+      tags: ["Inspection", "Search", "Seizure", "Arrest", "Officer Powers"],
+      content: `GST law provides powers for Inspection, Search, Seizure and Arrest to protect genuine taxpayers and deter tax evasion.
+
+Authorization Requirements:
+• Joint Commissioner or above for inspection/search
+• Commissioner authorization for arrests
+• Written authorization mandatory
+• Reasonable belief of tax evasion required
+
+Inspection Powers:
+Circumstances for Inspection:
+• Suppression of transactions/stock
+• Excess input tax credit claims
+• Rule violations for tax evasion
+• Unauthorized goods transportation
+• Account/stock manipulation
+
+Inspection During Movement:
+• Consignments exceeding Rs. 50,000
+• Document verification without JC authorization
+• 30-minute time limit for verification
+• Digital interface for transparency
+
+Search and Seizure:
+Grounds for Search:
+• Suppressed transactions
+• False/manipulated accounts
+• Hidden/destroyed evidence
+• Contravention for tax evasion
+
+Seizure Conditions:
+• Goods removed without prescribed documents
+• Tax evasion in goods supply
+• Valuation disputes
+• Hidden stock discovery
+
+Arrest Provisions:
+Arrestable Offenses:
+• Tax evasion exceeding Rs. 5 crore
+• Fake invoice issuance (Rs. 2 crore)
+• Availment using fake invoices (Rs. 2 crore)
+• ITC fraud through fake documents
+
+Procedures:
+• Commissioner's prior approval
+• Magistrate information within 24 hours
+• Legal representation rights
+• Bail provisions applicable
+
+Safeguards:
+• Transparent procedures
+• Time-bound verifications
+• Digital documentation
+• Minimal physical intervention
+• Accountability measures`
+    },
+    {
+      id: 23,
+      title: "Job Work under GST",
+      description: "Job work provisions, movement of goods, time limits, registration requirements, and supply procedures from job worker premises.",
+      category: "Manufacturing",
+      readTime: "13 min read",
+      lastUpdated: "2024-01-04",
+      tags: ["Job Work", "Manufacturing", "Principal", "Time Limits"],
+      content: `Job work sector constitutes significant industry in Indian economy. GST provides special provisions for job work arrangements.
+
+Definition:
+• Job work: Treatment/process on goods belonging to another registered person
+• Job worker: Person undertaking the treatment/process
+• Principal: Owner of goods sent for job work
+• Ownership remains with principal
+
+Facilities Available:
+• Send inputs/capital goods without tax payment
+• No ITC reversal required by principal
+• Direct dispatch to job worker allowed
+• ITC available on direct dispatch
+• Movement between job workers permitted
+
+Time Limits:
+• Inputs: Must return within 1 year
+• Capital goods: Must return within 3 years
+• Extensions may be allowed by Commissioner
+
+Job Worker Options:
+• Return goods to principal
+• Send to another job worker
+• Clear goods on tax payment within India
+• Export without tax payment
+• Supply to third party from job worker premises
+
+Supply from Job Worker Premises:
+• Principal can supply from job worker location
+• Job worker premises declared as additional place of business
+• Not required if job worker is registered
+• Tax payment on supply value
+
+Documentation Requirements:
+• Prior intimation to jurisdictional officer
+• Challan for goods movement (Rule 10)
+• Proper accounts maintenance by principal
+• Job work details in intimation
+
+Procedural Aspects:
+• Intimation before sending goods
+• Description of inputs and processing nature
+• Details of multiple job workers if applicable
+• Challan issuance mandatory
+• Responsibility for accounts with principal
+
+Benefits:
+• Cash flow improvement
+• Simplified procedures
+• Reduced compliance burden
+• Flexibility in operations
+• Export facilitation`
+    },
+    {
+      id: 24,
+      title: "Margin Scheme in GST",
+      description: "Second-hand goods taxation, margin calculation methods, purchase value determination, and exemption conditions.",
+      category: "Valuation",
+      readTime: "8 min read",
+      lastUpdated: "2024-01-02",
+      tags: ["Margin Scheme", "Second Hand Goods", "Valuation", "Purchase Price"],
+      content: `Margin Scheme allows dealers in second-hand goods to pay GST only on margin (difference between selling and purchase price) to avoid double taxation.
+
+Purpose:
+• Avoid double taxation on used goods
+• Goods previously bore tax incidence
+• Facilitate second-hand goods trade
+• Simplify valuation process
+
+Eligibility Conditions:
+• Dealing in second-hand goods
+• Goods used as such or after minor processing
+• No input tax credit claimed on purchase
+• Purchase from unregistered person
+
+Valuation Rules (Rule 32(5)):
+• Value = Selling Price - Purchase Price
+• If negative margin, no GST payable
+• Additional processing costs added to margin
+• Repair/refurbishing costs included
+
+Purchase Value for Repossessed Goods:
+• Original purchase price by defaulting borrower
+• Reduced by 5% for every quarter between purchase and repossession
+• Applicable for loan recovery cases
+
+Exemption Notifications:
+• Intra-state supplies exempted if margin scheme used
+• Purchase from unregistered supplier exempted
+• Both central and state tax exemptions available
+
+Illustration - Second Hand Car:
+• Purchase price: Rs. 3,00,000 (from unregistered person)
+• Selling price: Rs. 3,50,000
+• Margin: Rs. 50,000
+• GST on Rs. 50,000 only
+• Purchase exempted, sale on margin taxed
+
+Conditions for Scheme:
+• No ITC claimed on purchase
+• No taxable invoice from seller
+• Margin calculation properly documented
+• Books of accounts maintained
+
+Documentation:
+• Purchase receipts/agreements
+• Repair/refurbishing cost records
+• Selling price documentation
+• Margin calculation worksheets
+
+Restrictions:
+• Cannot issue taxable invoice for exempted purchase
+• No ITC claim on inputs for exempted goods
+• Proper segregation of margin scheme goods`
+    },
+    {
+      id: 25,
+      title: "National Anti-Profiteering Authority in GST",
+      description: "Anti-profiteering mechanism, authority constitution, complaint procedures, penalty provisions, and benefit pass-through requirements.",
+      category: "Legal",
+      readTime: "16 min read",
+      lastUpdated: "2023-12-28",
+      tags: ["Anti-Profiteering", "Rate Reduction", "Consumer Protection", "Price Reduction"],
+      content: `National Anti-Profiteering Authority ensures rate reductions and input credit benefits are passed to consumers through price reductions.
+
+Objective:
+• Ensure benefit pass-through to consumers
+• Prevent unwarranted price increases
+• Monitor compliance with rate reductions
+• Protect consumer interests
+
+Authority Constitution:
+• Chairman: Secretary-level officer to Government of India
+• Four Technical Members: Commissioners of Central/State tax
+• Secretary: Additional Director General of Safeguards (CBEC)
+• Two-year tenure unless extended by GST Council
+
+Powers and Duties:
+• Determine benefit pass-through methodology
+• Identify non-compliant registered persons
+• Order price reduction
+• Direct benefit return with 18% interest
+• Impose penalties
+• Cancel registration
+
+Complaint Process:
+State Level Screening Committee:
+• One State Government officer (nominated by Commissioner)
+• One Central Government officer (nominated by Chief Commissioner)
+• Examine local nature applications
+• Forward recommendations to Standing Committee
+
+Standing Committee on Anti-Profiteering:
+• Central and State Government officers
+• Nominated by GST Council
+• Review screening committee recommendations
+• Decide on forwarding to Authority
+
+Application Requirements:
+• Supplier not passing rate reduction benefit
+• Supporting evidence and documentation
+• Local nature issues first to State Committee
+• National issues directly to Authority
+
+Penalties and Orders:
+• Price reduction orders
+• Benefit return with interest
+• Consumer Welfare Fund deposit if recipient unidentifiable
+• Registration cancellation in severe cases
+• Penalty imposition
+
+Methodology:
+• Authority determines pass-through calculation methods
+• Sector-specific guidelines possible
+• Market dynamics consideration
+• Implementation procedures specification
+
+Timeline:
+• Authority ceased operations after two years
+• Legacy cases may continue under successor mechanisms
+• GST Council recommendations for extension considered`
+    },
+    {
+      id: 26,
+      title: "Non-resident Taxable Person in GST",
+      description: "Registration procedures, advance deposit requirements, validity periods, compliance obligations for non-resident suppliers.",
+      category: "Registration",
+      readTime: "11 min read",
+      lastUpdated: "2023-12-25",
+      tags: ["Non-resident", "Registration", "Advance Deposit", "Validity Period"],
+      content: `Non-resident taxable person means any person who occasionally undertakes transactions but has no fixed place of business or residence in India.
+
+Definition and Scope:
+• Occasional transactions involving supply
+• Principal, agent, or other capacity supplies
+• No fixed place of business in India
+• No residence in India
+
+Registration Requirements:
+• Compulsory registration regardless of turnover
+• No threshold limit applicable
+• Cannot opt for composition levy
+• At least 5 days before commencing business
+
+Application Process:
+• Form GST REG-09 submission
+• Valid passport copy (self-attested)
+• 5 days minimum before business start
+• Electronic submission on Common Portal
+
+Business Entity Requirements:
+• Tax identification number of home country
+• Unique identification number
+• PAN if available in India
+• Country of incorporation documentation
+
+Authorized Signatory:
+• Must be Indian resident
+• Valid PAN required
+• Signs registration application
+• Represents non-resident for GST purposes
+
+Advance Deposit:
+• Estimated tax liability calculation
+• Deposit before registration issuance
+• Bank guarantee or cash deposit
+• Temporary reference number for deposit
+
+Validity Period:
+• Period specified in application, or
+• 90 days from effective date
+• Whichever is earlier
+• Extension possible for additional 90 days
+
+Extension Process:
+• Form GST REG-11 application
+• Before current validity expires
+• Maximum 90 days additional period
+• Conditional on compliance and deposit adequacy
+
+Supply Restrictions:
+• Can supply only after registration
+• Advance deposit mandatory
+• Valid registration certificate required
+• Compliance with all GST provisions
+
+Compliance Obligations:
+• Regular return filing
+• Invoice issuance as per rules
+• Tax payment from advance deposit
+• Maintain prescribed books and records
+
+Cancellation:
+• Automatic on validity expiry
+• Voluntary application possible
+• Final returns and clearance required
+• Refund of unutilized advance deposit`
+    },
+    {
+      id: 27,
+      title: "OIDAR Services in GST",
+      description: "Online Information Database Access and Retrieval services, place of supply rules, tax collection mechanisms, and compliance requirements.",
+      category: "Services",
+      readTime: "19 min read",
+      lastUpdated: "2023-12-22",
+      tags: ["OIDAR", "Online Services", "Place of Supply", "Digital Services"],
+      content: `OIDAR services are delivered through internet/electronic networks, essentially automated with minimal human intervention, impossible without information technology.
+
+Definition and Scope:
+• Internet advertising
+• Cloud services provision
+• E-books, movies, music, software through telecom networks
+• Electronic data/information provision
+• Online digital content supplies
+• Digital data storage
+• Online gaming
+
+Need for Special Treatment:
+• Remote service provision capability
+• Tax advantage for overseas suppliers
+• Level playing field requirement
+• Consumer protection need
+
+Place of Supply Rules:
+• Supplier and recipient both in India: Recipient's location
+• Supplier outside India, recipient in India: India (taxable)
+• Business recipient in India: Reverse charge mechanism
+• Individual consumer in India: Supplier liability
+
+Tax Collection Mechanisms:
+Business Recipients (Registered):
+• Reverse charge mechanism applies
+• Recipient pays GST and files returns
+• Input credit available if eligible
+• Normal GST compliance requirements
+
+Individual Consumers:
+• Simplified registration for overseas suppliers
+• Threshold limit: Rs. 20 lakh annually
+• Tax collection at source by payment gateways
+• Streamlined compliance procedures
+
+Overseas Supplier Registration:
+• Simplified registration process
+• Representative person not mandatory
+• Electronic communication acceptance
+• Bank guarantee/advance deposit waiver for small suppliers
+
+Payment Gateway Role:
+• Collect tax at source from consumers
+• Remit to government treasury
+• Issue tax collection certificates
+• Maintain transaction records
+
+Compliance Requirements:
+• Proper service classification
+• Place of supply determination
+• Tax rate application (18% generally)
+• Return filing obligations
+
+Documentation:
+• Electronic invoices/receipts
+• Payment transaction records
+• Tax collection certificates
+• Consumer identity verification
+
+Exemptions and Concessions:
+• Small supplier threshold benefits
+• Simplified procedures for compliant suppliers
+• Reduced documentation requirements
+• Electronic communication facilitation
+
+Challenges:
+• Cross-border enforcement
+• Technology platform integration
+• Consumer awareness requirements
+• Multiple jurisdiction coordination`
+    },
+    {
+      id: 28,
+      title: "Provisional Assessment in GST",
+      description: "Provisional assessment procedures, bond and security requirements, finalization process, and adjustment mechanisms.",
+      category: "Assessment",
+      readTime: "12 min read",
+      lastUpdated: "2023-12-20",
+      tags: ["Provisional Assessment", "Bond", "Security", "Tax Determination"],
+      content: `Provisional assessment allows suppliers to pay tax provisionally when unable to determine exact value or applicable tax rate.
+
+When Required:
+• Uncertain goods/services value
+• Tax rate determination difficulty
+• Complex valuation scenarios
+• Time-sensitive supply situations
+
+Application Process:
+• Request to Assistant/Deputy Commissioner
+• Form GST ASMT-01 submission
+• Supporting documents requirement
+• Electronic filing on common portal
+
+Officer's Examination:
+• Application scrutiny
+• Additional information requests (Form GST ASMT-02)
+• Supplier's reply submission (Form GST ASMT-03)
+• Personal hearing if requested
+
+Assessment Order:
+• Form GST ASMT-04 issuance
+• Within 90 days of request
+• Provisional value/rate determination
+• Tax amount specification (including IGST, CGST, SGST, UTGST, cess)
+
+Bond and Security:
+• Form GST ASMT-05 bond execution
+• Bank guarantee requirement
+• Security amount as specified in order
+• Cross-jurisdiction bond recognition
+
+Supply Authorization:
+• Post-bond execution supply allowed
+• Provisional rate/value application
+• Tax payment at determined rate
+• Normal business operations continuation
+
+Finalization Process:
+• Proper assessment after determination
+• Final value/rate establishment
+• Difference amount calculation
+• Adjustment against bond/security
+
+Adjustment Mechanism:
+• Excess tax payment refund
+• Additional tax recovery from bond
+• Interest calculation on differences
+• Final clearance procedures
+
+Time Limits:
+• Assessment finalization deadlines
+• Bond validity periods
+• Appeal rights against final assessment
+• Limitation periods for adjustments
+
+Benefits:
+• Business continuity maintenance
+• Compliance under uncertainty
+• Risk mitigation
+• Cash flow management
+
+Documentation:
+• Complete application papers
+• Supporting evidence compilation
+• Bond and security arrangements
+• Final assessment records`
+    },
+    {
+      id: 29,
+      title: "Pure Agent Concept in GST",
+      description: "Pure agent definition, valuation implications, expenditure exclusion conditions, and invoice requirements for third-party payments.",
+      category: "Valuation",
+      readTime: "10 min read",
+      lastUpdated: "2023-12-18",
+      tags: ["Pure Agent", "Valuation", "Third Party", "Expenditure Exclusion"],
+      content: `Pure agent concept allows exclusion of third-party expenditures from supply value when agent acts purely on behalf of recipient.
+
+Definition Requirements:
+• Contractual agreement with recipient
+• Acts as pure agent for expenditure
+• No title holding on procured goods/services
+• No use for own interest
+• Receives actual amount + own service charges
+
+Relevance in GST:
+• Value determination impact
+• Aggregate turnover implications
+• Legacy from Service Tax rules
+• Fairness in taxation
+
+Illustration Example:
+• Importer (A) and Customs Broker (B)
+• Clearance service + transportation arrangement
+• Transportation cost reimbursement at actuals
+• B acts as pure agent for transportation
+• Transportation cost excluded from B's service value
+
+Exclusion Conditions:
+• Pure agent criteria satisfaction
+• Separate indication in invoice
+• Authorization by recipient
+• Third-party payment evidence
+• Additional to own account services
+
+Invoice Requirements:
+• Expenditure separately shown
+• Clear identification as reimbursement
+• Third-party service details
+• Authorization documentation
+• Actual amount basis
+
+Valuation Impact:
+• Excluded amounts not in supply value
+• Reduced aggregate turnover
+• GST levy only on margin/service charges
+• Input credit implications
+
+Contract Analysis:
+• Terms and conditions review
+• Agent authority determination
+• Title and risk analysis
+• Commercial arrangement assessment
+
+Common Scenarios:
+• Travel agents booking tickets
+• Event organizers hiring venues
+• Consultants engaging sub-contractors
+• Freight forwarders hiring transporters
+
+Documentation Requirements:
+• Service agreements
+• Third-party invoices
+• Payment vouchers
+• Authorization letters
+• Reimbursement claims
+
+Compliance Aspects:
+• Proper contract structuring
+• Invoice format compliance
+• Supporting document maintenance
+• Audit trail establishment
+
+Restrictions:
+• No use for own interest
+• Actual amount limitation
+• Separate service component
+• Proper authorization requirement`
+    },
+    {
+      id: 30,
+      title: "Reverse Charge Mechanism (RCM)",
+      description: "RCM provisions, notified supplies and recipients, payment procedures, return filing requirements, and compliance obligations.",
+      category: "Compliance",
+      readTime: "13 min read",
+      lastUpdated: "2023-12-15",
+      tags: ["RCM", "Reverse Charge", "Notified Supplies", "Cash Payment"],
+      content: `Reverse Charge Mechanism (RCM) is where receiver of goods/services pays tax instead of supplier on notified supplies.
+
+Key Features:
+• Tax on inward supply receipt
+• Notified goods and services only
+• Specific recipient categories
+• Cash payment mandatory (no ITC offset)
+
+Payment Requirements:
+• Essential cash payment for RCM tax
+• No input tax credit offset allowed
+• Separate from regular output tax payment
+• Electronic cash ledger utilization
+
+Supplier Obligations:
+• Invoice indication of RCM applicability
+• Clear mention of tax payment by recipient
+• GSTR-1 return reporting
+• No tax collection from recipient
+
+Notified Services under RCM:
+• Import of services
+• Goods transport agency services
+• Advocate services
+• Director services to company
+• Security services
+• Central/State government services
+• Residential property renting
+• Specified telecommunications services
+
+Notified Goods under RCM:
+• Cashew nuts (by agriculturist to registered dealer)
+• Bidi wrapper leaves
+• Tobacco leaves
+• Silk yarn
+• Raw cotton
+• Cement by unregistered to builder
+• Old vehicles from government
+• Scrap from Central/State government
+
+Recipient Categories:
+• Registered persons under GST
+• Specific turnover thresholds
+• Business entities
+• Government departments and agencies
+
+Return Filing:
+• No separate RCM return
+• Information in regular returns
+• Separate sections for RCM details
+• Input credit claims where eligible
+
+Compliance Checklist:
+• Identify RCM applicability
+• Verify notification coverage
+• Ensure cash payment
+• Maintain proper records
+• File returns accurately
+
+Documentation:
+• Supplier invoices with RCM indication
+• Payment challans/receipts
+• Return filing acknowledgments
+• Input credit documentation
+
+Common Mistakes:
+• ITC offset against RCM tax
+• Missing RCM indication in invoices
+• Incorrect return reporting
+• Late payment and interest implications
+
+Benefits:
+• Simplified tax collection
+• Compliance by registered recipients
+• Revenue protection
+• Sector-specific administration`
+    },
+    {
+      id: 31,
+      title: "Registration under GST Law",
+      description: "Registration procedures, threshold limits, mandatory registration scenarios, amendment processes, and cancellation provisions.",
+      category: "Registration",
+      readTime: "20 min read",
+      lastUpdated: "2023-12-12",
+      tags: ["Registration", "GSTIN", "Threshold", "Amendment", "Cancellation"],
+      content: `GST registration provides legal recognition, tax collection authority, and input credit benefits to businesses.
+
+Advantages of Registration:
+• Legal recognition as registered supplier
+• Authority to collect tax from customers
+• Input tax credit claims and utilization
+• Seamless credit flow at national level
+• Business credibility enhancement
+
+Mandatory Registration Thresholds:
+• Goods supply: Rs. 40 lakh annual turnover
+• Services supply: Rs. 20 lakh annual turnover
+• Special category states may have different limits
+• SEZ units/developers: Separate registration mandatory
+
+Compulsory Registration Scenarios:
+• Reverse charge basis supply recipients
+• Agent supplying on behalf of others
+• Input service distributors
+• Inter-state supply makers
+• E-commerce operators
+• Casual taxable persons
+
+GSTIN Structure:
+• 15-digit identification number
+• First 2 digits: State code
+• Next 10 digits: PAN number
+• Next 2 digits: Entity code
+• Last digit: Check sum number
+
+Registration Process:
+• Online application within 30 days
+• GSTN common portal submission
+• Document upload and verification
+• Query resolution if required
+• Certificate issuance
+
+Voluntary Registration:
+• Below threshold limit suppliers
+• Business expansion planning
+• Input credit claims
+• Customer requirements
+• Export business facilitation
+
+Amendment Procedures:
+Core Information Changes:
+• Legal name alteration
+• State/place of business change
+• Additional place of business
+• 15-day application timeline
+• Officer approval within 15 days
+
+Other Changes:
+• Functionary details
+• Contact information
+• Bank account details
+• Self-amendment capability
+• No officer approval required
+
+Cancellation Scenarios:
+Voluntary Cancellation:
+• Business discontinuation
+• Below threshold operation
+• Application within 30 days
+• Stock declaration requirement
+• Dues clearance mandatory
+
+Suo-motu Cancellation:
+• Non-operation from registered premises
+• Fake invoice issuance
+• Tax evasion activities
+• Non-compliance with provisions
+• Officer-initiated proceedings
+
+Timeline Compliance:
+• Registration application: 30 days
+• Amendment application: 15 days
+• Cancellation application: 30 days
+• Officer processing: Specified timelines
+• Appeal rights available
+
+Documentation:
+• PAN card mandatory
+• Address proofs
+• Bank account details
+• Business incorporation papers
+• Authorized signatory details
+
+Special Registrations:
+• Composition dealers
+• Input service distributors
+• Casual taxable persons
+• Non-resident taxable persons
+• Online marketplace operators`
+    },
+    {
+      id: 32,
+      title: "Zero Rating of Supplies in GST",
+      description: "Zero-rated supply provisions, export procedures, SEZ supplies, refund mechanisms, and Bond/LUT options for manufacturers.",
+      category: "Export",
+      readTime: "18 min read",
+      lastUpdated: "2023-12-10",
+      tags: ["Zero Rating", "Export", "SEZ", "Refund", "Bond", "LUT"],
+      content: `Zero rating ensures entire value chain exemption from tax through output exemption and input credit availability.
+
+Zero Rating Concept:
+• Complete value chain tax exemption
+• Output supply tax exemption
+• Input/input service credit availability
+• True zero tax incidence achievement
+• Export competitiveness enhancement
+
+Zero Rated Supplies:
+• Export of goods or services
+• Supply to SEZ developer/unit
+• Deemed exports (notified categories)
+• Subject to fulfillment of conditions
+• Documentation requirements compliance
+
+Export of Goods:
+• Physical movement outside India
+• Foreign exchange realization
+• Shipping bill endorsement
+• Customs clearance completion
+• Export documentation maintenance
+
+Export of Services:
+• Service provision to overseas recipients
+• Foreign exchange realization
+• Place of supply outside India
+• Documentation as per guidelines
+• Banking compliance requirements
+
+SEZ Supplies:
+• Special Economic Zone developer supplies
+• SEZ unit supplies
+• Treated as inter-state supplies
+• IGST levy subject to refund
+• Zero-rating benefits available
+
+Refund Options:
+Option 1 - Bond/LUT Route:
+• Supply without IGST payment
+• Bond or Letter of Undertaking execution
+• Unutilized input credit refund
+• Prescribed conditions compliance
+• Safeguards and procedures adherence
+
+Option 2 - Payment Route:
+• Supply with IGST payment
+• Tax refund as per Section 54
+• Prescribed procedure compliance
+• Documentation requirements fulfillment
+• Time limit adherence
+
+Bond/LUT Mechanism:
+• Financial security for compliance
+• Conditions and safeguards specification
+• Performance guarantee provision
+• Violation penalty implications
+• Renewal and review procedures
+
+Refund Process:
+• Application submission
+• Document verification
+• Officer examination
+• Provisional/final refund
+• Appeal rights availability
+
+Input Service Credit:
+• Zero-rated supply input services
+• Credit availability despite exemption
+• Refund eligibility maintenance
+• Proportionate calculation methods
+• Common input handling
+
+Time Limits:
+• Refund application deadlines
+• Export realization periods
+• Documentation submission timelines
+• Officer processing schedules
+• Appeal filing limitations
+
+Documentation Requirements:
+• Export shipping bills
+• Foreign exchange realization certificates
+• Tax payment challans
+• Input credit statements
+• Bond/LUT execution papers
+
+Compliance Obligations:
+• Export obligation fulfillment
+• Foreign exchange realization
+• Prescribed return filing
+• Record maintenance requirements
+• Audit and verification cooperation`
     }
   ];
 
-  const categories = ["All", "Fundamentals", "Compliance", "Legal", "Registration", "Taxation", "Classification", "Documentation", "Overview"];
+  const categories = ["All", "Fundamentals", "Compliance", "Legal", "Registration", "Taxation", "Classification", "Documentation", "Overview", "Export", "Import", "Credit", "Services", "Manufacturing", "Valuation", "Assessment"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredDocuments = documents.filter(doc => {
