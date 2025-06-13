@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { BookOpen, Download, FileText, Clock, ArrowRight, Search, Filter, Calendar, Tag } from "lucide-react";
+import { BookOpen, Download, FileText, Clock, ArrowRight, Search, Filter, Calendar, Tag, Eye, X } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,11 +11,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import jsPDF from 'jspdf';
 
 export default function KnowledgePool() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [previewDocument, setPreviewDocument] = useState(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   
   // PDF generation function
   const generatePDF = (doc: any) => {
@@ -1905,14 +1909,27 @@ Compliance Obligations:
                   >
                     {doc.category}
                   </Badge>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => generatePDF(doc)}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <Download className="h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        setPreviewDocument(doc);
+                        setIsPreviewOpen(true);
+                      }}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <Eye className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => generatePDF(doc)}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <Download className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
 
                 <h3 className="text-xl font-bold font-heading text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
@@ -1962,6 +1979,10 @@ Compliance Obligations:
                   <Button
                     variant="outline"
                     size="sm"
+                    onClick={() => {
+                      setPreviewDocument(doc);
+                      setIsPreviewOpen(true);
+                    }}
                     className="flex-1"
                   >
                     <FileText className="h-4 w-4 mr-2" />

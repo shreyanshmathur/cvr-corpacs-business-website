@@ -29,12 +29,7 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
           
-          {/* Floating geometric shapes */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-20 w-32 h-32 bg-red-600 opacity-20 rounded-full animate-float"></div>
-            <div className="absolute top-40 right-32 w-24 h-24 bg-blue-600 opacity-20 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-white opacity-10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-          </div>
+
           
           <div className="relative z-10 flex items-center justify-center h-full">
             <div className={`text-center text-white px-4 max-w-4xl ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
