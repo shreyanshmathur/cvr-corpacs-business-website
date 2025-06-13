@@ -11,6 +11,16 @@ export default function Services() {
     return () => clearTimeout(timer);
   }, []);
 
+  const getServiceUrl = (title: string) => {
+    const urlMap: { [key: string]: string } = {
+      "Direct Tax": "/services/direct-tax",
+      "Indirect Tax": "/services/indirect-tax", 
+      "Accounting & MIS": "/services/accounting-mis",
+      "Business Support Services": "/services/business-support-services"
+    };
+    return urlMap[title] || "/services";
+  };
+
   const services = [
     {
       icon: Calculator,
@@ -180,7 +190,7 @@ export default function Services() {
                     ))}
                   </ul>
                   <Link
-                    href={`/services/${service.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')}`}
+                    href={getServiceUrl(service.title)}
                   >
                     <Button
                       className="w-full bg-red-600 hover:bg-red-700 text-white transform hover:scale-105 transition-all duration-300"
