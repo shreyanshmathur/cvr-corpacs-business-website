@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Building2, Menu, X } from "lucide-react";
+import { scrollToTop } from "@/hooks/useScrollToTop";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center tilt-effect">
+          <Link href="/" className="flex items-center tilt-effect" onClick={scrollToTop}>
             <Building2 className="h-8 w-8 text-red-600 animate-pulse-gentle" />
             <span className="ml-2 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpacs</span>
           </Link>
@@ -46,6 +47,7 @@ export default function Navigation() {
                     ? "text-red-600"
                     : "text-gray-700 hover:text-red-600"
                 }`}
+                onClick={scrollToTop}
               >
                 {item.label}
               </Link>
@@ -53,6 +55,7 @@ export default function Navigation() {
             <Link
               href="/contact"
               className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              onClick={scrollToTop}
             >
               Get Expert Consultation
             </Link>
@@ -80,7 +83,10 @@ export default function Navigation() {
                       ? "text-red-600"
                       : "text-gray-700 hover:text-red-600"
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    scrollToTop();
+                  }}
                 >
                   {item.label}
                 </Link>
@@ -88,7 +94,10 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 className="block mx-3 mt-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-center font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  scrollToTop();
+                }}
               >
                 Get Consultation
               </Link>
