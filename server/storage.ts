@@ -1,4 +1,5 @@
 import { contactMessages, type ContactMessage, type InsertContactMessage, users, type User, type InsertUser } from "@shared/schema";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // User methods for compatibility
@@ -12,57 +13,47 @@ export interface IStorage {
   getContactMessage(id: number): Promise<ContactMessage | undefined>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private contactMessages: Map<number, ContactMessage>;
-  private currentUserId: number;
-  private currentContactId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.contactMessages = new Map();
-    this.currentUserId = 1;
-    this.currentContactId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const { db } = await import("./db");
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const { db } = await import("./db");
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const { db } = await import("./db");
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
     return user;
   }
 
   async createContactMessage(insertMessage: InsertContactMessage): Promise<ContactMessage> {
-    const id = this.currentContactId++;
-    const message: ContactMessage = {
-      ...insertMessage,
-      id,
-      phone: insertMessage.phone || null,
-      createdAt: new Date(),
-    };
-    this.contactMessages.set(id, message);
+    const { db } = await import("./db");
+    const [message] = await db
+      .insert(contactMessages)
+      .values(insertMessage)
+      .returning();
     return message;
   }
 
   async getContactMessages(): Promise<ContactMessage[]> {
-    return Array.from(this.contactMessages.values()).sort(
-      (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
-    );
+    const { db } = await import("./db");
+    return await db.select().from(contactMessages).orderBy(contactMessages.createdAt);
   }
 
   async getContactMessage(id: number): Promise<ContactMessage | undefined> {
-    return this.contactMessages.get(id);
+    const { db } = await import("./db");
+    const [message] = await db.select().from(contactMessages).where(eq(contactMessages.id, id));
+    return message || undefined;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
