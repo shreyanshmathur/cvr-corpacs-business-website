@@ -29,10 +29,17 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
           
+          {/* Floating geometric shapes */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-20 w-32 h-32 bg-red-600 opacity-20 rounded-full animate-float"></div>
+            <div className="absolute top-40 right-32 w-24 h-24 bg-blue-600 opacity-20 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-white opacity-10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+          </div>
+          
           <div className="relative z-10 flex items-center justify-center h-full">
-            <div className="text-center text-white px-4 max-w-4xl">
+            <div className={`text-center text-white px-4 max-w-4xl ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
               <h1 className="text-4xl md:text-6xl font-bold font-heading mb-6 leading-tight">
-                CVR Corpacs LLP
+                <span className="gradient-text animate-pulse-gentle">CVR Corpacs LLP</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
                 Your Trusted Business Partner Since 2004. Delivering innovative, tailor-made solutions for MNCs and Indian corporations across India.
@@ -40,13 +47,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
                   href="/services" 
-                  className="bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-all duration-300 font-semibold text-lg transform hover:scale-105 inline-flex items-center justify-center"
+                  className="bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-all duration-500 font-semibold text-lg transform hover:scale-105 inline-flex items-center justify-center glow-effect card-hover"
                 >
                   Our Services
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link 
                   href="/contact" 
-                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center"
+                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-500 font-semibold text-lg inline-flex items-center justify-center card-hover shimmer"
                 >
                   Get In Touch
                 </Link>

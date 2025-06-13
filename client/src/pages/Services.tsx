@@ -1,7 +1,15 @@
 import { Link } from "wouter";
 import { CheckCircle, Calculator, BookOpen, Building2, Users, ArrowRight, FileText, TrendingUp, Shield, Briefcase } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Services() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   const services = [
     {
       icon: Calculator,
@@ -149,7 +157,13 @@ export default function Services() {
               const colors = getColorClasses(service.color);
               
               return (
-                <div key={index} className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 ${colors.border} transform hover:-translate-y-1`}>
+                <div 
+                  key={index} 
+                  className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 ${colors.border} transform hover:-translate-y-2 hover:scale-105 card-hover glow-effect ${
+                    isVisible ? 'animate-fadeInUp' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${index * 200}ms` }}
+                >
                   <div className="flex items-center mb-6">
                     <div className={`${colors.bg} p-3 rounded-lg mr-4`}>
                       <IconComponent className={`h-8 w-8 ${colors.text}`} />
