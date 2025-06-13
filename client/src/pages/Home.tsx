@@ -174,13 +174,22 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link 
-              href="/services" 
-              className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-all duration-300 font-semibold inline-flex items-center"
-            >
-              View All Services
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link 
+                href="/services" 
+                className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-all duration-300 font-semibold inline-flex items-center"
+              >
+                View All Services
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <Link 
+                href="/knowledge-pool" 
+                className="bg-white text-red-600 border-2 border-red-600 px-8 py-3 rounded-lg hover:bg-red-50 transition-all duration-300 font-semibold inline-flex items-center"
+              >
+                <BookOpen className="mr-2 h-5 w-5" />
+                Knowledge Pool
+              </Link>
+            </div>
           </div>
         </div>
       </section>

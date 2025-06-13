@@ -15,6 +15,7 @@ export default function Navigation() {
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
     { href: "/team", label: "Team" },
+    { href: "/knowledge-pool", label: "Knowledge Pool" },
     { href: "/contact", label: "Contact" },
   ];
 
