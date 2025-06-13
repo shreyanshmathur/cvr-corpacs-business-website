@@ -10,6 +10,7 @@ import Services from "@/pages/Services";
 import Team from "@/pages/Team";
 import Contact from "@/pages/Contact";
 import KnowledgePool from "@/pages/KnowledgePool";
+import Dashboard from "@/pages/Dashboard";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
     <Layout>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
         <Route path="/team" component={Team} />
