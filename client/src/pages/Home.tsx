@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle, Calculator, BookOpen, Building2, Users, Award, TrendingUp, Shield, Target } from "lucide-react";
+import { ArrowRight, CheckCircle, Calculator, BookOpen, Building2, Users, Award, TrendingUp, Shield, Target, Brain, Zap, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -216,6 +216,69 @@ export default function Home() {
                 Knowledge Pool
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Recommendation Engine Feature */}
+      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 bg-white bg-opacity-20 rounded-full">
+                <Brain className="h-12 w-12 text-white" />
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6">
+              Introducing Smart Service Recommendations
+            </h2>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              Get personalized consulting service recommendations powered by AI, tailored specifically for your business needs.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="p-3 bg-white bg-opacity-20 rounded-lg inline-block mb-4">
+                <Target className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Intelligent Analysis</h3>
+              <p className="text-blue-100">
+                Advanced algorithms analyze your business profile to understand your unique requirements.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="p-3 bg-white bg-opacity-20 rounded-lg inline-block mb-4">
+                <Zap className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Instant Matching</h3>
+              <p className="text-blue-100">
+                Get matched with the most relevant services in seconds based on your specific needs.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="p-3 bg-white bg-opacity-20 rounded-lg inline-block mb-4">
+                <Star className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Confidence Scoring</h3>
+              <p className="text-blue-100">
+                Each recommendation comes with a confidence score and detailed explanations.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link 
+              href="/recommendations" 
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 font-bold text-lg inline-flex items-center transform hover:scale-105"
+            >
+              <Brain className="mr-3 h-6 w-6" />
+              Try Smart Recommendations
+              <ArrowRight className="ml-3 h-6 w-6" />
+            </Link>
           </div>
         </div>
       </section>
