@@ -32,7 +32,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center tilt-effect">
             <Building2 className="h-8 w-8 text-red-600 animate-pulse-gentle" />
-            <span className="ml-2 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpacs LLP</span>
+            <span className="ml-2 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpacs</span>
           </Link>
           
           {/* Desktop Navigation */}

@@ -10,10 +10,10 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <Building2 className="h-8 w-8 text-red-600" />
-              <span className="ml-2 text-xl font-bold font-heading">CVR Corpacs LLP</span>
+              <span className="ml-2 text-xl font-bold font-heading">CVR Corpacs</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Since our inception in 2004, CVR Corpacs LLP has been a steadfast pillar of support for businesses across India. We specialize in Finance, Taxation, and Commercial Activities with a commitment to excellence.
+              Since our inception in 2004, CVR Corpacs has been a steadfast pillar of support for businesses across India. We specialize in Finance, Taxation, and Commercial Activities with a commitment to excellence.
             </p>
             <div className="flex items-center space-x-4">
               <a href="tel:+919326357129" className="text-gray-300 hover:text-red-400 transition-colors">

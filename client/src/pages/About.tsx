@@ -32,7 +32,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
-              About CVR Corpacs LLP
+              About CVR Corpacs
             </h1>
             <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -98,7 +98,7 @@ export default function About() {
             <div className="bg-white p-8 rounded-xl shadow-lg">
               <h3 className="text-2xl font-bold font-heading text-gray-900 mb-6">Our Mission</h3>
               <p className="text-gray-600 leading-relaxed">
-                At CVR Corpacs LLP, we are dedicated to being the cornerstone of trust and growth for businesses across industries. Our mission is to empower organizations to reach new heights by delivering exceptional solutions and services that align with their unique needs. As a partner of choice, we pride ourselves on fostering long-term relationships built on a foundation of reliability, excellence, and integrity.
+                At CVR Corpacs, we are dedicated to being the cornerstone of trust and growth for businesses across industries. Our mission is to empower organizations to reach new heights by delivering exceptional solutions and services that align with their unique needs. As a partner of choice, we pride ourselves on fostering long-term relationships built on a foundation of reliability, excellence, and integrity.
               </p>
             </div>
             
