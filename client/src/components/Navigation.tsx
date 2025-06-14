@@ -43,19 +43,25 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-medium transition-colors ${
+                className={`font-medium micro-button px-3 py-2 rounded-md transition-all duration-300 hover:bg-red-50 ${
                   isActive(item.href)
-                    ? "text-red-600"
+                    ? "text-red-600 bg-red-50"
                     : "text-gray-700 hover:text-red-600"
                 }`}
                 onClick={scrollToTop}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              className="micro-button bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-all duration-300 font-medium hover:scale-105 glow-on-hover"
               onClick={scrollToTop}
             >
               Get Expert Consultation

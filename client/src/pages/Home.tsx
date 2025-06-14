@@ -68,18 +68,26 @@ export default function Home() {
                 return (
                   <div 
                     key={index} 
-                    className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border-t-4 border-red-600 ${
+                    className={`micro-card bg-white p-8 rounded-xl shadow-lg border-t-4 border-red-600 group cursor-pointer glow-on-hover ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                     }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-8px) scale(1.05)';
+                      e.currentTarget.querySelector('.stat-icon')?.classList.add('animate-bounce-gentle');
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.querySelector('.stat-icon')?.classList.remove('animate-bounce-gentle');
+                    }}
                   >
-                    <div className="bg-red-100 p-3 rounded-full w-fit mx-auto mb-4">
-                      <IconComponent className="h-6 w-6 text-red-600" />
+                    <div className="stat-icon bg-red-100 p-3 rounded-full w-fit mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
+                      <IconComponent className="h-6 w-6 text-red-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     </div>
-                    <div className="text-4xl font-bold font-heading text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                    <div className="text-4xl font-bold font-heading text-gray-900 mb-2 group-hover:text-red-600 transition-colors counter-animate">
                       {stat.value}
                     </div>
-                    <div className="text-gray-600 font-medium">{stat.label}</div>
+                    <div className="text-gray-600 font-medium group-hover:text-gray-800 transition-colors duration-200">{stat.label}</div>
                   </div>
                 );
               })}
@@ -138,21 +146,28 @@ export default function Home() {
             ].map((action, index) => (
               <Link key={action.title} href={action.href}>
                 <div 
-                  className={`group cursor-pointer bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 transform ${
+                  className={`micro-card group cursor-pointer bg-white border border-gray-200 rounded-xl p-6 glow-on-hover ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                   style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                    e.currentTarget.querySelector('.action-icon')?.classList.add('animate-wiggle');
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  }}
                 >
-                  <div className={`w-12 h-12 ${action.color} ${action.hoverColor} rounded-lg flex items-center justify-center transition-colors duration-300 mb-4 group-hover:scale-110 transform`}>
-                    <action.icon className="h-6 w-6 text-white" />
+                  <div className={`action-icon w-12 h-12 ${action.color} ${action.hoverColor} rounded-lg flex items-center justify-center transition-all duration-300 mb-4 group-hover:scale-110 micro-icon`}>
+                    <action.icon className="h-6 w-6 text-white group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                     {action.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-gray-600 text-sm mb-4 group-hover:text-gray-800 transition-colors duration-200">
                     {action.description}
                   </p>
-                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
+                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" />
                 </div>
               </Link>
             ))}

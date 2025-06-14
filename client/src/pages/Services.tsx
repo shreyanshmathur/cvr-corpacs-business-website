@@ -170,22 +170,32 @@ export default function Services() {
               return (
                 <div 
                   key={index} 
-                  className={`bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 ${colors.border} transform hover:-translate-y-2 hover:scale-105 card-hover glow-effect ${
+                  className={`micro-card bg-white p-8 rounded-xl shadow-lg border-t-4 ${colors.border} group cursor-pointer ${
                     isVisible ? 'animate-fadeInUp' : 'opacity-0'
                   }`}
                   style={{ animationDelay: `${index * 200}ms` }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-12px) scale(1.02)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  }}
                 >
                   <div className="flex items-center mb-6">
-                    <div className={`${colors.bg} p-3 rounded-lg mr-4`}>
-                      <IconComponent className={`h-8 w-8 ${colors.text}`} />
+                    <div className={`${colors.bg} p-3 rounded-lg mr-4 micro-icon group-hover:scale-110 transition-transform duration-300`}>
+                      <IconComponent className={`h-8 w-8 ${colors.text} group-hover:animate-wiggle`} />
                     </div>
-                    <h3 className="text-2xl font-bold font-heading text-gray-900">{service.title}</h3>
+                    <h3 className="text-2xl font-bold font-heading text-gray-900 group-hover:text-red-600 transition-colors duration-300">{service.title}</h3>
                   </div>
-                  <ul className="space-y-4 mb-6">
+                  <ul className="space-y-4 mb-6 stagger-children">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-red-600 mt-1 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 leading-relaxed">{feature}</span>
+                      <li 
+                        key={featureIndex} 
+                        className="flex items-start group/item hover:bg-gray-50 p-2 rounded-lg transition-all duration-200 cursor-pointer"
+                        style={{ animationDelay: `${(index * 200) + (featureIndex * 100)}ms` }}
+                      >
+                        <CheckCircle className="h-5 w-5 text-red-600 mt-1 mr-3 flex-shrink-0 group-hover/item:scale-110 group-hover/item:text-red-700 transition-all duration-200" />
+                        <span className="text-gray-700 leading-relaxed group-hover/item:text-gray-900 transition-colors duration-200">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -193,9 +203,9 @@ export default function Services() {
                     href={getServiceUrl(service.title)}
                   >
                     <Button
-                      className="w-full bg-red-600 hover:bg-red-700 text-white transform hover:scale-105 transition-all duration-300"
+                      className="w-full micro-button bg-red-600 hover:bg-red-700 text-white group-hover:scale-105 transition-all duration-300 glow-on-hover"
                     >
-                      <ArrowRight className="h-4 w-4 mr-2" />
+                      <ArrowRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
                       Learn More
                     </Button>
                   </Link>
