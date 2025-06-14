@@ -1856,27 +1856,33 @@ Compliance Obligations:
         </div>
 
         {/* Search and Filter Controls */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+        <div className="micro-card bg-white rounded-xl shadow-lg p-6 mb-12 glow-on-hover">
           <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <div className="flex-1 relative group">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5 group-focus-within:text-red-600 transition-colors duration-300" />
               <Input
                 type="text"
                 placeholder="Search documents, topics, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 py-3"
+                className="pl-10 py-3 micro-button focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                onFocus={(e) => {
+                  e.target.parentElement?.classList.add('animate-scaleIn');
+                }}
+                onBlur={(e) => {
+                  e.target.parentElement?.classList.remove('animate-scaleIn');
+                }}
               />
             </div>
             <div className="md:w-64">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="py-3">
-                  <Filter className="h-4 w-4 mr-2" />
+                <SelectTrigger className="py-3 micro-button hover:border-red-300 transition-colors duration-300">
+                  <Filter className="h-4 w-4 mr-2 micro-icon" />
                   <SelectValue placeholder="Filter by category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
+                    <SelectItem key={category} value={category} className="hover:bg-red-50 transition-colors duration-200">
                       {category}
                     </SelectItem>
                   ))}
@@ -1885,27 +1891,39 @@ Compliance Obligations:
             </div>
           </div>
           
-          <div className="mt-4 text-sm text-gray-600">
-            Showing {filteredDocuments.length} of {documents.length} documents
+          <div className="mt-4 text-sm text-gray-600 animate-fadeIn">
+            <span className="inline-flex items-center">
+              <div className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></div>
+              Showing <span className="font-semibold mx-1 text-red-600">{filteredDocuments.length}</span> of <span className="font-semibold mx-1">{documents.length}</span> documents
+            </span>
           </div>
         </div>
 
         {/* Document Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
           {filteredDocuments.map((doc, index) => (
             <div
               key={doc.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-gray-100 transform hover:-translate-y-2 hover:scale-105"
+              className="micro-card bg-white rounded-xl shadow-lg overflow-hidden group border border-gray-100 cursor-pointer glow-on-hover"
               style={{ 
-                animationDelay: `${index * 50}ms`,
-                animation: 'fadeInUp 0.6s ease-out forwards'
+                animationDelay: `${index * 50}ms`
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-12px) scale(1.03)';
+                e.currentTarget.querySelector('.doc-icon')?.classList.add('animate-wiggle');
+                e.currentTarget.querySelector('.doc-category')?.classList.add('animate-bounce-gentle');
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.querySelector('.doc-icon')?.classList.remove('animate-wiggle');
+                e.currentTarget.querySelector('.doc-category')?.classList.remove('animate-bounce-gentle');
               }}
             >
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <Badge 
                     variant="secondary" 
-                    className="bg-red-50 text-red-700 border-red-200"
+                    className="doc-category bg-red-50 text-red-700 border-red-200 group-hover:bg-red-100 transition-colors duration-300"
                   >
                     {doc.category}
                   </Badge>
@@ -1917,17 +1935,17 @@ Compliance Obligations:
                         setPreviewDocument(doc);
                         setIsPreviewOpen(true);
                       }}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="doc-icon micro-button opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-blue-50"
                     >
-                      <Eye className="h-4 w-4" />
+                      <Eye className="h-4 w-4 group-hover:text-blue-600" />
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => generatePDF(doc)}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="doc-icon micro-button opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-green-50"
                     >
-                      <Download className="h-4 w-4" />
+                      <Download className="h-4 w-4 group-hover:text-green-600" />
                     </Button>
                   </div>
                 </div>

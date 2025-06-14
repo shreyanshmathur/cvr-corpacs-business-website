@@ -276,13 +276,13 @@ export default function Contact() {
                     <Button 
                       type="submit" 
                       disabled={contactMutation.isPending}
-                      className="w-full bg-red-600 hover:bg-red-700 text-lg py-4"
+                      className="w-full micro-button bg-red-600 hover:bg-red-700 text-lg py-4 glow-on-hover hover:scale-105 transition-all duration-300"
                     >
                       {contactMutation.isPending ? (
                         "Sending..."
                       ) : (
                         <>
-                          <Send className="h-5 w-5 mr-2" />
+                          <Send className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
                           Send Message
                         </>
                       )}
