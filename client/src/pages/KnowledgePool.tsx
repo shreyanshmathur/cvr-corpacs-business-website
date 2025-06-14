@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { BookOpen, Download, FileText, Clock, ArrowRight, Search, Filter, Calendar, Tag, Eye, X } from "lucide-react";
+import { BookOpen, Download, FileText, Clock, ArrowRight, ArrowLeft, Search, Filter, Calendar, Tag, Eye, X } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -1950,7 +1950,13 @@ Compliance Obligations:
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold font-heading text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                <h3 
+                  className="text-xl font-bold font-heading text-gray-900 mb-3 group-hover:text-red-600 transition-colors cursor-pointer hover:underline"
+                  onClick={() => {
+                    setPreviewDocument(doc);
+                    setIsPreviewOpen(true);
+                  }}
+                >
                   {doc.title}
                 </h3>
 
@@ -2042,60 +2048,101 @@ Compliance Obligations:
         </div>
       </div>
 
-      {/* Preview Modal */}
+      {/* Blog-Style Preview Modal */}
       <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
-        <DialogContent className="max-w-4xl max-h-[80vh]">
-          <DialogHeader>
-            <DialogTitle className="flex items-center justify-between">
-              <span>{previewDocument?.title}</span>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsPreviewOpen(false)}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </DialogTitle>
-          </DialogHeader>
-          <ScrollArea className="max-h-[60vh] pr-4">
-            {previewDocument && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 pb-4 border-b">
-                  <Badge variant="secondary">{previewDocument.category}</Badge>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <Clock className="h-4 w-4" />
-                    {previewDocument.readTime}
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <Calendar className="h-4 w-4" />
-                    {previewDocument.lastUpdated}
-                  </div>
+        <DialogContent className="max-w-5xl max-h-[90vh] p-0 overflow-hidden">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 px-8 py-6 text-white">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <BookOpen className="h-6 w-6" />
                 </div>
-                
-                <div className="prose prose-gray max-w-none">
-                  <p className="text-gray-600 text-lg mb-6">{previewDocument.description}</p>
-                  <div className="whitespace-pre-wrap leading-relaxed">
+                <div>
+                  <h2 className="text-2xl font-bold font-heading">GST Knowledge Pool</h2>
+                  <p className="text-red-100">Professional Tax Guidance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <ScrollArea className="max-h-[calc(90vh-100px)]">
+            {previewDocument && (
+              <article className="px-8 py-6">
+                {/* Article Header */}
+                <header className="mb-8 pb-6 border-b border-gray-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Badge variant="secondary" className="bg-red-50 text-red-700 border-red-200">
+                      {previewDocument.category}
+                    </Badge>
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {previewDocument.readTime}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        Updated {previewDocument.lastUpdated}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <h1 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4 leading-tight">
+                    {previewDocument.title}
+                  </h1>
+                  
+                  <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                    {previewDocument.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {previewDocument.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors"
+                      >
+                        <Tag className="h-3 w-3" />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </header>
+
+                {/* Article Content */}
+                <div className="prose prose-lg prose-gray max-w-none">
+                  <div className="text-gray-800 leading-relaxed whitespace-pre-wrap text-base">
                     {previewDocument.content}
                   </div>
                 </div>
-                
-                <div className="flex gap-2 pt-4 border-t">
-                  <Button 
-                    onClick={() => generatePDF(previewDocument)}
-                    className="flex-1"
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    Download PDF
-                  </Button>
-                  <Button 
-                    variant="outline"
-                    onClick={() => setIsPreviewOpen(false)}
-                    className="flex-1"
-                  >
-                    Close Preview
-                  </Button>
-                </div>
-              </div>
+
+                {/* Article Footer */}
+                <footer className="mt-12 pt-8 border-t border-gray-200">
+                  <div className="bg-gray-50 rounded-xl p-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Need Expert Guidance?</h3>
+                        <p className="text-gray-600">Our team can help you implement these concepts in your business.</p>
+                      </div>
+                      <div className="flex gap-3">
+                        <Button 
+                          onClick={() => generatePDF(previewDocument)}
+                          variant="outline"
+                          className="micro-button"
+                        >
+                          <Download className="h-4 w-4 mr-2" />
+                          Download PDF
+                        </Button>
+                        <Button 
+                          onClick={() => setIsPreviewOpen(false)}
+                          className="micro-button bg-red-600 hover:bg-red-700"
+                        >
+                          <X className="h-4 w-4 mr-2" />
+                          Back to Library
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+              </article>
             )}
           </ScrollArea>
         </DialogContent>
