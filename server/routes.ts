@@ -239,128 +239,179 @@ async function generateRecommendations(
   interactions: any[] = []
 ): Promise<Omit<Recommendation, 'id' | 'sessionId' | 'createdAt'>[]> {
   try {
-    // Prepare context for DeepSeek AI
-    const userContext = {
-      businessType: preferences.businessType,
-      industry: preferences.industry,
-      companySize: preferences.companySize,
-      primaryConcerns: preferences.primaryConcerns,
-      urgency: preferences.urgency,
-      location: preferences.location,
-      recentInteractions: interactions.map(i => ({ serviceType: i.serviceType, type: i.interactionType }))
-    };
+    return await generateDeepSeekRecommendations(preferences, interactions);
+  } catch (error) {
+    console.error('DeepSeek AI recommendation error:', error);
+    return generateFallbackRecommendations(preferences, interactions);
+  }
+}
 
-    const serviceOptions = [
-      {
-        id: 'direct-tax',
-        name: 'Direct Tax Services',
-        description: 'Professional tax advisory, corporate tax returns, TDS compliance, assessment support, and litigation assistance'
-      },
-      {
-        id: 'indirect-tax', 
-        name: 'Indirect Tax Services',
-        description: 'GST advisory, VAT compliance, customs work, input tax credit management, and indirect tax assessments'
-      },
-      {
-        id: 'accounting-mis',
-        name: 'Accounting & MIS',
-        description: 'Account maintenance, financial reporting, business analysis, fixed assets management, and audit support'
-      },
-      {
-        id: 'business-support-services',
-        name: 'Business Support Services',
-        description: 'Business formation, talent acquisition, manpower supply, operations management, and debt recovery'
-      }
-    ];
+// DeepSeek AI-powered recommendation generation
+async function generateDeepSeekRecommendations(
+  preferences: UserPreferences, 
+  interactions: any[] = []
+): Promise<Omit<Recommendation, 'id' | 'sessionId' | 'createdAt'>[]> {
+  
+  // Prepare user context for DeepSeek AI
+  const userContext = {
+    businessType: preferences.businessType || 'Not specified',
+    industry: preferences.industry || 'Not specified', 
+    companySize: preferences.companySize || 'Not specified',
+    primaryConcerns: Array.isArray(preferences.primaryConcerns) ? preferences.primaryConcerns : [],
+    urgency: preferences.urgency || 'Not specified',
+    location: preferences.location || 'Not specified',
+    recentInteractions: interactions.slice(-5).map(i => ({
+      serviceType: i.serviceType,
+      type: i.interactionType,
+      timestamp: i.createdAt
+    }))
+  };
 
-    const prompt = `You are an expert business consultant AI. Analyze the following user profile and recommend the most suitable consulting services.
+  const serviceOptions = [
+    {
+      id: 'direct-tax',
+      name: 'Direct Tax Services',
+      description: 'Corporate tax planning, income tax returns, TDS compliance, tax assessments, and litigation support. Ideal for businesses needing comprehensive tax advisory and compliance services.',
+      targetClients: 'MNCs, SMEs, high-income individuals, businesses with complex tax structures',
+      keyBenefits: 'Tax optimization, compliance assurance, reduced liability, expert representation'
+    },
+    {
+      id: 'indirect-tax', 
+      name: 'Indirect Tax Services',
+      description: 'GST advisory, VAT compliance, customs clearance, input tax credit optimization, and indirect tax assessments. Perfect for trading and manufacturing businesses.',
+      targetClients: 'Manufacturers, traders, importers/exporters, service providers with GST obligations',
+      keyBenefits: 'GST compliance, cost optimization, smooth operations, reduced penalties'
+    },
+    {
+      id: 'accounting-mis',
+      name: 'Accounting & MIS',
+      description: 'Complete accounting solutions, financial reporting, MIS preparation, bookkeeping, and audit support. Essential for businesses requiring systematic financial management.',
+      targetClients: 'SMEs, startups, growing businesses, companies needing financial clarity',
+      keyBenefits: 'Financial transparency, informed decisions, regulatory compliance, growth support'
+    },
+    {
+      id: 'business-support-services',
+      name: 'Business Support Services', 
+      description: 'Business incorporation, talent acquisition, manpower solutions, operational support, and debt recovery. Comprehensive support for business operations and growth.',
+      targetClients: 'Startups, small businesses, entrepreneurs, companies needing operational support',
+      keyBenefits: 'Business setup, skilled workforce, operational efficiency, growth acceleration'
+    }
+  ];
 
-User Profile:
-- Business Type: ${userContext.businessType || 'Not specified'}
-- Industry: ${userContext.industry || 'Not specified'}
-- Company Size: ${userContext.companySize || 'Not specified'}
-- Primary Concerns: ${Array.isArray(userContext.primaryConcerns) ? userContext.primaryConcerns.join(', ') : 'Not specified'}
-- Urgency: ${userContext.urgency || 'Not specified'}
-- Location: ${userContext.location || 'Not specified'}
-- Recent Interactions: ${userContext.recentInteractions.length > 0 ? JSON.stringify(userContext.recentInteractions) : 'None'}
+  const prompt = `You are CVR Corpacs' expert business consultant AI with deep knowledge of Indian business consulting services. Analyze this client profile and provide intelligent service recommendations.
 
-Available Services:
-${serviceOptions.map(s => `${s.id}: ${s.name} - ${s.description}`).join('\n')}
+**CLIENT PROFILE:**
+- Business Type: ${userContext.businessType}
+- Industry: ${userContext.industry}
+- Company Size: ${userContext.companySize}  
+- Primary Concerns: ${userContext.primaryConcerns.length > 0 ? userContext.primaryConcerns.join(', ') : 'Not specified'}
+- Urgency Level: ${userContext.urgency}
+- Location: ${userContext.location}
+- Recent Service Interactions: ${userContext.recentInteractions.length > 0 ? JSON.stringify(userContext.recentInteractions) : 'None'}
 
-Please provide recommendations in the following JSON format:
+**AVAILABLE SERVICES:**
+${serviceOptions.map(s => `
+${s.id.toUpperCase()}:
+Name: ${s.name}
+Description: ${s.description}
+Target Clients: ${s.targetClients}
+Key Benefits: ${s.keyBenefits}
+`).join('\n')}
+
+**ANALYSIS REQUIREMENTS:**
+Please provide a detailed analysis and recommend 1-3 most suitable services. Consider:
+1. Business type and industry alignment
+2. Company size and complexity needs
+3. Specific concerns and pain points
+4. Urgency level and timeline requirements
+5. Previous interaction patterns
+6. Cross-service synergies and dependencies
+
+**RESPONSE FORMAT (JSON only):**
 {
   "recommendations": [
     {
       "serviceType": "service-id",
       "confidence": 85,
       "priority": 1,
-      "reasons": ["Reason 1", "Reason 2", "Reason 3"]
+      "reasons": [
+        "Specific reason 1 based on client profile",
+        "Specific reason 2 addressing client concerns", 
+        "Specific reason 3 highlighting business value"
+      ],
+      "businessImpact": "Clear description of expected business impact",
+      "timeline": "Recommended engagement timeline",
+      "synergies": ["other-service-ids that complement this recommendation"]
     }
-  ]
+  ],
+  "overallStrategy": "Brief strategy summary for the client's business needs"
 }
 
-Rules:
-1. Recommend 1-3 most relevant services only
-2. Confidence score should be 0-100 based on how well the service matches the user profile
-3. Priority should be 1-5 (1 = highest priority)
-4. Provide 2-4 specific reasons for each recommendation
-5. Consider business type, industry, concerns, and urgency in your analysis
-6. Only recommend services with confidence >= 60`;
+**GUIDELINES:**
+- Only recommend services with confidence score 70-95%
+- Priority: 1=highest, 5=lowest
+- Provide 3-4 specific, actionable reasons per recommendation
+- Focus on business value and ROI
+- Consider Indian business context and regulations
+- Be concise but insightful`;
 
-    const response = await fetch('https://api.deepseek.com/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'deepseek-reasoner',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        max_tokens: 2000,
-        temperature: 0.3,
-      }),
-    });
+  const response = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'deepseek-reasoner',
+      messages: [{
+        role: 'user',
+        content: prompt
+      }],
+      max_tokens: 3000,
+      temperature: 0.2,
+      top_p: 0.9,
+    }),
+  });
 
-    if (!response.ok) {
-      throw new Error(`DeepSeek API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const aiResponse = data.choices[0].message.content;
-    
-    // Parse AI response
-    const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      throw new Error('Failed to parse AI response');
-    }
-
-    const aiRecommendations = JSON.parse(jsonMatch[0]);
-    
-    return aiRecommendations.recommendations.map((rec: any) => ({
-      serviceType: rec.serviceType,
-      confidence: Math.max(60, Math.min(100, rec.confidence)),
-      priority: Math.max(1, Math.min(5, rec.priority)),
-      reasons: JSON.stringify(rec.reasons || []),
-      metadata: JSON.stringify({
-        aiGenerated: true,
-        model: 'deepseek-reasoner',
-        userProfile: userContext
-      }),
-      isViewed: false,
-      isClicked: false,
-    }));
-
-  } catch (error) {
-    console.error('DeepSeek AI recommendation error:', error);
-    
-    // Fallback to rule-based recommendations
-    return generateFallbackRecommendations(preferences, interactions);
+  if (!response.ok) {
+    throw new Error(`DeepSeek API error: ${response.status} - ${response.statusText}`);
   }
+
+  const data = await response.json();
+  const aiResponse = data.choices[0].message.content;
+  
+  // Extract JSON from AI response
+  const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) {
+    console.error('DeepSeek response format error:', aiResponse);
+    throw new Error('Failed to parse DeepSeek AI response');
+  }
+
+  const parsedResponse = JSON.parse(jsonMatch[0]);
+  
+  if (!parsedResponse.recommendations || !Array.isArray(parsedResponse.recommendations)) {
+    throw new Error('Invalid recommendation format from DeepSeek AI');
+  }
+
+  // Transform DeepSeek recommendations to our format
+  return parsedResponse.recommendations.map((rec: any) => ({
+    serviceType: rec.serviceType,
+    confidence: Math.max(70, Math.min(95, rec.confidence || 75)),
+    priority: Math.max(1, Math.min(5, rec.priority || 3)),
+    reasons: JSON.stringify(rec.reasons || ['AI-recommended service for your business needs']),
+    metadata: JSON.stringify({
+      aiGenerated: true,
+      model: 'deepseek-reasoner',
+      userProfile: userContext,
+      businessImpact: rec.businessImpact || '',
+      timeline: rec.timeline || '',
+      synergies: rec.synergies || [],
+      overallStrategy: parsedResponse.overallStrategy || '',
+      generatedAt: new Date().toISOString()
+    }),
+    isViewed: false,
+    isClicked: false,
+  }));
 }
 
 // Fallback recommendation system
