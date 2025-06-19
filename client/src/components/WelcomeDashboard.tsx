@@ -107,7 +107,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
   return (
     <div className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-red-600 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
+      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-red-600 rounded-2xl p-6 mb-6 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-4">
@@ -116,7 +116,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
                 {getGreeting()}, {userName}!
               </h1>
               <p className="text-blue-100 text-lg animate-slideInDown" style={{animationDelay: '0.3s'}}>
-                Welcome to your CVR Corpacs dashboard
+                Welcome to your CVR Corpac dashboard
               </p>
             </div>
             <div className="text-right animate-slideInDown" style={{animationDelay: '0.5s'}}>
@@ -138,7 +138,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
           </div>
           
           {/* Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
             {[
               { label: "Services", value: "4+", icon: Award },
               { label: "Experience", value: "20+", icon: TrendingUp },
@@ -164,12 +164,12 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
       </div>
 
       {/* Quick Actions */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold font-heading text-gray-900 mb-6 flex items-center">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold font-heading text-gray-900 mb-4 flex items-center">
           <Shield className="h-6 w-6 mr-2 text-blue-600" />
           Quick Actions
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {quickActions.map((action, index) => (
             <Link key={action.title} href={action.href}>
               <Card 
@@ -197,7 +197,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
       </div>
 
       {/* Dashboard Content */}
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-6">
         {/* Recent Activities */}
         <Card className="animate-slideInUp" style={{animationDelay: '0.7s'}}>
           <CardHeader>
@@ -267,12 +267,12 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
       </div>
 
       {/* CTA Section */}
-      <div className="mt-8 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-8 animate-fadeIn" style={{animationDelay: '1.1s'}}>
+      <div className="mt-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6 animate-fadeIn" style={{animationDelay: '1.1s'}}>
         <div className="text-center">
           <h3 className="text-2xl font-bold font-heading text-gray-900 mb-4">
             Need Expert Guidance?
           </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 mb-4 max-w-2xl mx-auto">
             Our team of experienced professionals is ready to help you navigate complex business and tax requirements. 
             Schedule a consultation today for personalized solutions.
           </p>
