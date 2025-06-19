@@ -107,15 +107,15 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
   return (
     <div className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       {/* Welcome Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-red-600 rounded-2xl p-6 mb-6 text-white relative overflow-hidden">
+      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-red-600 rounded-2xl p-4 mb-4 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-2">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2 animate-fadeIn">
+              <h1 className="text-2xl md:text-3xl font-bold font-heading mb-1 animate-fadeIn">
                 {getGreeting()}, {userName}!
               </h1>
-              <p className="text-blue-100 text-lg animate-slideInDown" style={{animationDelay: '0.3s'}}>
+              <p className="text-blue-100 text-base animate-slideInDown" style={{animationDelay: '0.3s'}}>
                 Welcome to your CVR Corpac dashboard
               </p>
             </div>

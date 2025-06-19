@@ -33,10 +33,10 @@ export default function Home() {
           
           <div className="relative z-10 flex items-center justify-center h-full">
             <div className={`text-center text-white px-4 max-w-4xl ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-              <h1 className="text-4xl md:text-6xl font-bold font-heading mb-6 leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold font-heading mb-4 leading-tight">
                 <span className="gradient-text animate-pulse-gentle">CVR Corpac</span>
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl mb-4 text-gray-200 max-w-3xl mx-auto leading-relaxed">
                 Your Trusted Business Partner Since 2004. Delivering innovative, tailor-made solutions for MNCs and Indian corporations across India.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
