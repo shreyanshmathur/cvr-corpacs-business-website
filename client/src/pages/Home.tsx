@@ -21,7 +21,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative">
-        <div className="relative h-[70vh] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
+        <div className="relative h-[50vh] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
             alt="Modern office workspace with professionals working" 
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
         
         {/* Stats Section */}
-        <div className="bg-white py-16 relative overflow-hidden">
+        <div className="bg-white py-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-blue-50 opacity-50"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -68,7 +68,7 @@ export default function Home() {
                 return (
                   <div 
                     key={index} 
-                    className={`micro-card bg-white p-8 rounded-xl shadow-lg border-t-4 border-red-600 group cursor-pointer glow-on-hover ${
+                    className={`micro-card bg-white p-4 rounded-xl shadow-lg border-t-2 border-red-600/60 group cursor-pointer glow-on-hover ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                     }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
@@ -97,7 +97,7 @@ export default function Home() {
       </section>
 
       {/* Quick Actions Dashboard Section */}
-      <section className="py-16 bg-white">
+      <section className="py-6 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">

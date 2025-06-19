@@ -164,20 +164,20 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
       </div>
 
       {/* Quick Actions */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold font-heading text-gray-900 mb-4 flex items-center">
+      <div className="mb-4">
+        <h2 className="text-xl font-bold font-heading text-gray-900 mb-3 flex items-center">
           <Shield className="h-6 w-6 mr-2 text-blue-600" />
           Quick Actions
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
           {quickActions.map((action, index) => (
             <Link key={action.title} href={action.href}>
               <Card 
                 className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-l-2 border-l-blue-400/60 animate-slideInUp`}
                 style={{animationDelay: `${action.delay}s`}}
               >
-                <CardHeader className="pb-3">
-                  <div className={`w-12 h-12 ${action.color} ${action.hoverColor} rounded-lg flex items-center justify-center transition-colors duration-300 mb-3 group-hover:scale-110 transform`}>
+                <CardHeader className="pb-2">
+                  <div className={`w-10 h-10 ${action.color} ${action.hoverColor} rounded-lg flex items-center justify-center transition-colors duration-300 mb-2 group-hover:scale-110 transform`}>
                     <action.icon className="h-6 w-6 text-white" />
                   </div>
                   <CardTitle className="text-lg group-hover:text-blue-600 transition-colors duration-300">
