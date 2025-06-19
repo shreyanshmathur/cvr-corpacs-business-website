@@ -10,11 +10,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <img src={logoImage} alt="CVR Corpacs Logo" className="h-10 w-10" />
-              <span className="ml-3 text-xl font-bold font-heading">CVR Corpacs</span>
+              <img src={logoImage} alt="CVR Corpac Logo" className="h-16 w-16" />
+              <span className="ml-3 text-xl font-bold font-heading">CVR Corpac</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Since our inception in 2004, CVR Corpacs has been a steadfast pillar of support for businesses across India. We specialize in Finance, Taxation, and Commercial Activities with a commitment to excellence.
+              Since our inception in 2004, CVR Corpac has been a steadfast pillar of support for businesses across India. We specialize in Finance, Taxation, and Commercial Activities with a commitment to excellence.
             </p>
             <div className="flex items-center space-x-4">
               <a href="tel:+919326357129" className="text-gray-300 hover:text-red-400 transition-colors">
@@ -23,7 +23,7 @@ export default function Footer() {
               <a href="mailto:info@cvrcorpac.com" className="text-gray-300 hover:text-red-400 transition-colors">
                 <Mail className="h-5 w-5" />
               </a>
-              <a href="https://www.cvrcorpacs.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-red-400 transition-colors">
+              <a href="https://www.cvrcorpac.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-red-400 transition-colors">
                 <Globe className="h-5 w-5" />
               </a>
             </div>
@@ -55,7 +55,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 CVR Corpacs. All rights reserved.
+            © 2024 CVR Corpac. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm">
             Designed with excellence for professional consulting services.
