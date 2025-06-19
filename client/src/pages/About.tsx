@@ -19,7 +19,7 @@ export default function About() {
         const intervals = 50;
         const steps = duration / intervals;
         
-        const targets = { years: 20, clients: 500, projects: 1000, branches: 6 };
+        const targets = { years: 20, clients: 200, projects: 800, branches: 6 };
         
         let step = 0;
         const timer = setInterval(() => {
