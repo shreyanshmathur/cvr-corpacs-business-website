@@ -1,7 +1,58 @@
 import { Link } from "wouter";
-import { CheckCircle, ArrowRight, Award, Users, Target, Briefcase } from "lucide-react";
+import { CheckCircle, ArrowRight, Award, Users, Target, Briefcase, TrendingUp, Clock, Star, Building2 } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeValue, setActiveValue] = useState(0);
+  const [counters, setCounters] = useState({ years: 0, clients: 0, projects: 0, branches: 0 });
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      const animateCounters = () => {
+        const duration = 2000;
+        const intervals = 50;
+        const steps = duration / intervals;
+        
+        const targets = { years: 20, clients: 500, projects: 1000, branches: 6 };
+        
+        let step = 0;
+        const timer = setInterval(() => {
+          step++;
+          const progress = step / steps;
+          
+          setCounters({
+            years: Math.floor(targets.years * progress),
+            clients: Math.floor(targets.clients * progress),
+            projects: Math.floor(targets.projects * progress),
+            branches: Math.floor(targets.branches * progress)
+          });
+          
+          if (progress >= 1) {
+            clearInterval(timer);
+            setCounters(targets);
+          }
+        }, intervals);
+        
+        return () => clearInterval(timer);
+      };
+      
+      const timeout = setTimeout(animateCounters, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveValue((prev) => (prev + 1) % values.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   const values = [
     {
       icon: Award,
@@ -28,16 +79,46 @@ export default function About() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-20 py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-20 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-red-100 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-blue-100 rounded-full opacity-30 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 left-1/3 w-28 h-28 bg-purple-100 rounded-full opacity-25 animate-float" style={{animationDelay: '2s'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
+            <h1 className={`text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               About CVR Corpac
             </h1>
-            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <div className={`w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8 transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-0'}`} style={{transitionDelay: '0.3s'}}></div>
+            <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{transitionDelay: '0.5s'}}>
               Your Trusted Business Partner Since 2004. A leading consulting firm dedicated to providing expert business solutions across India with unwavering commitment to excellence and client success.
             </p>
+          </div>
+          
+          {/* Animated Statistics */}
+          <div className="grid md:grid-cols-4 gap-8 mt-16">
+            {[
+              { icon: Clock, label: "Years Experience", value: counters.years, suffix: "+" },
+              { icon: Users, label: "Happy Clients", value: counters.clients, suffix: "+" },
+              { icon: Target, label: "Projects Completed", value: counters.projects, suffix: "+" },
+              { icon: Building2, label: "Branches", value: counters.branches, suffix: "" }
+            ].map((stat, index) => (
+              <div 
+                key={index}
+                className={`text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{transitionDelay: `${0.7 + index * 0.1}s`}}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <stat.icon className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -129,12 +210,37 @@ export default function About() {
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center transform hover:-translate-y-1">
-                  <div className="bg-red-100 p-4 rounded-full w-fit mx-auto mb-4">
-                    <IconComponent className="h-8 w-8 text-red-600" />
+                <div 
+                  key={index} 
+                  className={`p-6 rounded-xl transition-all duration-500 text-center transform cursor-pointer ${
+                    activeValue === index 
+                      ? 'bg-gradient-to-br from-red-50 to-blue-50 shadow-xl scale-105 border-2 border-red-200' 
+                      : 'bg-white shadow-lg hover:shadow-xl hover:-translate-y-2'
+                  }`}
+                  onMouseEnter={() => setActiveValue(index)}
+                >
+                  <div className={`p-4 rounded-full w-fit mx-auto mb-4 transition-all duration-300 ${
+                    activeValue === index 
+                      ? 'bg-gradient-to-br from-red-500 to-red-600 scale-110' 
+                      : 'bg-red-100 hover:bg-red-200'
+                  }`}>
+                    <IconComponent className={`h-8 w-8 transition-colors duration-300 ${
+                      activeValue === index ? 'text-white' : 'text-red-600'
+                    }`} />
                   </div>
-                  <h3 className="text-xl font-bold font-heading text-gray-900 mb-3">{value.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                  <h3 className={`text-xl font-bold font-heading mb-3 transition-colors duration-300 ${
+                    activeValue === index ? 'text-red-600' : 'text-gray-900'
+                  }`}>
+                    {value.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed transition-all duration-300 ${
+                    activeValue === index ? 'text-gray-700 scale-105' : 'text-gray-600'
+                  }`}>
+                    {value.description}
+                  </p>
+                  {activeValue === index && (
+                    <div className="mt-4 w-8 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded mx-auto animate-pulse"></div>
+                  )}
                 </div>
               );
             })}

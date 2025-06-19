@@ -1,7 +1,23 @@
 import { Link } from "wouter";
-import { ArrowRight, Calculator, Scale, TrendingUp, BookOpen, Users, Award, Mail } from "lucide-react";
+import { ArrowRight, Calculator, Scale, TrendingUp, BookOpen, Users, Award, Mail, Star, Crown, Zap, Heart, MapPin, Phone, Linkedin } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Team() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeCard, setActiveCard] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % expertiseAreas.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
   const expertiseAreas = [
     {
       icon: Calculator,
@@ -59,16 +75,45 @@ export default function Team() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-20 py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-20 py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-red-50 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-20 w-40 h-40 bg-blue-100 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute top-32 right-10 w-32 h-32 bg-red-100 rounded-full opacity-30 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-20 left-1/4 w-28 h-28 bg-purple-100 rounded-full opacity-25 animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-32 right-1/3 w-36 h-36 bg-green-100 rounded-full opacity-20 animate-float" style={{animationDelay: '3s'}}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6">
+            <h1 className={`text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Meet Our Expert Team
             </h1>
-            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <div className={`w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8 transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-0'}`} style={{transitionDelay: '0.3s'}}></div>
+            <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{transitionDelay: '0.5s'}}>
               At CVR Corpacs LLP, we take immense pride in our team of dedicated professionals, which includes Chartered Accountants, Advocates, MBAs, and graduates. With a diverse blend of expertise and experience, our team is united by a shared passion for delivering excellence.
             </p>
+          </div>
+          
+          {/* Team Stats */}
+          <div className="grid md:grid-cols-4 gap-6 mt-12">
+            {[
+              { icon: Users, label: "Team Members", value: "25+", color: "from-blue-500 to-blue-600" },
+              { icon: Award, label: "Certifications", value: "50+", color: "from-green-500 to-green-600" },
+              { icon: Star, label: "Years Experience", value: "200+", color: "from-purple-500 to-purple-600" },
+              { icon: Crown, label: "Success Rate", value: "98%", color: "from-red-500 to-red-600" }
+            ].map((stat, index) => (
+              <div 
+                key={index}
+                className={`text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{transitionDelay: `${0.7 + index * 0.1}s`}}
+              >
+                <div className={`w-14 h-14 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                  <stat.icon className="h-7 w-7 text-white" />
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-2">{stat.value}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
