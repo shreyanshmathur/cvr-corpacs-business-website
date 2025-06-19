@@ -62,7 +62,7 @@ export default function Home() {
         <div className="bg-white py-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-blue-50 opacity-50"></div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               {stats.map((stat, index) => {
                 const IconComponent = stat.icon;
                 return (
@@ -81,10 +81,10 @@ export default function Home() {
                       e.currentTarget.querySelector('.stat-icon')?.classList.remove('animate-bounce-gentle');
                     }}
                   >
-                    <div className="stat-icon bg-red-100 p-3 rounded-full w-fit mx-auto mb-4 group-hover:bg-red-200 transition-colors duration-300">
+                    <div className="stat-icon bg-red-100 p-2 rounded-full w-fit mx-auto mb-2 group-hover:bg-red-200 transition-colors duration-300">
                       <IconComponent className="h-6 w-6 text-red-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     </div>
-                    <div className="text-4xl font-bold font-heading text-gray-900 mb-2 group-hover:text-red-600 transition-colors counter-animate">
+                    <div className="text-3xl font-bold font-heading text-gray-900 mb-1 group-hover:text-red-600 transition-colors counter-animate">
                       {stat.value}
                     </div>
                     <div className="text-gray-600 font-medium group-hover:text-gray-800 transition-colors duration-200">{stat.label}</div>
@@ -99,17 +99,17 @@ export default function Home() {
       {/* Quick Actions Dashboard Section */}
       <section className="py-6 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-4">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-gray-900 mb-3">
               Get Started Today
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-6"></div>
+            <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Access our comprehensive business solutions with intelligent recommendations powered by AI
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
                 title: "AI Recommendations",
@@ -146,7 +146,7 @@ export default function Home() {
             ].map((action, index) => (
               <Link key={action.title} href={action.href}>
                 <div 
-                  className={`micro-card group cursor-pointer bg-white border border-gray-200 rounded-xl p-6 glow-on-hover ${
+                  className={`micro-card group cursor-pointer bg-white border border-gray-200 rounded-xl p-4 glow-on-hover ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                   style={{ transitionDelay: `${index * 100 + 200}ms` }}
@@ -178,20 +178,20 @@ export default function Home() {
       </section>
 
       {/* About Preview Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold font-heading text-gray-900 mb-4">
                 About CVR Corpac
               </h2>
-              <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mb-8"></div>
+              <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mb-4"></div>
               
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-base text-gray-600 mb-4 leading-relaxed">
                 Since our inception in 2004, CVR Corpac has been a steadfast pillar of support for businesses across India. Over the past two decades, we have cultivated strong, enduring relationships with both multinational corporations (MNCs) and Indian corporations (INCs) by delivering innovative, tailor-made solutions that address the unique challenges of modern business.
               </p>
               
-              <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-red-600 mr-3" />
                   <span className="text-gray-700 font-medium">Expert Tax Advisory</span>

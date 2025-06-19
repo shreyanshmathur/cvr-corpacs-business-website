@@ -197,7 +197,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
       </div>
 
       {/* Dashboard Content */}
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-4">
         {/* Recent Activities */}
         <Card className="animate-slideInUp" style={{animationDelay: '0.7s'}}>
           <CardHeader>
