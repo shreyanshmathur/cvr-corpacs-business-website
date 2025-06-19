@@ -170,7 +170,7 @@ export default function Services() {
               return (
                 <div 
                   key={index} 
-                  className={`micro-card bg-white p-8 rounded-xl shadow-lg border-t-4 ${colors.border} group cursor-pointer ${
+                  className={`micro-card bg-white p-8 rounded-xl shadow-lg border-t-2 ${colors.border}/60 group cursor-pointer ${
                     isVisible ? 'animate-fadeInUp' : 'opacity-0'
                   }`}
                   style={{ animationDelay: `${index * 200}ms` }}
