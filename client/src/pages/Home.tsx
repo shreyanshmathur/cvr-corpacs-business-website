@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative">
+      <section className="relative pt-20">
         <div className="relative h-[50vh] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 

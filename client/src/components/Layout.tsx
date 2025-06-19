@@ -27,7 +27,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <main className="pt-20">
+      <main>
         {children}
       </main>
       <Footer />
