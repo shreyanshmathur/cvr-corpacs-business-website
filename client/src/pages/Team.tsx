@@ -132,28 +132,71 @@ export default function Team() {
             {expertiseAreas.map((area, index) => {
               const IconComponent = area.icon;
               return (
-                <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                <div 
+                  key={index} 
+                  className={`p-8 rounded-xl shadow-lg transition-all duration-500 border cursor-pointer transform ${
+                    activeCard === index 
+                      ? 'bg-gradient-to-br from-red-50 to-blue-50 shadow-xl scale-105 border-red-200' 
+                      : 'bg-white hover:shadow-xl hover:-translate-y-2 border-gray-100'
+                  }`}
+                  onMouseEnter={() => {
+                    setHoveredCard(index);
+                    setActiveCard(index);
+                  }}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center">
-                        <IconComponent className="h-8 w-8 text-red-600" />
+                      <div className={`w-16 h-16 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                        activeCard === index || hoveredCard === index
+                          ? 'bg-gradient-to-br from-red-500 to-red-600 scale-110 shadow-lg' 
+                          : 'bg-red-100'
+                      }`}>
+                        <IconComponent className={`h-8 w-8 transition-colors duration-300 ${
+                          activeCard === index || hoveredCard === index ? 'text-white' : 'text-red-600'
+                        }`} />
                       </div>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-xl font-bold font-heading text-gray-900">{area.title}</h3>
-                        <span className="text-sm font-medium text-red-600 bg-red-50 px-3 py-1 rounded-full">
+                        <h3 className={`text-xl font-bold font-heading transition-colors duration-300 ${
+                          activeCard === index ? 'text-red-600' : 'text-gray-900'
+                        }`}>
+                          {area.title}
+                        </h3>
+                        <span className={`text-sm font-medium px-3 py-1 rounded-full transition-all duration-300 ${
+                          activeCard === index 
+                            ? 'text-white bg-gradient-to-r from-red-500 to-red-600' 
+                            : 'text-red-600 bg-red-50'
+                        }`}>
                           {area.count}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-4 leading-relaxed">{area.description}</p>
+                      <p className={`mb-4 leading-relaxed transition-all duration-300 ${
+                        activeCard === index ? 'text-gray-700 scale-105' : 'text-gray-600'
+                      }`}>
+                        {area.description}
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {area.skills.map((skill, skillIndex) => (
-                          <span key={skillIndex} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                          <span 
+                            key={skillIndex} 
+                            className={`px-3 py-1 text-xs rounded-full transition-all duration-300 ${
+                              activeCard === index 
+                                ? 'bg-gradient-to-r from-red-100 to-blue-100 text-red-700 border border-red-200' 
+                                : 'bg-gray-100 text-gray-700'
+                            }`}
+                          >
                             {skill}
                           </span>
                         ))}
                       </div>
+                      {activeCard === index && (
+                        <div className="mt-4 flex items-center text-red-600 animate-pulse">
+                          <Zap className="h-4 w-4 mr-2" />
+                          <span className="text-sm font-medium">Currently Featured</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -162,19 +205,42 @@ export default function Team() {
           </div>
 
           {/* Department Stats */}
-          <div className="bg-gray-50 rounded-xl p-8">
-            <div className="text-center mb-8">
+          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-8 relative overflow-hidden">
+            <div className="absolute inset-0">
+              <div className="absolute top-4 right-4 w-20 h-20 bg-red-100 rounded-full opacity-30 animate-float"></div>
+              <div className="absolute bottom-4 left-4 w-16 h-16 bg-blue-100 rounded-full opacity-40 animate-float" style={{animationDelay: '2s'}}></div>
+            </div>
+            
+            <div className="text-center mb-8 relative z-10">
               <h3 className="text-2xl font-bold font-heading text-gray-900 mb-4">Our Departments</h3>
               <p className="text-gray-600">Organized teams working across specialized domains</p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
               {departments.map((dept, index) => (
-                <div key={index} className="text-center">
-                  <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <div className="text-3xl font-bold text-red-600 mb-2">{dept.memberCount}</div>
-                    <h4 className="font-semibold text-gray-900 mb-2">{dept.name}</h4>
+                <div 
+                  key={index} 
+                  className="text-center group cursor-pointer"
+                  onMouseEnter={() => setHoveredCard(index + 100)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className={`bg-white p-6 rounded-lg shadow-sm transition-all duration-300 transform ${
+                    hoveredCard === index + 100 ? 'shadow-xl scale-105 -translate-y-2' : 'hover:shadow-md'
+                  }`}>
+                    <div className={`text-3xl font-bold mb-2 transition-colors duration-300 ${
+                      hoveredCard === index + 100 ? 'text-red-600' : 'text-gray-900'
+                    }`}>
+                      {dept.memberCount}
+                    </div>
+                    <h4 className={`font-semibold mb-2 transition-colors duration-300 ${
+                      hoveredCard === index + 100 ? 'text-red-600' : 'text-gray-900'
+                    }`}>
+                      {dept.name}
+                    </h4>
                     <p className="text-sm text-gray-600">{dept.description}</p>
+                    {hoveredCard === index + 100 && (
+                      <div className="mt-3 w-6 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded mx-auto animate-pulse"></div>
+                    )}
                   </div>
                 </div>
               ))}
