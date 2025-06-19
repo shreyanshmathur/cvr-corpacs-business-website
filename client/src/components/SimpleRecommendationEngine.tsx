@@ -172,7 +172,7 @@ export default function SimpleRecommendationEngine() {
 
         <div className="grid gap-6">
           {recommendations.map((recommendation, index) => (
-            <Card key={index} className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
+            <Card key={index} className="border-l-2 border-l-blue-400/60 hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">

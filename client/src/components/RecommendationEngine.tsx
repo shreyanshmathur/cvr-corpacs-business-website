@@ -384,7 +384,7 @@ export default function RecommendationEngine() {
               {recommendations.map((recommendation: Recommendation, index: number) => (
                 <Card
                   key={recommendation.id}
-                  className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500"
+                  className="hover:shadow-lg transition-shadow border-l-2 border-l-blue-400/60"
                   onMouseEnter={() => !recommendation.isViewed && markViewedMutation.mutate(recommendation.id)}
                 >
                   <CardHeader>

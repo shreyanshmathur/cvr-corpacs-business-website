@@ -173,7 +173,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
           {quickActions.map((action, index) => (
             <Link key={action.title} href={action.href}>
               <Card 
-                className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-l-4 border-l-blue-500 animate-slideInUp`}
+                className={`group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-l-2 border-l-blue-400/60 animate-slideInUp`}
                 style={{animationDelay: `${action.delay}s`}}
               >
                 <CardHeader className="pb-3">

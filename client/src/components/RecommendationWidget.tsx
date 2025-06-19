@@ -47,7 +47,7 @@ export default function RecommendationWidget({ currentPage }: RecommendationWidg
           AI Recommendations
         </Button>
       ) : (
-        <Card className="w-80 shadow-xl border-l-4 border-l-blue-500 animate-fadeIn">
+        <Card className="w-80 shadow-xl border-l-2 border-l-blue-400/60 animate-fadeIn">
           <CardContent className="p-4">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
