@@ -298,7 +298,7 @@ async function generateDeepSeekRecommendations(
     }
   ];
 
-  const prompt = `You are CVR Corpacs' expert business consultant AI with deep knowledge of Indian business consulting services. Analyze this client profile and provide intelligent service recommendations.
+  const prompt = `You are CVR Corpac's expert business consultant AI with deep knowledge of Indian business consulting services. Analyze this client profile and provide intelligent service recommendations.
 
 **CLIENT PROFILE:**
 - Business Type: ${userContext.businessType}
