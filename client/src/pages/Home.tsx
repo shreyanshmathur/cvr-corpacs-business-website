@@ -21,7 +21,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative">
-        <div className="relative h-[70vh] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
+        <div className="relative h-[80vh] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
             alt="Modern office workspace with professionals working" 

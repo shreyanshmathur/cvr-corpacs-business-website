@@ -30,10 +30,10 @@ export default function Navigation() {
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50 transition-all duration-300 animate-slideInDown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center tilt-effect" onClick={scrollToTop}>
-            <img src={logoImage} alt="CVR Corpac Logo" className="h-16 w-16 animate-pulse-gentle" />
+            <img src={logoImage} alt="CVR Corpac Logo" className="h-20 w-20 animate-pulse-gentle object-contain logo-enhanced" />
             <span className="ml-3 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpac</span>
           </Link>
           
