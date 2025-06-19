@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <img src={logoImage} alt="CVR Corpac Logo" className="h-20 w-20 object-contain logo-enhanced" />
+              <img src={logoImage} alt="CVR Corpac Logo" className="h-16 w-16" />
               <span className="ml-3 text-xl font-bold font-heading">CVR Corpac</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">
