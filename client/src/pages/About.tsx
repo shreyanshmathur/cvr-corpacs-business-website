@@ -89,7 +89,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h1 className={`text-4xl md:text-5xl font-bold font-heading text-gray-900 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              About CVR Corpac
+              About CVR Corpacs
             </h1>
             <div className={`w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mx-auto mb-8 transition-all duration-1000 ${isVisible ? 'scale-100' : 'scale-0'}`} style={{transitionDelay: '0.3s'}}></div>
             <p className={`text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{transitionDelay: '0.5s'}}>

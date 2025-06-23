@@ -18,7 +18,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     port: parseInt(process.env.EMAIL_PORT || '587'),
     secure: process.env.EMAIL_PORT === '465',
     auth: {
-      user: process.env.EMAIL_USER || 'info@cvrcorpac.com',
+      user: process.env.EMAIL_USER || 'info@cvrcorpacs.com',
       pass: process.env.EMAIL_PASS || 'Anni*2005',
     },
   });
@@ -34,8 +34,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send email notification
       const mailOptions = {
-        from: `"CVR Corpacs Website" <${process.env.EMAIL_USER || 'info@cvrcorpac.com'}>`,
-        to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER || 'info@cvrcorpac.com',
+        from: `"CVR Corpacs Website" <${process.env.EMAIL_USER || 'info@cvrcorpacs.com'}>`,
+        to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER || 'info@cvrcorpacs.com',
         subject: `Contact Form: ${validatedData.subject}`,
         html: `
           <h2>New Contact Form Submission</h2>

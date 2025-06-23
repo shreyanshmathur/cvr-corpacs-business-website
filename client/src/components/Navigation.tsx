@@ -33,8 +33,8 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center tilt-effect" onClick={scrollToTop}>
-            <img src={logoImage} alt="CVR Corpac Logo" className="h-16 w-16 animate-pulse-gentle" />
-            <span className="ml-3 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpac</span>
+            <img src={logoImage} alt="CVR Corpacs Logo" className="h-16 w-16 animate-pulse-gentle" />
+            <span className="ml-3 text-xl font-bold font-heading text-gray-900 gradient-text">CVR Corpacs</span>
           </Link>
           
           {/* Desktop Navigation */}
