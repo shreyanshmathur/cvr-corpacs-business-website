@@ -55,7 +55,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 CVR Corpac. All rights reserved.
+            © 2024 CVR Corpacs. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm">
             Designed with excellence for professional consulting services.

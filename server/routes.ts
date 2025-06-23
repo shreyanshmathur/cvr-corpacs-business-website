@@ -63,7 +63,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Send auto-reply to the user
       const autoReplyOptions = {
-        from: `"CVR Corpacs" <${process.env.EMAIL_USER || 'info@cvrcorpac.com'}>`,
+        from: `"CVR Corpacs" <${process.env.EMAIL_USER || 'info@cvrcorpacs.com'}>`,
         to: validatedData.email,
         subject: 'Thank you for contacting CVR Corpacs',
         html: `
@@ -298,7 +298,7 @@ async function generateDeepSeekRecommendations(
     }
   ];
 
-  const prompt = `You are CVR Corpac's expert business consultant AI with deep knowledge of Indian business consulting services. Analyze this client profile and provide intelligent service recommendations.
+  const prompt = `You are CVR Corpacs' expert business consultant AI with deep knowledge of Indian business consulting services. Analyze this client profile and provide intelligent service recommendations.
 
 **CLIENT PROFILE:**
 - Business Type: ${userContext.businessType}

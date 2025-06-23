@@ -116,7 +116,7 @@ export default function WelcomeDashboard({ userName = "Valued Client" }: Welcome
                 {getGreeting()}, {userName}!
               </h1>
               <p className="text-blue-100 text-base animate-slideInDown" style={{animationDelay: '0.3s'}}>
-                Welcome to your CVR Corpac dashboard
+                Welcome to your CVR Corpacs dashboard
               </p>
             </div>
             <div className="text-right animate-slideInDown" style={{animationDelay: '0.5s'}}>

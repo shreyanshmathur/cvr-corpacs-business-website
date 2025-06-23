@@ -183,12 +183,12 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-6 items-center">
             <div>
               <h2 className="text-2xl md:text-3xl font-bold font-heading text-gray-900 mb-4">
-                About CVR Corpac
+                About CVR Corpacs
               </h2>
               <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mb-4"></div>
               
               <p className="text-base text-gray-600 mb-4 leading-relaxed">
-                Since our inception in 2004, CVR Corpac has been a steadfast pillar of support for businesses across India. Over the past two decades, we have cultivated strong, enduring relationships with both multinational corporations (MNCs) and Indian corporations (INCs) by delivering innovative, tailor-made solutions that address the unique challenges of modern business.
+                Since our inception in 2004, CVR Corpacs has been a steadfast pillar of support for businesses across India. Over the past two decades, we have cultivated strong, enduring relationships with both multinational corporations (MNCs) and Indian corporations (INCs) by delivering innovative, tailor-made solutions that address the unique challenges of modern business.
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
