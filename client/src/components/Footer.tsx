@@ -20,10 +20,10 @@ export default function Footer() {
               <a href="tel:+919326357129" className="text-gray-300 hover:text-red-400 transition-colors">
                 <Phone className="h-5 w-5" />
               </a>
-              <a href="mailto:info@cvrcorpac.com" className="text-gray-300 hover:text-red-400 transition-colors">
+              <a href="mailto:info@cvrcorpacs.com" className="text-gray-300 hover:text-red-400 transition-colors">
                 <Mail className="h-5 w-5" />
               </a>
-              <a href="https://www.cvrcorpac.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-red-400 transition-colors">
+              <a href="https://www.cvrcorpacs.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-red-400 transition-colors">
                 <Globe className="h-5 w-5" />
               </a>
             </div>

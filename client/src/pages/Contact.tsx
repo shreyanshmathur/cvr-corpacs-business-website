@@ -221,7 +221,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel>Phone Number</FormLabel>
                             <FormControl>
-                              <Input type="tel" placeholder="Enter your phone number" {...field} />
+                              <Input type="tel" placeholder="Enter your phone number" {...field} value={field.value || ""} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
