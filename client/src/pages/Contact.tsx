@@ -21,7 +21,7 @@ export default function Contact() {
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
+      phone: undefined,
       subject: "",
       message: "",
     },
@@ -85,7 +85,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="bg-gray-50 p-8 rounded-xl">
-              <h3 className="text-2xl font-bold font-heading text-gray-900 mb-8">CVR CORPAC</h3>
+              <h3 className="text-2xl font-bold font-heading text-gray-900 mb-8">CVR Corpacs</h3>
               
               <div className="space-y-6">
                 {/* Address */}
@@ -127,8 +127,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Email</h4>
-                    <a href="mailto:info@cvrcorpac.com" className="text-gray-600 hover:text-red-600 transition-colors">
-                      info@cvrcorpac.com
+                    <a href="mailto:info@cvrcorpacs.com" className="text-gray-600 hover:text-red-600 transition-colors">
+                      info@cvrcorpacs.com
                     </a>
                   </div>
                 </div>
@@ -313,7 +313,7 @@ export default function Contact() {
               Call +91 9326357129
             </a>
             <a 
-              href="mailto:info@cvrcorpac.com" 
+              href="mailto:info@cvrcorpacs.com" 
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-red-600 transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center"
             >
               <Mail className="mr-2 h-5 w-5" />
