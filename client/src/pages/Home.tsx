@@ -22,15 +22,15 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative">
         <div className="relative h-[50vh] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
-          <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
-            alt="Modern office workspace with professionals working" 
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080"
+            alt="Modern office workspace with professionals working"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
-          
 
-          
+
+
           <div className="relative z-10 flex items-center justify-center h-full pt-20">
             <div className={`text-center text-white px-4 max-w-4xl ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
               <h1 className="text-3xl md:text-5xl font-bold font-heading mb-4 leading-tight">
@@ -40,15 +40,15 @@ export default function Home() {
                 Your Trusted Business Partner Since 2004. Delivering innovative, tailor-made solutions for MNCs and Indian corporations across India.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/services" 
+                <Link
+                  href="/services"
                   className="bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-all duration-500 font-semibold text-lg transform hover:scale-105 inline-flex items-center justify-center glow-effect card-hover"
                 >
                   Our Services
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-500 font-semibold text-lg inline-flex items-center justify-center card-hover shimmer"
                 >
                   Get In Touch
@@ -57,7 +57,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+
         {/* Stats Section */}
         <div className="bg-white py-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-blue-50 opacity-50"></div>
@@ -66,11 +66,10 @@ export default function Home() {
               {stats.map((stat, index) => {
                 const IconComponent = stat.icon;
                 return (
-                  <div 
-                    key={index} 
-                    className={`micro-card bg-white p-4 rounded-xl shadow-lg border-t-2 border-red-600/60 group cursor-pointer glow-on-hover ${
-                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
+                  <div
+                    key={index}
+                    className={`micro-card bg-white p-4 rounded-xl shadow-lg border-t-2 border-red-600/60 group cursor-pointer glow-on-hover ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                      }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-8px) scale(1.05)';
@@ -108,7 +107,7 @@ export default function Home() {
               Access our comprehensive business solutions with intelligent recommendations powered by AI
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
@@ -145,10 +144,9 @@ export default function Home() {
               }
             ].map((action, index) => (
               <Link key={action.title} href={action.href}>
-                <div 
-                  className={`micro-card group cursor-pointer bg-white border border-gray-200 rounded-xl p-4 glow-on-hover ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
+                <div
+                  className={`micro-card group cursor-pointer bg-white border border-gray-200 rounded-xl p-4 glow-on-hover ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
                   style={{ transitionDelay: `${index * 100 + 200}ms` }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
@@ -172,7 +170,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          
+
 
         </div>
       </section>
@@ -186,11 +184,11 @@ export default function Home() {
                 About CVR Corpacs
               </h2>
               <div className="w-16 h-1 bg-gradient-to-r from-red-600 to-red-700 rounded mb-4"></div>
-              
+
               <p className="text-base text-gray-600 mb-4 leading-relaxed">
                 Since our inception in 2004, CVR Corpacs has been a steadfast pillar of support for businesses across India. Over the past two decades, we have cultivated strong, enduring relationships with both multinational corporations (MNCs) and Indian corporations (INCs) by delivering innovative, tailor-made solutions that address the unique challenges of modern business.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-red-600 mr-3" />
@@ -209,20 +207,20 @@ export default function Home() {
                   <span className="text-gray-700 font-medium">Multi-City Presence</span>
                 </div>
               </div>
-              
-              <Link 
-                href="/about" 
+
+              <Link
+                href="/about"
                 className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-all duration-300 font-semibold inline-flex items-center"
               >
                 Learn More
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </div>
-            
+
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional business team in meeting discussing strategies" 
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
+                alt="Professional business team in meeting discussing strategies"
                 className="rounded-xl shadow-xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-lg max-w-xs">
@@ -249,7 +247,7 @@ export default function Home() {
               Comprehensive business solutions tailored to meet your organization's unique requirements.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Direct Tax */}
             <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-red-600 transform hover:-translate-y-1">
@@ -290,15 +288,15 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                href="/services" 
+              <Link
+                href="/services"
                 className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-all duration-300 font-semibold inline-flex items-center"
               >
                 View All Services
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-              <Link 
-                href="/knowledge-pool" 
+              <Link
+                href="/knowledge-pool"
                 className="bg-white text-red-600 border-2 border-red-600 px-8 py-3 rounded-lg hover:bg-red-50 transition-all duration-300 font-semibold inline-flex items-center"
               >
                 <BookOpen className="mr-2 h-5 w-5" />
@@ -309,64 +307,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI Recommendation Engine Feature */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 bg-white bg-opacity-20 rounded-full">
-                <Brain className="h-12 w-12 text-white" />
-              </div>
+      {/* AI Recommendation Engine Feature - Subtle Design */}
+      <section className="py-12 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
+              <Brain className="h-4 w-4" />
+              <span>Powered by AI</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              DeepSeek AI-Powered Recommendations
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-gray-900 mb-3">
+              Smart Service Recommendations
             </h2>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              Get intelligent consulting service recommendations powered by DeepSeek R1, analyzing your business profile for precise matches.
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Not sure which service fits your needs? Our AI analyzes your business profile to suggest the right solutions.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="p-3 bg-white bg-opacity-20 rounded-lg inline-block mb-4">
-                <Target className="h-8 w-8 text-white" />
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="text-center p-4">
+              <div className="p-2 bg-gray-100 rounded-lg inline-block mb-3">
+                <Target className="h-5 w-5 text-gray-600" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Intelligent Analysis</h3>
-              <p className="text-blue-100">
-                Advanced algorithms analyze your business profile to understand your unique requirements.
+              <h3 className="text-sm font-semibold text-gray-900 mb-1">Intelligent Analysis</h3>
+              <p className="text-xs text-gray-500">
+                Understands your unique requirements
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="p-3 bg-white bg-opacity-20 rounded-lg inline-block mb-4">
-                <Zap className="h-8 w-8 text-white" />
+            <div className="text-center p-4">
+              <div className="p-2 bg-gray-100 rounded-lg inline-block mb-3">
+                <Zap className="h-5 w-5 text-gray-600" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Instant Matching</h3>
-              <p className="text-blue-100">
-                Get matched with the most relevant services in seconds based on your specific needs.
+              <h3 className="text-sm font-semibold text-gray-900 mb-1">Instant Matching</h3>
+              <p className="text-xs text-gray-500">
+                Get recommendations in seconds
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="p-3 bg-white bg-opacity-20 rounded-lg inline-block mb-4">
-                <Star className="h-8 w-8 text-white" />
+            <div className="text-center p-4">
+              <div className="p-2 bg-gray-100 rounded-lg inline-block mb-3">
+                <Star className="h-5 w-5 text-gray-600" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Confidence Scoring</h3>
-              <p className="text-blue-100">
-                Each recommendation comes with a confidence score and detailed explanations.
+              <h3 className="text-sm font-semibold text-gray-900 mb-1">Confidence Scoring</h3>
+              <p className="text-xs text-gray-500">
+                Clear explanations for each match
               </p>
             </div>
           </div>
 
           <div className="text-center">
-            <Link 
-              href="/recommendations" 
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 font-bold text-lg inline-flex items-center transform hover:scale-105"
+            <Link
+              href="/recommendations"
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
             >
-              <Brain className="mr-3 h-6 w-6" />
               Try AI Recommendations
-              <ArrowRight className="ml-3 h-6 w-6" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
         </div>
