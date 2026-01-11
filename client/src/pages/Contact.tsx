@@ -2,15 +2,17 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { MapPin, Phone, Mail, Globe, Send, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Send, CheckCircle, AlertTriangle } from "lucide-react";
 import { insertContactMessageSchema, type InsertContactMessage } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+// Read API key from environment variable
+const WEB3FORMS_API_KEY = import.meta.env.VITE_WEB3FORMS_API_KEY;
 
 export default function Contact() {
   const { toast } = useToast();
@@ -27,10 +29,59 @@ export default function Contact() {
     },
   });
 
+  // Check if API key is configured
+  if (!WEB3FORMS_API_KEY) {
+    return (
+      <section className="pt-20 py-20 bg-gray-50 min-h-screen">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <AlertTriangle className="h-16 w-16 text-yellow-500 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Contact Form Unavailable</h1>
+          <p className="text-gray-600 mb-6">
+            The contact form is not configured. Please contact us directly:
+          </p>
+          <div className="space-y-4">
+            <a href="mailto:info@cvrcorpacs.com" className="block text-red-600 hover:underline">
+              info@cvrcorpacs.com
+            </a>
+            <a href="tel:+919326357129" className="block text-red-600 hover:underline">
+              +91 9326357129
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactMessage) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response.json();
+      const formData = {
+        access_key: WEB3FORMS_API_KEY,
+        name: data.name,
+        email: data.email,
+        phone: data.phone || "Not provided",
+        subject: `CVR Corpacs Contact: ${data.subject}`,
+        message: data.message,
+        from_name: "CVR Corpacs Website",
+      };
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.message || "Failed to send message");
+      }
+      return result;
     },
     onSuccess: () => {
       setIsSubmitted(true);
@@ -86,7 +137,7 @@ export default function Contact() {
             {/* Contact Information */}
             <div className="bg-gray-50 p-8 rounded-xl">
               <h3 className="text-2xl font-bold font-heading text-gray-900 mb-8">CVR Corpacs</h3>
-              
+
               <div className="space-y-6">
                 {/* Address */}
                 <div className="flex items-start">
@@ -101,7 +152,7 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Phone */}
                 <div className="flex items-start">
                   <div className="bg-red-100 p-3 rounded-lg mr-4 flex-shrink-0">
@@ -119,7 +170,7 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Email */}
                 <div className="flex items-start">
                   <div className="bg-red-100 p-3 rounded-lg mr-4 flex-shrink-0">
@@ -132,7 +183,7 @@ export default function Contact() {
                     </a>
                   </div>
                 </div>
-                
+
                 {/* Website */}
                 <div className="flex items-start">
                   <div className="bg-red-100 p-3 rounded-lg mr-4 flex-shrink-0">
@@ -146,7 +197,7 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Branch Locations */}
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <h4 className="font-semibold text-gray-900 mb-4">Our Branch Network</h4>
@@ -163,17 +214,17 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            
+
             {/* Contact Form */}
             <div className="bg-white">
               {isSubmitted ? (
                 <div className="text-center py-12">
-                  <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                  <CheckCircle className="h-16 w-16 mx-auto mb-4 text-green-600" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h3>
                   <p className="text-gray-600 mb-6">
                     Your message has been sent successfully. We'll get back to you as soon as possible.
                   </p>
-                  <Button 
+                  <Button
                     onClick={() => setIsSubmitted(false)}
                     className="bg-red-600 hover:bg-red-700"
                   >
@@ -197,7 +248,7 @@ export default function Contact() {
                           </FormItem>
                         )}
                       />
-                      
+
                       <FormField
                         control={form.control}
                         name="email"
@@ -212,7 +263,7 @@ export default function Contact() {
                         )}
                       />
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
@@ -227,7 +278,7 @@ export default function Contact() {
                           </FormItem>
                         )}
                       />
-                      
+
                       <FormField
                         control={form.control}
                         name="subject"
@@ -253,7 +304,7 @@ export default function Contact() {
                         )}
                       />
                     </div>
-                    
+
                     <FormField
                       control={form.control}
                       name="message"
@@ -261,7 +312,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Message</FormLabel>
                           <FormControl>
-                            <Textarea 
+                            <Textarea
                               rows={6}
                               placeholder="Please describe your requirements or questions..."
                               className="resize-none"
@@ -272,9 +323,9 @@ export default function Contact() {
                         </FormItem>
                       )}
                     />
-                    
-                    <Button 
-                      type="submit" 
+
+                    <Button
+                      type="submit"
                       disabled={contactMutation.isPending}
                       className="w-full micro-button bg-red-600 hover:bg-red-700 text-lg py-4 glow-on-hover hover:scale-105 transition-all duration-300"
                     >
@@ -305,15 +356,15 @@ export default function Contact() {
             Our experts are available to discuss your requirements and provide immediate guidance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="tel:+919326357129" 
+            <a
+              href="tel:+919326357129"
               className="bg-white text-red-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center"
             >
               <Phone className="mr-2 h-5 w-5" />
               Call +91 9326357129
             </a>
-            <a 
-              href="mailto:info@cvrcorpacs.com" 
+            <a
+              href="mailto:info@cvrcorpacs.com"
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-red-600 transition-all duration-300 font-semibold text-lg inline-flex items-center justify-center"
             >
               <Mail className="mr-2 h-5 w-5" />
