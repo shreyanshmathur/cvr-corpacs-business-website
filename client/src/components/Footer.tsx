@@ -28,7 +28,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold font-heading mb-4">Quick Links</h4>
@@ -40,7 +40,7 @@ export default function Footer() {
               <li><Link href="/contact" className="text-gray-300 hover:text-red-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
-          
+
           {/* Services */}
           <div>
             <h4 className="text-lg font-semibold font-heading mb-4">Our Services</h4>
@@ -52,10 +52,10 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 CVR Corpacs. All rights reserved.
+            © 2026 CVR Corpacs. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm">
             Designed with excellence for professional consulting services.

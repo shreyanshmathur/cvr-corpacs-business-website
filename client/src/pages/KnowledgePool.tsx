@@ -91,7 +91,7 @@ export default function KnowledgePool() {
       description: "Comprehensive guide on maintaining proper books of accounts, record-keeping requirements, and documentation under GST law.",
       category: "Compliance",
       readTime: "15 min read",
-      lastUpdated: "2024-01-15",
+      lastUpdated: "2026-01-15",
       tags: ["Accounts", "Records", "Documentation", "Compliance"],
       content: `Under GST, every registered person must maintain proper books of accounts and records. This includes detailed records of all business transactions, tax computations, and supporting documents.
 
@@ -129,7 +129,7 @@ The maintenance of proper accounts and records forms the foundation of GST compl
       description: "Understanding the advance ruling system, its objectives, application process, and how it provides certainty in tax liability determination.",
       category: "Legal",
       readTime: "12 min read",
-      lastUpdated: "2024-01-10",
+      lastUpdated: "2026-01-10",
       tags: ["Advance Ruling", "Tax Planning", "Legal", "AAR"],
       content: `An advance ruling helps the applicant in planning activities liable for GST payment well in advance. It brings certainty in determining tax liability, as the ruling given by the Authority for Advance Ruling is binding on the applicant and Government authorities.
 
@@ -153,7 +153,7 @@ Application Process:
       description: "Complete overview of the appellate structure in GST, including time limits, pre-deposit requirements, and tribunal procedures.",
       category: "Legal",
       readTime: "18 min read",
-      lastUpdated: "2024-01-08",
+      lastUpdated: "2026-01-08",
       tags: ["Appeals", "Tribunal", "Legal Process", "Dispute Resolution"],
       content: `GST implements a comprehensive appellate mechanism to resolve disputes between taxpayers and tax authorities. The system provides multiple levels of appeal ensuring fair resolution of tax disputes.
 
@@ -176,7 +176,7 @@ The Tribunal has two tiers: National/Regional Benches for place of supply issues
       description: "Fundamental concepts of GST including input tax, output tax, legal framework, and the core mechanism of value-added taxation.",
       category: "Fundamentals",
       readTime: "10 min read",
-      lastUpdated: "2024-01-12",
+      lastUpdated: "2026-01-12",
       tags: ["GST Basics", "Value Added Tax", "Input Tax", "Output Tax"],
       content: `GST is a comprehensive value-added tax system that replaced multiple indirect taxes in India. It operates on the principle of 'One Nation, One Tax, One Market' to create a unified national market.
 
@@ -206,7 +206,7 @@ The GST system ensures transparency, reduces compliance burden, and promotes eco
       description: "Comprehensive analysis of advantages GST brings to businesses, consumers, and the economy through unified taxation and simplified compliance.",
       category: "Overview",
       readTime: "8 min read",
-      lastUpdated: "2024-01-05",
+      lastUpdated: "2026-01-05",
       tags: ["Benefits", "Economic Growth", "Compliance", "Unified Tax"],
       content: `GST implementation has revolutionized India's indirect tax system, bringing numerous advantages to all stakeholders in the economy.
 
@@ -243,7 +243,7 @@ The GST system has created a more efficient, transparent, and growth-oriented ta
       description: "Detailed procedures for voluntary and involuntary cancellation of GST registration, including timelines and compliance requirements.",
       category: "Registration",
       readTime: "11 min read",
-      lastUpdated: "2024-01-03",
+      lastUpdated: "2026-01-03",
       tags: ["Registration", "Cancellation", "Compliance", "Procedures"],
       content: `Cancellation of GST registration may be voluntary (by taxpayer) or involuntary (by tax authorities) under specific circumstances defined in the GST law.
 
@@ -283,7 +283,7 @@ Timeline:
       description: "Understanding the concept of casual taxable persons, registration requirements, and compliance obligations for temporary business activities.",
       category: "Registration",
       readTime: "9 min read",
-      lastUpdated: "2024-01-01",
+      lastUpdated: "2026-01-01",
       tags: ["Casual Taxable Person", "Temporary Business", "Registration", "Compliance"],
       content: `A casual taxable person is someone who occasionally undertakes transactions involving supply of goods or services in a state where they don't have a fixed place of business.
 
@@ -599,7 +599,7 @@ The debit note provides convenient mechanism for suppliers to correct undercharg
       description: "Understanding deemed export provisions, eligibility criteria, procedure for claiming refunds, and compliance requirements.",
       category: "Export",
       readTime: "16 min read",
-      lastUpdated: "2024-01-20",
+      lastUpdated: "2026-01-20",
       tags: ["Deemed Export", "Refund", "Zero Rating", "EOU"],
       content: `"Deemed Exports" refers to supplies of goods manufactured in India which are notified as deemed exports under Section 147 of the CGST/SGST Act, 2017. The supplies do not leave India but payment is received either in Indian rupees or in convertible foreign exchange.
 
@@ -633,7 +633,7 @@ Refund Process:
       description: "Comprehensive overview of electronic registers, ledger maintenance, liability tracking, and credit utilization in GST portal.",
       category: "Compliance",
       readTime: "18 min read",
-      lastUpdated: "2024-01-18",
+      lastUpdated: "2026-01-18",
       tags: ["Electronic Ledger", "Liability Register", "Credit Ledger", "GST Portal"],
       content: `Each registered taxpayer has one electronic liability register and two electronic ledgers: Electronic Cash Ledger and Electronic Credit Ledger on the common portal.
 
@@ -672,7 +672,7 @@ Liability Register Features:
       description: "Complete guide to e-way bill generation, compliance requirements, validity periods, and penalty provisions for goods movement.",
       category: "Compliance",
       readTime: "20 min read",
-      lastUpdated: "2024-01-16",
+      lastUpdated: "2026-01-16",
       tags: ["E-way Bill", "Goods Movement", "Transportation", "Compliance"],
       content: `Electronic Way Bill (E-Way Bill) is a digital document required for movement of goods worth more than Rs. 50,000. It ensures proper documentation and tracking of goods in transit.
 
@@ -717,7 +717,7 @@ Penalties:
       description: "Understanding GTA services, tax rates, reverse charge mechanism, and compliance requirements for transportation services.",
       category: "Services",
       readTime: "15 min read",
-      lastUpdated: "2024-01-14",
+      lastUpdated: "2026-01-14",
       tags: ["GTA", "Transportation", "Reverse Charge", "Consignment Note"],
       content: `Goods Transport Agency (GTA) means any person who provides service in relation to transport of goods by road and issues consignment note, by whatever name called.
 
@@ -761,7 +761,7 @@ Compliance:
       description: "Time of supply provisions, advance payment taxation, compliance requirements, and rate change implications for advance receipts.",
       category: "Compliance",
       readTime: "14 min read",
-      lastUpdated: "2024-01-12",
+      lastUpdated: "2026-01-12",
       tags: ["Advance Payment", "Time of Supply", "Rate Changes", "Receipt Voucher"],
       content: `Time of supply determines when taxpayer must discharge tax on particular supply. For advances, time of supply is generally when payment is received.
 
@@ -807,7 +807,7 @@ Documentation:
       description: "Import procedures, IGST levy, valuation methods, Special Economic Zone provisions, and customs integration under GST.",
       category: "Import",
       readTime: "17 min read",
-      lastUpdated: "2024-01-10",
+      lastUpdated: "2026-01-10",
       tags: ["Import", "IGST", "Customs", "SEZ", "Valuation"],
       content: `Under GST regime, import of goods/services is treated as deemed inter-State supply subject to Integrated Tax (IGST) in addition to customs duties.
 
@@ -856,7 +856,7 @@ Import of Services:
       description: "ISD mechanism, credit distribution procedures, invoice requirements, and proportionate allocation of common input services.",
       category: "Credit",
       readTime: "12 min read",
-      lastUpdated: "2024-01-08",
+      lastUpdated: "2026-01-08",
       tags: ["ISD", "Credit Distribution", "Input Services", "Common Expenses"],
       content: `Input Service Distributor (ISD) means an office that receives tax invoices for input services and distributes credit to supplier units having same PAN.
 
@@ -908,7 +908,7 @@ Limitations:
       description: "Comprehensive guide to ITC eligibility, documentation requirements, utilization hierarchy, and restrictions under GST law.",
       category: "Credit",
       readTime: "22 min read",
-      lastUpdated: "2024-01-22",
+      lastUpdated: "2026-01-22",
       tags: ["Input Tax Credit", "ITC Rules", "Credit Utilization", "Documentation"],
       content: `Input Tax Credit (ITC) is the backbone of GST system, ensuring seamless credit chain and avoiding cascading effect of taxes.
 
@@ -977,7 +977,7 @@ Input Service Credit:
       description: "Powers of GST officers, procedures for inspection and search, seizure provisions, arrest conditions, and taxpayer rights.",
       category: "Legal",
       readTime: "15 min read",
-      lastUpdated: "2024-01-06",
+      lastUpdated: "2026-01-06",
       tags: ["Inspection", "Search", "Seizure", "Arrest", "Officer Powers"],
       content: `GST law provides powers for Inspection, Search, Seizure and Arrest to protect genuine taxpayers and deter tax evasion.
 
@@ -1040,7 +1040,7 @@ Safeguards:
       description: "Job work provisions, movement of goods, time limits, registration requirements, and supply procedures from job worker premises.",
       category: "Manufacturing",
       readTime: "13 min read",
-      lastUpdated: "2024-01-04",
+      lastUpdated: "2026-01-04",
       tags: ["Job Work", "Manufacturing", "Principal", "Time Limits"],
       content: `Job work sector constitutes significant industry in Indian economy. GST provides special provisions for job work arrangements.
 
@@ -1101,7 +1101,7 @@ Benefits:
       description: "Second-hand goods taxation, margin calculation methods, purchase value determination, and exemption conditions.",
       category: "Valuation",
       readTime: "8 min read",
-      lastUpdated: "2024-01-02",
+      lastUpdated: "2026-01-02",
       tags: ["Margin Scheme", "Second Hand Goods", "Valuation", "Purchase Price"],
       content: `Margin Scheme allows dealers in second-hand goods to pay GST only on margin (difference between selling and purchase price) to avoid double taxation.
 
